@@ -2,7 +2,7 @@ package com.lapsa.phone;
 
 public class PhoneNumber {
 
-    private PhoneCCode countryCode;
+    private CountryCode countryCode;
     private String areaCode;
     private String number;
 
@@ -12,17 +12,17 @@ public class PhoneNumber {
 	this.number = "";
     }
 
-    public PhoneNumber(PhoneCCode countryCode, String areaCode, String number) {
+    public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
 	this.countryCode = countryCode;
 	this.areaCode = areaCode;
 	this.number = number;
     }
 
-    public PhoneCCode getCountryCode() {
+    public CountryCode getCountryCode() {
 	return countryCode;
     }
 
-    public void setCountryCode(PhoneCCode countryCode) {
+    public void setCountryCode(CountryCode countryCode) {
 	this.countryCode = countryCode;
     }
 

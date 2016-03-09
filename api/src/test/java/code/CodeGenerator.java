@@ -3,7 +3,7 @@ package code;
 import com.lapsa.country.Country;
 import com.lapsa.country.Country2;
 import com.lapsa.phone.CCode;
-import com.lapsa.phone.PhoneCCode;
+import com.lapsa.phone.CountryCode;
 
 public class CodeGenerator {
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class CodeGenerator {
     }
 
     public void generatePhoneCCodeEnum() {
-	System.out.println(String.format("-------- %s --------", PhoneCCode.class.getName()));
+	System.out.println(String.format("-------- %s --------", CountryCode.class.getName()));
 	boolean first = true;
 	for (String countryCode : CCode.getPhoneCountries()) {
 	    if (!first) {

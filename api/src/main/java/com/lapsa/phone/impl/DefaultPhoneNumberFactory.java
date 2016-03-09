@@ -1,14 +1,17 @@
 package com.lapsa.phone.impl;
 
-import com.lapsa.phone.PhoneCCode;
+import javax.enterprise.inject.Default;
+
+import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
 
+@Default
 public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 
-    public PhoneCCode identifyCountryCode(final String num, boolean force) throws PhoneFormatException {
-	PhoneCCode pcc = PhoneCCode.getByPhonePrefix(num);
+    public CountryCode identifyCountryCode(final String num, boolean force) throws PhoneFormatException {
+	CountryCode pcc = CountryCode.getByPhonePrefix(num);
 	// Если force то обязатльно должно быть совпадение по базе кодов иначе
 	// ошибка
 	if (pcc == null && force)
@@ -23,7 +26,7 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	if (number.startsWith("8")) {
 	    // то нужно проверить, может быть это код страны начинающийся с
 	    // символа "8"
-	    PhoneCCode pcc = PhoneCCode.getByPhonePrefix(number);
+	    CountryCode pcc = CountryCode.getByPhonePrefix(number);
 	    if (pcc == null)
 		// если не код страны, то тогда это локальное правило набора
 		// цифры "8" для выхода на другие area codes
@@ -35,7 +38,7 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
     }
 
     @Override
-    public PhoneNumber parse(String anyFormat, PhoneCCode defaultCountryCode) throws PhoneFormatException {
+    public PhoneNumber parse(String anyFormat, CountryCode defaultCountryCode) throws PhoneFormatException {
 
 	// получаем brackets number
 	// brackets number содержит только цифры и символ "+" в начале, если он
@@ -47,7 +50,7 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	if (!hasPlus)
 	    tail = stripHeading8(tail);
 
-	PhoneCCode pcc = null;
+	CountryCode pcc = null;
 	if (pcc == null)
 	    pcc = identifyCountryCode(tail, hasPlus);
 
@@ -68,7 +71,7 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 
     // TODO Криво. Переделать.
     @Override
-    public PhoneNumber create(PhoneCCode country, String number) throws PhoneFormatException {
+    public PhoneNumber create(CountryCode country, String number) throws PhoneFormatException {
 	String areaCode = number.substring(0, 3);
 	String num = number.substring(3);
 	return new PhoneNumber(country, areaCode, num);

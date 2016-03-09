@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public enum PhoneCCode {
+public enum CountryCode {
     AC("247", "247"),
     AD("376", "376"),
     AE("971", "971"),
@@ -254,7 +254,7 @@ public enum PhoneCCode {
     private final String phoneCode;
     private final String[] phonePrefixes;
 
-    PhoneCCode(String phoneCode, String... phonePrefixes) {
+    CountryCode(String phoneCode, String... phonePrefixes) {
 	this.phoneCode = phoneCode;
 	this.phonePrefixes = phonePrefixes;
     }
@@ -268,7 +268,7 @@ public enum PhoneCCode {
 	return "+" + phoneCode;
     }
 
-    public static PhoneCCode getByPhonePrefix(String number) {
+    public static CountryCode getByPhonePrefix(String number) {
 	if (number == null || number.isEmpty())
 	    return null;
 	for (String prefix : prefixesSortedList) {
@@ -279,12 +279,12 @@ public enum PhoneCCode {
     }
 
     private static List<String> prefixesSortedList;
-    private static Map<String, PhoneCCode> prefixesMap;
+    private static Map<String, CountryCode> prefixesMap;
 
     static {
 	prefixesSortedList = new ArrayList<>();
 	prefixesMap = new HashMap<>();
-	for (PhoneCCode code : PhoneCCode.values()) {
+	for (CountryCode code : CountryCode.values()) {
 	    for (String p : code.phonePrefixes) {
 		prefixesSortedList.add(p);
 		prefixesMap.put(p, code);

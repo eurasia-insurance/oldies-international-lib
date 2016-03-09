@@ -5,23 +5,25 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
+import com.lapsa.phone.CountryCode;
+import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
-import com.lapsa.phone.PhoneNumberFactoryProvider;
-import com.lapsa.phone.PhoneCCode;
-import com.lapsa.phone.PhoneFormatException;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {
+
+    @Inject
+    private PhoneNumberFactory phoneFactory;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
 	if (value == null || value.isEmpty())
 	    return null;
 	try {
-	    PhoneNumberFactory fact = PhoneNumberFactoryProvider.createFactory();
-	    return fact.parse(value, PhoneCCode.KZ);
+	    return phoneFactory.parse(value, CountryCode.KZ);
 	} catch (PhoneFormatException e) {
 	    throw new ConverterException(e);
 	}
