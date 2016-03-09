@@ -10,7 +10,7 @@ public class CodeGenerator {
 	CodeGenerator p = new CodeGenerator();
 	// p.makeBundles();
 	p.generatePhoneCCodeEnum();
-	p.generateCountryEnum();
+//	p.generateCountryEnum();
     }
 
     public void makeBundles() {
@@ -34,7 +34,7 @@ public class CodeGenerator {
 	    }
 	    String phoneCode = CCode.getPhoneCode(countryCode);
 	    String[] phonePrefixes = CCode.getPhonePrefixes(countryCode);
-	    System.out.print(String.format("%1$s(\"%2$s\"", countryCode, phoneCode));
+	    System.out.print(String.format("%1$s(\"%1$s\", \"%2$s\"", countryCode, phoneCode));
 	    for (String prefix : phonePrefixes) {
 		System.out.print(String.format(", \"%1$s\"", prefix));
 	    }
