@@ -11,7 +11,7 @@
 	<artifactId>international-api</artifactId>
 	<packaging>jar</packaging>
 
-	<name>LAPSA Internationtalization : API</name>
+	<name>LAPSA Internationalization : API</name>
 
 	<dependencies>
 		<!-- Java EE -->
