@@ -10,7 +10,7 @@ import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
-import com.lapsa.phone.impl.DefaultPhoneNumberFactory;
+import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 public class TestPhoneNumber {
 
@@ -18,7 +18,7 @@ public class TestPhoneNumber {
 
     @Before
     public void beforeTest() {
-	factory = new DefaultPhoneNumberFactory();
+	factory = PhoneNumberFactoryProvider.createFactory();
     }
 
     private static void printFormat(PhoneNumber a) {

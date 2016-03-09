@@ -1,22 +1,21 @@
-package kz.theeurasia.whatsapp.faces.converter;
+package com.lapsa.phone.faces.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
 
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
+import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {
 
-    @Inject
-    private PhoneNumberFactory phoneFactory;
+    private PhoneNumberFactory phoneFactory = PhoneNumberFactoryProvider.createFactory();
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
