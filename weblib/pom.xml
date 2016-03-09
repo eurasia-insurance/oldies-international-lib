@@ -8,7 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>phone-weblib</artifactId>
+	<artifactId>international-weblib</artifactId>
 	<packaging>jar</packaging>
 
 	<name>LAPSA Internationalization : Web library</name>
