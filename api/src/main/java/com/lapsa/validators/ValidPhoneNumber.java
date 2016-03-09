@@ -20,4 +20,6 @@ public @interface ValidPhoneNumber {
 
     Class<? extends Payload>[] payload() default {};
 
+    boolean checkPrefix() default true;
+
 }

@@ -292,4 +292,8 @@ public enum PhoneCCode {
 	}
 	Collections.sort(prefixesSortedList, Collections.reverseOrder(new StringLengthComparator()));
     }
+
+    public String[] prefixes() {
+	return phonePrefixes;
+    }
 }

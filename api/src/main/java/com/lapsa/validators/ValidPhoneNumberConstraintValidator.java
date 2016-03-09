@@ -7,16 +7,26 @@ import com.lapsa.phone.PhoneNumber;
 
 public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, PhoneNumber> {
 
+    private boolean checkPrefix;
+
     @Override
     public void initialize(ValidPhoneNumber a) {
+	this.checkPrefix = a.checkPrefix();
     }
 
     @Override
     public boolean isValid(PhoneNumber value, ConstraintValidatorContext cvc) {
 	if (value == null)
 	    return true;
-	else
-	    return !value.getPlain().isEmpty();
+	if (!checkPrefix) {
+	    return true;
+	}
+	String plain = value.getPlain();
+	for (String prefix : value.getCountryCode().prefixes()) {
+	    if (plain.startsWith(prefix))
+		return true;
+	}
+	return false;
     }
 
 }
