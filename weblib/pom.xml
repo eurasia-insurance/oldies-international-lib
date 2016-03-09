@@ -14,7 +14,7 @@
 	<name>LAPSA Internationalization : Web library</name>
 
 	<dependencies>
-		<!-- internal -->
+		<!-- own -->
 		<dependency>
 			<groupId>com.lapsa.international-helper</groupId>
 			<artifactId>international-api</artifactId>
@@ -24,7 +24,7 @@
 		<!-- Java EE -->
 		<dependency>
 			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
+			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

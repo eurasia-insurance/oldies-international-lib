@@ -32,10 +32,5 @@
 			<artifactId>hamcrest-all</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.openejb</groupId>
-			<artifactId>openejb-junit</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>
