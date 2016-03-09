@@ -1,0 +1,3 @@
+# default validation messages for validators
+com.lapsa.validators.ValidPhoneNumber.message = Введите номер телефона
+com.lapsa.validators.ValidCountry = Укажите страну
