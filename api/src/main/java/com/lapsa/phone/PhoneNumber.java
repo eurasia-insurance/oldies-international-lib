@@ -7,9 +7,6 @@ public class PhoneNumber {
     private String number;
 
     public PhoneNumber() {
-	this.countryCode = null;
-	this.areaCode = "";
-	this.number = "";
     }
 
     public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
@@ -43,11 +40,13 @@ public class PhoneNumber {
     }
 
     public String getFormatted() {
-	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
+	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
+		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
     }
 
     public String getPlain() {
-	return countryCode.getPhoneCode() + areaCode + number;
+	return (countryCode != null ? countryCode.getPhoneCode() : "") + (areaCode != null ? areaCode : "")
+		+ (number != null ? number : "");
     }
 
     @Override
