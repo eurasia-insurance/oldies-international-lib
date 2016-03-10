@@ -1,28 +1,15 @@
 package code;
 
 import com.lapsa.country.Country;
-import com.lapsa.country.Country2;
 import com.lapsa.phone.CCode;
 import com.lapsa.phone.CountryCode;
 
 public class CodeGenerator {
+
     public static void main(String[] args) {
 	CodeGenerator p = new CodeGenerator();
-	// p.makeBundles();
 	p.generatePhoneCCodeEnum();
-//	p.generateCountryEnum();
-    }
-
-    public void makeBundles() {
-	for (Country cw : Country.values()) {
-	    Country2 c;
-	    try {
-		c = Country2.valueOf(cw.getAlpha3Code());
-	    } catch (IllegalArgumentException e) {
-		c = Country2.forISOCode(cw.getDigitalCode());
-	    }
-	    System.out.print(cw + " " + c);
-	}
+	p.generateCountryEnum();
     }
 
     public void generatePhoneCCodeEnum() {
@@ -53,8 +40,8 @@ public class CodeGenerator {
 	    if (!first) {
 		System.out.println(",");
 	    }
-	    System.out.print(String.format("%2$s(\"%1$s\", \"%2$s\", \"%3$s\", \"%4$s\")", c.getAlpha2Code(), c.getAlpha3Code(),
-		    c.getDigitalCode(), c.getISOCode()));
+	    System.out.print(String.format("%2$s(\"%1$s\", \"%2$s\", \"%3$s\", \"%4$s\")", c.getAlpha2Code(),
+		    c.getAlpha3Code(), c.getDigitalCode(), c.getISOCode()));
 
 	    System.out.print(")");
 	    first = false;

@@ -20,7 +20,7 @@ public @interface ValidCountry {
 
     Country[] denyValues() default {};
 
-    String message() default "{com.lapsa.validators.ValidCountry}";
+    String message() default "{com.lapsa.validators.ValidCountry.message}";
 
     Class<?>[] groups() default {};
 

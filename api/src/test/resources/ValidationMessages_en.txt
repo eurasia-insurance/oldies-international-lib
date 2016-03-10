@@ -1,0 +1,3 @@
+# default validation messages for validators
+com.lapsa.validators.ValidPhoneNumber.message = Enter the phone number
+com.lapsa.validators.ValidCountry.message = Please choose a country
