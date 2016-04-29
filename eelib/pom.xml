@@ -8,10 +8,10 @@
 		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>international-weblib</artifactId>
+	<artifactId>international-eelib</artifactId>
 	<packaging>jar</packaging>
 
-	<name>LAPSA Internationalization : Web library</name>
+	<name>LAPSA Internationalization : Java EE library</name>
 
 	<dependencies>
 		<!-- own -->

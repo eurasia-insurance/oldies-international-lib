@@ -17,7 +17,7 @@
 
 	<modules>
 		<module>api</module>
-		<module>weblib</module>
+		<module>eelib</module>
 	</modules>
 
 	<dependencyManagement>
@@ -30,7 +30,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.lapsa.international-helper</groupId>
-				<artifactId>international-weblib</artifactId>
+				<artifactId>international-eelib</artifactId>
 				<version>1.0.2-SNAPSHOT</version>
 			</dependency>
 			<!-- JavaEE -->
