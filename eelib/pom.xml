@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.lapsa.international-helper</groupId>
+		<groupId>com.lapsa.international-lib</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.2-SNAPSHOT</version>
 	</parent>
@@ -16,7 +16,7 @@
 	<dependencies>
 		<!-- own -->
 		<dependency>
-			<groupId>com.lapsa.international-helper</groupId>
+			<groupId>com.lapsa.international-lib</groupId>
 			<artifactId>international-core</artifactId>
 			<scope>compile</scope>
 			<optional>false</optional>
