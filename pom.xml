@@ -13,10 +13,10 @@
 	<version>1.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>LAPSA Internationalization</name>
+	<name>Internationalization Lib</name>
 
 	<modules>
-		<module>api</module>
+		<module>core</module>
 		<module>eelib</module>
 	</modules>
 
@@ -25,7 +25,7 @@
 			<!-- own -->
 			<dependency>
 				<groupId>com.lapsa.international-helper</groupId>
-				<artifactId>international-api</artifactId>
+				<artifactId>international-core</artifactId>
 				<version>1.0.2-SNAPSHOT</version>
 			</dependency>
 			<dependency>
@@ -34,6 +34,12 @@
 				<version>1.0.2-SNAPSHOT</version>
 			</dependency>
 			<!-- JavaEE -->
+			<dependency>
+				<groupId>javax.faces</groupId>
+				<artifactId>javax.faces-api</artifactId>
+				<version>2.2</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>

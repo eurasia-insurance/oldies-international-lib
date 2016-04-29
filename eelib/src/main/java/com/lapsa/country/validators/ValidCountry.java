@@ -1,4 +1,4 @@
-package com.lapsa.validators;
+package com.lapsa.country.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -10,6 +10,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 import com.lapsa.country.Country;
+import com.lapsa.validators.AllowDenyOrder;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
@@ -20,7 +21,7 @@ public @interface ValidCountry {
 
     Country[] denyValues() default {};
 
-    String message() default "{com.lapsa.validators.ValidCountry.message}";
+    String message() default "{com.lapsa.phone.validators.ValidCountry.message}";
 
     Class<?>[] groups() default {};
 

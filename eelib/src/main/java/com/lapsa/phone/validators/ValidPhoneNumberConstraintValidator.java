@@ -1,4 +1,4 @@
-package com.lapsa.validators;
+package com.lapsa.phone.validators;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

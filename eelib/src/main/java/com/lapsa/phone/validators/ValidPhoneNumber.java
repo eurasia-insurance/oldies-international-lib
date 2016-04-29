@@ -1,4 +1,4 @@
-package com.lapsa.validators;
+package com.lapsa.phone.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = ValidPhoneNumberConstraintValidator.class)
 public @interface ValidPhoneNumber {
 
-    String message() default "{com.lapsa.validators.ValidPhoneNumber}";
+    String message() default "{com.lapsa.phone.validators.ValidPhoneNumber}";
 
     Class<?>[] groups() default {};
 
