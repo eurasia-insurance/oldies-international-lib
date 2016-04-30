@@ -11,7 +11,7 @@
 	<artifactId>international-core</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Internationalization Lib : Core</name>
+	<name>Internationalization Lib : Core POJOs</name>
 
 	<dependencies>
 		<!-- test -->
