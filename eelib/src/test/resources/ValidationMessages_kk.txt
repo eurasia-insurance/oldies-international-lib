@@ -1,0 +1,8 @@
+com.lapsa.phone.validators.ValidPhoneNumber.message = Сіздің телефон нөмірін енгізіңіз
+
+com.lapsa.country.validators.ValidCountry.message = Дұрыс көрсетілмеген ел
+
+com.lapsa.internet.validators.ValidEmail.message = Жарамсыз электрондық пошта мекен-жайы
+com.lapsa.internet.validators.ValidURL.message = Жарамсыз Адрес
+
+com.lapsa.cars.validators.ValidVINCode.message = VIN-код дұрыс емес
