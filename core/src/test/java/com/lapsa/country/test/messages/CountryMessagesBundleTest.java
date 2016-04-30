@@ -10,33 +10,30 @@ import org.junit.Test;
 
 import com.lapsa.country.Country;
 
-public class CountryNamesMessagesBundleTest {
+public class CountryMessagesBundleTest {
 
     @Test
     public void testRussianBundle() {
 	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, Locale.forLanguageTag("ru"));
 	assertThat(resources, not(nullValue()));
-
-	for (Country c : Country.values()) {
-	    String name = resources.getString(String.format("%s.%s", c.getClass().getName(), c.name()));
-	    assertThat(name, not(nullValue()));
-	}
+	testBundle(resources);
     }
 
     @Test
     public void testKazakhBundle() {
 	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, Locale.forLanguageTag("kk"));
 	assertThat(resources, not(nullValue()));
-
-	for (Country c : Country.values()) {
-	    String name = resources.getString(String.format("%s.%s", c.getClass().getName(), c.name()));
-	    assertThat(name, not(nullValue()));
-	}
+	testBundle(resources);
     }
 
     @Test
     public void testEnglishBundle() {
-	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, Locale.ENGLISH);
+	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, Locale.forLanguageTag("en"));
+	assertThat(resources, not(nullValue()));
+	testBundle(resources);
+    }
+
+    private void testBundle(ResourceBundle resources) {
 	assertThat(resources, not(nullValue()));
 	for (Country c : Country.values()) {
 	    String name = resources.getString(String.format("%s.%s", c.getClass().getName(), c.name()));
