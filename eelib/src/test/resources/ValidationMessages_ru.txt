@@ -1,3 +1,8 @@
-# default validation messages for validators
-com.lapsa.validators.ValidPhoneNumber.message = Введите номер телефона
-com.lapsa.validators.ValidCountry.message = Укажите страну
+com.lapsa.phone.validators.ValidPhoneNumber.message = Введите номер телефона
+
+com.lapsa.country.validators.ValidCountry.message = Некорректно указана страна
+
+com.lapsa.internet.validators.ValidEmail.message = Некорректный адрес e-mail
+com.lapsa.internet.validators.ValidURL.message = Некорректный адрес сайта
+
+com.lapsa.cars.validators.ValidVINCode.message = VIN-код некорректен

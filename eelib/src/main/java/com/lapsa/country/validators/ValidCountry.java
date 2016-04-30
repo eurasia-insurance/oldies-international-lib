@@ -21,7 +21,7 @@ public @interface ValidCountry {
 
     Country[] denyValues() default {};
 
-    String message() default "{com.lapsa.phone.validators.ValidCountry.message}";
+    String message() default "{com.lapsa.country.validators.ValidCountry.message}";
 
     Class<?>[] groups() default {};
 

@@ -1,4 +1,4 @@
-package com.lapsa.phone.validators;
+package com.lapsa.internet.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -11,15 +11,11 @@ import javax.validation.Payload;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = ValidPhoneNumberConstraintValidator.class)
-public @interface ValidPhoneNumber {
-
-    String message() default "{com.lapsa.phone.validators.ValidPhoneNumber.message}";
+@Constraint(validatedBy = ValidEmailConstraintValidator.class)
+public @interface ValidEmail {
+    String message() default "{com.lapsa.internet.validators.ValidEmail.message}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-    boolean checkPrefix() default true;
-
 }
