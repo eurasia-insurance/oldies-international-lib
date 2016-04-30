@@ -1,4 +1,4 @@
-package com.lapsa.country.test;
+package com.lapsa.country.test.messages;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
