@@ -1,4 +1,4 @@
-package com.lapsa.phone.impl;
+package com.lapsa.phone.inject;
 
 import javax.enterprise.inject.Default;
 

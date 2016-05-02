@@ -1,1 +1,1 @@
-com.lapsa.phone.impl.DefaultPhoneNumberFactory
+com.lapsa.phone.inject.DefaultPhoneNumberFactory
