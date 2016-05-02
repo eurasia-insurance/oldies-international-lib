@@ -1,6 +1,6 @@
 package com.lapsa.country;
 
-public enum Country {
+public enum Country implements BundleBase {
     AUS("AU", "AUS", "036", "ISO 3166-2:AU", true),
     AUT("AT", "AUT", "040", "ISO 3166-2:AT", true),
     AZE("AZ", "AZE", "031", "ISO 3166-2:AZ", true),
@@ -253,8 +253,6 @@ public enum Country {
     JAM("JM", "JAM", "388", "ISO 3166-2:JM", true),
     JPN("JP", "JPN", "392", "ISO 3166-2:JP", true),
     YUG("YU", "YUG", "891", "ISO 3166-2:YU", false);
-
-    public static final String BUNDLE_BASENAME = "CountryNames";
 
     private final String alpha2Code;
     private final String alpha3Code;

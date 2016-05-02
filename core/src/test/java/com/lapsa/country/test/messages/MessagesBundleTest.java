@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
+import com.lapsa.country.BundleBase;
 import com.lapsa.country.Country;
 
 public class MessagesBundleTest {
@@ -17,7 +18,7 @@ public class MessagesBundleTest {
     public void testNoExcessRecordsRussian() {
 	Locale locale = Locale.forLanguageTag("ru");
 	assertThat(locale.getLanguage(), allOf(not(nullValue()), is("ru")));
-	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = ResourceBundle.getBundle(BundleBase.BUNDLE_BASENAME, locale);
 	assertThat(resources, not(nullValue()));
 	assertThat(resources.getString("com.lapsa.country.Country.AND"), allOf(not(nullValue()), is("Андорра")));
 	testBundle(resources);
@@ -27,7 +28,7 @@ public class MessagesBundleTest {
     public void testNoExcessRecordsKazakh() {
 	Locale locale = Locale.forLanguageTag("kk");
 	assertThat(locale.getLanguage(), allOf(not(nullValue()), is("kk")));
-	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = ResourceBundle.getBundle(BundleBase.BUNDLE_BASENAME, locale);
 	assertThat(resources, not(nullValue()));
 	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Шығыс Тимор")));
 	testBundle(resources);
@@ -37,7 +38,7 @@ public class MessagesBundleTest {
     public void testNoExcessRecordsEnglish() {
 	Locale locale = Locale.forLanguageTag("en");
 	assertThat(locale.getLanguage(), allOf(not(nullValue()), is("en")));
-	ResourceBundle resources = ResourceBundle.getBundle(Country.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = ResourceBundle.getBundle(BundleBase.BUNDLE_BASENAME, locale);
 	assertThat(resources, not(nullValue()));
 	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Timor-Leste")));
 	testBundle(resources);
@@ -47,8 +48,7 @@ public class MessagesBundleTest {
 	Enumeration<String> keys = resources.getKeys();
 	while (keys.hasMoreElements()) {
 	    String key = keys.nextElement();
-	    Country city = findByFullName(Country.values(), key);
-	    if (city != null)
+	    if (findByFullName(Country.values(), key) != null)
 		continue;
 	    fail(String.format("Resource bunddle key '%1$s' is not present", key));
 	}
