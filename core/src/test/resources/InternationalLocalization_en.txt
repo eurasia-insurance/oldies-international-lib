@@ -250,3 +250,7 @@ com.lapsa.country.Country.SSD = South Sudan
 com.lapsa.country.Country.JAM = Jamaica
 com.lapsa.country.Country.JPN = Japan
 com.lapsa.country.Country.YUG = Yugoslavia
+
+com.lapsa.localization.LocalizationLanguage.RUSSIAN = Русский
+com.lapsa.localization.LocalizationLanguage.ENGLISH = English
+com.lapsa.localization.LocalizationLanguage.KAZAKH = Қазақ

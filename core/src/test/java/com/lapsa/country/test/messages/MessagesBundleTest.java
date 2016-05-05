@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.lapsa.country.BundleBase;
 import com.lapsa.country.Country;
+import com.lapsa.localization.LocalizationLanguage;
 
 public class MessagesBundleTest {
 
@@ -49,6 +50,8 @@ public class MessagesBundleTest {
 	while (keys.hasMoreElements()) {
 	    String key = keys.nextElement();
 	    if (findByFullName(Country.values(), key) != null)
+		continue;
+	    if (findByFullName(LocalizationLanguage.values(), key) != null)
 		continue;
 	    fail(String.format("Resource bunddle key '%1$s' is not present", key));
 	}

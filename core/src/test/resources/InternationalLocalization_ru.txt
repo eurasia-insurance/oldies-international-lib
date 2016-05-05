@@ -250,3 +250,7 @@ com.lapsa.country.Country.SSD = Южный Судан
 com.lapsa.country.Country.JAM = Ямайка
 com.lapsa.country.Country.JPN = Япония
 com.lapsa.country.Country.YUG = Югославия
+
+com.lapsa.localization.LocalizationLanguage.RUSSIAN = Русский
+com.lapsa.localization.LocalizationLanguage.ENGLISH = English
+com.lapsa.localization.LocalizationLanguage.KAZAKH = Қазақ
