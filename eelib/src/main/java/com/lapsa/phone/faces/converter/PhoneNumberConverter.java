@@ -3,10 +3,9 @@ package com.lapsa.phone.faces.converter;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
-import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
@@ -22,9 +21,9 @@ public class PhoneNumberConverter implements Converter {
 	if (value == null || value.isEmpty())
 	    return null;
 	try {
-	    return phoneFactory.parse(value, CountryCode.KZ);
+	    return phoneNumberFactory.parse(value, false);
 	} catch (PhoneFormatException e) {
-	    throw new ConverterException(e);
+	    return null;
 	}
     }
 
@@ -35,5 +34,4 @@ public class PhoneNumberConverter implements Converter {
 	PhoneNumber pn = (PhoneNumber) value;
 	return pn.getFormatted();
     }
-
 }
