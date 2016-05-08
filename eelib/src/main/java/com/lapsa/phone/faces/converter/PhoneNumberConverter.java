@@ -10,12 +10,12 @@ import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
-import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {
 
-    private PhoneNumberFactory phoneFactory = PhoneNumberFactoryProvider.createFactory();
+    @Inject
+    private PhoneNumberFactory phoneNumberFactory;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
