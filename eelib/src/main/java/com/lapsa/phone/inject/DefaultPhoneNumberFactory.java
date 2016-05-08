@@ -38,26 +38,44 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
     }
 
     @Override
-    public PhoneNumber parse(String anyFormat, CountryCode defaultCountryCode) throws PhoneFormatException {
+    public PhoneNumber parse(String format) throws PhoneFormatException {
+	return parse(format, null, false);
+    }
 
-	// получаем brackets number
-	// brackets number содержит только цифры и символ "+" в начале, если он
-	// нужен и группирующие скобки
-	String tail = anyFormat.replaceAll("[^\\d\\+]", "");
+    @Override
+    public PhoneNumber parse(String format, CountryCode defaultCountryCode) throws PhoneFormatException {
+	return parse(format, defaultCountryCode, false);
+    }
+
+    @Override
+    public PhoneNumber parse(String format, boolean strict) throws PhoneFormatException {
+	return parse(format, null, strict);
+    }
+
+    @Override
+    public PhoneNumber parse(String format, CountryCode defaultCountryCode, boolean strict)
+	    throws PhoneFormatException {
+	// получаем plain number
+	// plain number содержит только цифры и символ "+" в начале, если он
+	// нужен
+	String tail = format.replaceAll("[^\\d\\+]", "");
 	boolean hasPlus = tail.startsWith("+");
-	tail = tail.replaceAll("\\+", "");
+	tail = tail.replaceAll("^\\+", "");
 
 	if (!hasPlus)
 	    tail = stripHeading8(tail);
 
 	CountryCode pcc = null;
 	if (pcc == null)
-	    pcc = identifyCountryCode(tail, hasPlus);
+	    pcc = identifyCountryCode(tail, strict ? hasPlus : strict);
 
 	if (pcc == null && defaultCountryCode != null)
 	    pcc = defaultCountryCode;
 
-	if (pcc == null)
+	if (pcc == null && !strict)
+	    pcc = CountryCode.getFirstByCode(tail);
+
+	if (pcc == null && strict)
 	    // по всей видимости задан "короткий" номер без кодов стран и т.п нл
 	    // при этом не задана страна по умолчанию
 	    throw new PhoneFormatException("Invalid number foramat. Can't recognize country code number");
@@ -75,11 +93,6 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	String areaCode = number.substring(0, 3);
 	String num = number.substring(3);
 	return new PhoneNumber(country, areaCode, num);
-    }
-
-    @Override
-    public PhoneNumber parse(String anyFormat) throws PhoneFormatException {
-	return parse(anyFormat, null);
     }
 
 }
