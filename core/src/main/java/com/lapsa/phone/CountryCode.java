@@ -286,6 +286,16 @@ public enum CountryCode {
 	return null;
     }
 
+    public static CountryCode getFirstByCode(String code) {
+	if (code == null || code.isEmpty())
+	    return null;
+	for (CountryCode i : CountryCode.values()) {
+	    if (code.startsWith(i.getPhoneCode()))
+		return i;
+	}
+	return null;
+    }
+
     private static List<String> prefixesSortedList;
     private static Map<String, CountryCode> prefixesMap;
 
