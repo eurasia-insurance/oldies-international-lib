@@ -15,30 +15,6 @@ public class PhoneNumber {
 	this.number = number;
     }
 
-    public CountryCode getCountryCode() {
-	return countryCode;
-    }
-
-    public void setCountryCode(CountryCode countryCode) {
-	this.countryCode = countryCode;
-    }
-
-    public String getAreaCode() {
-	return areaCode;
-    }
-
-    public void setAreaCode(String areaCode) {
-	this.areaCode = areaCode;
-    }
-
-    public String getNumber() {
-	return number;
-    }
-
-    public void setNumber(String number) {
-	this.number = number;
-    }
-
     public String getFormatted() {
 	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
 		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
@@ -82,5 +58,31 @@ public class PhoneNumber {
 	if (s2 != null && s2.equals(s1))
 	    return true;
 	return false;
+    }
+
+    // GENERATED
+
+    public CountryCode getCountryCode() {
+	return countryCode;
+    }
+
+    public void setCountryCode(CountryCode countryCode) {
+	this.countryCode = countryCode;
+    }
+
+    public String getAreaCode() {
+	return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+	this.areaCode = areaCode;
+    }
+
+    public String getNumber() {
+	return number;
+    }
+
+    public void setNumber(String number) {
+	this.number = number;
     }
 }
