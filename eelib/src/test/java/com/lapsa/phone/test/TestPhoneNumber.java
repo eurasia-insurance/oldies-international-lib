@@ -18,7 +18,7 @@ public class TestPhoneNumber {
 
     @Before
     public void beforeTest() {
-	factory = PhoneNumberFactoryProvider.createFactory();
+	factory = PhoneNumberFactoryProvider.provideDefault();
     }
 
     private static void printFormat(PhoneNumber a) {

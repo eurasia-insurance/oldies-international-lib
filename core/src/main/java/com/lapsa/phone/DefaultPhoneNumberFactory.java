@@ -1,13 +1,5 @@
-package com.lapsa.phone.inject;
+package com.lapsa.phone;
 
-import javax.enterprise.inject.Default;
-
-import com.lapsa.phone.CountryCode;
-import com.lapsa.phone.PhoneFormatException;
-import com.lapsa.phone.PhoneNumber;
-import com.lapsa.phone.PhoneNumberFactory;
-
-@Default
 public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 
     public CountryCode identifyCountryCode(final String num, boolean force) throws PhoneFormatException {

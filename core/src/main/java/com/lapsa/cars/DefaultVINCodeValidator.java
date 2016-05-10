@@ -1,24 +1,13 @@
-package com.lapsa.cars.inject;
+package com.lapsa.cars;
 
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Default;
-
-import com.lapsa.cars.VINCodeValidator;
-
-@Default
-public class VINCodeValidatorDefault implements VINCodeValidator {
+public class DefaultVINCodeValidator implements VINCodeValidator {
 
     private static final String VIN_CODE_PATTERN = "^[0123456789ABCDEFGHJKLMNPRSTUVWXYZ]{17}$";
 
-    private Pattern pattern;
-
-    @PostConstruct
-    public void init() {
-	pattern = Pattern.compile(VIN_CODE_PATTERN);
-    }
+    private Pattern pattern = Pattern.compile(VIN_CODE_PATTERN);
 
     @Override
     public boolean isValid(final String vinCode) {
