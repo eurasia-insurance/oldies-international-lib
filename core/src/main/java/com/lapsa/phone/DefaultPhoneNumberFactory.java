@@ -65,7 +65,8 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 
 	// если номер не короткий и есть код страны, то убираем его из
 	// "хвоста"
-	tail = tail.substring(pcc.getPhoneCode().length());
+	if (pcc != null)
+	    tail = tail.substring(pcc.getPhoneCode().length());
 
 	return create(pcc, tail);
     }
