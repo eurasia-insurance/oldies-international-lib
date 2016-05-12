@@ -15,18 +15,9 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
     }
 
     private String stripHeading8(String number) {
-	if (number.startsWith("8")) {
-	    // то нужно проверить, может быть это код страны начинающийся с
-	    // символа "8"
-	    CountryCode pcc = CountryCode.getByPhonePrefix(number);
-	    if (pcc == null)
-		// если не код страны, то тогда это локальное правило набора
-		// цифры "8" для выхода на другие area codes
-		// поэтому меняем локальную "8" на международную "7"
-		return "7" + number.substring(1);
-	}
+	if (number.startsWith("8"))
+	    return "7" + number.substring(1);
 	return number;
-
     }
 
     @Override
@@ -55,6 +46,12 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	tail = tail.replaceAll("^\\+", "");
 
 	if (!hasPlus)
+	    // Считаем, что если человек вводит номер телефона с цифры "8" то
+	    // это
+	    // цифра для вызова междгорода. Поэтому ее мы убираем и заменяем
+	    // цифрой "7" (местные вызовы)
+	    // Если цифра "8" это начало кода страны, то такой номер должен
+	    // вводится начиная со знака "+"
 	    tail = stripHeading8(tail);
 
 	CountryCode pcc = null;
