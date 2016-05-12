@@ -17,7 +17,7 @@ public class PhoneNumberConverter implements Converter {
 	if (value == null || value.isEmpty())
 	    return null;
 	try {
-	    return PhoneNumberFactoryProvider.provideDefault().parse(value);
+	    return PhoneNumberFactoryProvider.provideDefault().parse(value, false);
 	} catch (PhoneFormatException e) {
 	    return null;
 	}

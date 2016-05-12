@@ -5,6 +5,8 @@ public interface PhoneNumberFactory {
 
     PhoneNumber parse(String format) throws PhoneFormatException;
 
+    PhoneNumber parse(String format, boolean strict) throws PhoneFormatException;
+
     PhoneNumber parse(String format, CountryCode defaultCountryCode) throws PhoneFormatException;
 
     CountryCode identifyCountryCode(String number, boolean force) throws PhoneFormatException;

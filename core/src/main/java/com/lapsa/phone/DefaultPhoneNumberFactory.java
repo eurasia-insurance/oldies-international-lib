@@ -30,6 +30,12 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	return parse(format, defaultCountryCode, true);
     }
 
+
+    @Override
+    public PhoneNumber parse(String format, boolean strict) throws PhoneFormatException {
+	return parse(format, null, strict);
+    }
+    
     private PhoneNumber parse(String format, CountryCode defaultCountryCode, boolean strict)
 	    throws PhoneFormatException {
 	// получаем plain number
