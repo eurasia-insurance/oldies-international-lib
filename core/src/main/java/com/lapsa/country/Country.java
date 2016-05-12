@@ -252,7 +252,9 @@ public enum Country implements BundleBase {
     SSD("SS", "SSD", "728", "ISO 3166-2:SS", true),
     JAM("JM", "JAM", "388", "ISO 3166-2:JM", true),
     JPN("JP", "JPN", "392", "ISO 3166-2:JP", true),
-    YUG("YU", "YUG", "891", "ISO 3166-2:YU", false);
+    YUG("YU", "YUG", "891", "ISO 3166-2:YU", false),
+    XKX("XK", "XKX", "UNDEF", "UNDEF", true),
+    OTHR("OTHR", "OTHR", "OTHR", "OTHR", false);
 
     private final String alpha2Code;
     private final String alpha3Code;

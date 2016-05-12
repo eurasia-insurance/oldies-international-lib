@@ -250,6 +250,8 @@ com.lapsa.country.Country.SSD = Оңтүстік Судан
 com.lapsa.country.Country.JAM = Ямайка
 com.lapsa.country.Country.JPN = Жапония
 com.lapsa.country.Country.YUG = Югославия
+com.lapsa.country.Country.XKX = Косово
+com.lapsa.country.Country.OTHR = Басқа
 
 com.lapsa.localization.LocalizationLanguage.RUSSIAN = Русский
 com.lapsa.localization.LocalizationLanguage.ENGLISH = English
