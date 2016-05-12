@@ -22,21 +22,15 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 
     @Override
     public PhoneNumber parse(String format) throws PhoneFormatException {
-	return parse(format, null, false);
+	return parse(format, null, true);
     }
 
     @Override
     public PhoneNumber parse(String format, CountryCode defaultCountryCode) throws PhoneFormatException {
-	return parse(format, defaultCountryCode, false);
+	return parse(format, defaultCountryCode, true);
     }
 
-    @Override
-    public PhoneNumber parse(String format, boolean strict) throws PhoneFormatException {
-	return parse(format, null, strict);
-    }
-
-    @Override
-    public PhoneNumber parse(String format, CountryCode defaultCountryCode, boolean strict)
+    private PhoneNumber parse(String format, CountryCode defaultCountryCode, boolean strict)
 	    throws PhoneFormatException {
 	// получаем plain number
 	// plain number содержит только цифры и символ "+" в начале, если он
