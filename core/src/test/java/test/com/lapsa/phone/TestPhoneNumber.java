@@ -1,4 +1,4 @@
-package com.lapsa.phone.test;
+package test.com.lapsa.phone;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
