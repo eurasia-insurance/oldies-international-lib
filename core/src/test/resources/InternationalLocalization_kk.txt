@@ -256,3 +256,7 @@ com.lapsa.country.Country.OTHR = Басқа
 com.lapsa.localization.LocalizationLanguage.RUSSIAN = Русский
 com.lapsa.localization.LocalizationLanguage.ENGLISH = English
 com.lapsa.localization.LocalizationLanguage.KAZAKH = Қазақ
+
+com.lapsa.localization.LocalizationLanguage.RUSSIAN.short = рус
+com.lapsa.localization.LocalizationLanguage.ENGLISH.short = eng
+com.lapsa.localization.LocalizationLanguage.KAZAKH.short = қаз
