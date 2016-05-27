@@ -8,7 +8,13 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     RUSSIAN("ru"), // русский
     ENGLISH("en"), // английский
     KAZAKH("kk"), // казахский
+    //
     ;
+
+    @Override
+    public String canonicalName() {
+	return String.format("%1$s.%2$s", this.getClass().getName(), name());
+    }
 
     private final String tag;
     private final Locale locale;
@@ -21,7 +27,7 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     public String getTag() {
 	return tag;
     }
-    
+
     public Locale getLocale() {
 	return locale;
     }

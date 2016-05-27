@@ -255,6 +255,13 @@ public enum Country implements InternationalLocalizationBundleBase {
     YUG("YU", "YUG", "891", "ISO 3166-2:YU", false),
     XKX("XK", "XKX", "UNDEF", "UNDEF", true),
     OTHR("OTHR", "OTHR", "OTHR", "OTHR", false);
+    //
+    ;
+
+    @Override
+    public String canonicalName() {
+	return String.format("%1$s.%2$s", this.getClass().getName(), name());
+    }
 
     private final String alpha2Code;
     private final String alpha3Code;
