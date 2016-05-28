@@ -281,8 +281,16 @@ public enum Country implements InternationalLocalizationBundleBase {
 	return alpha2Code;
     }
 
+    public String getAlpha2CodeLowercase() {
+	return alpha2Code.toLowerCase();
+    }
+
     public String getAlpha3Code() {
 	return alpha3Code;
+    }
+
+    public String getAlpha3CodeLowercase() {
+	return alpha3Code.toLowerCase();
     }
 
     public String getDigitalCode() {
