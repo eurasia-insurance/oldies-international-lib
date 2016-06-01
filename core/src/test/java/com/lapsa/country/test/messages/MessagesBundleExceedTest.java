@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.lapsa.country.InternationalLocalizationBundleBase;
 import com.lapsa.country.Country;
 import com.lapsa.localization.LocalizationLanguage;
+import com.lapsa.phone.PhoneType;
 
 public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 
@@ -44,6 +45,8 @@ public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 	while (keys.hasMoreElements()) {
 	    String key = keys.nextElement();
 	    if (findByFullName(Country.values(), key) != null)
+		continue;
+	    if (findByFullName(PhoneType.values(), key) != null)
 		continue;
 	    if (findByFullName(LocalizationLanguage.values(), key) != null)
 		continue;
