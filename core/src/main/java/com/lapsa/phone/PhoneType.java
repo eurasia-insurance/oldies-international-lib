@@ -3,7 +3,7 @@ package com.lapsa.phone;
 import com.lapsa.country.InternationalLocalizationBundleBase;
 
 public enum PhoneType implements InternationalLocalizationBundleBase {
-    TEL, // основной телефон
+    MAIN, // основной телефон
     FAX, // телефон факса
     MOBILE, // мобильный телефон
     WORK, // рабочий телефон

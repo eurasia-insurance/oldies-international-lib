@@ -263,12 +263,12 @@ com.lapsa.localization.LocalizationLanguage.KAZAKH.short = қаз
 
 com.lapsa.phone.PhoneType.FAX = fax number
 com.lapsa.phone.PhoneType.HOME = home phone
+com.lapsa.phone.PhoneType.MAIN = main phone
 com.lapsa.phone.PhoneType.MOBILE = mobile phone
-com.lapsa.phone.PhoneType.TEL = phone
 com.lapsa.phone.PhoneType.WORK = work phone
 
 com.lapsa.phone.PhoneType.FAX.short = fax
 com.lapsa.phone.PhoneType.HOME.short = home
-com.lapsa.phone.PhoneType.MOBILE.short = mob.
 com.lapsa.phone.PhoneType.TEL.short = tel.
+com.lapsa.phone.PhoneType.MOBILE.short = mob.
 com.lapsa.phone.PhoneType.WORK.short = wrk.
