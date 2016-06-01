@@ -1,6 +1,10 @@
 package com.lapsa.phone;
 
-public class PhoneNumber {
+import java.io.Serializable;
+
+public class PhoneNumber implements Serializable {
+
+    private static final long serialVersionUID = 8999997304131725827L;
 
     private CountryCode countryCode;
     private String areaCode;
