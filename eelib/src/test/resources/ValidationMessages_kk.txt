@@ -1,8 +1,8 @@
-com.lapsa.phone.validators.ValidPhoneNumber.message = Енгізілген телефон нөмірі сұранамын. Белгілеулердің нөмірі және әрекетті қайталаңыз. Мүмкін дұрыс көрсетілмеген елдің коды немесе оператор коды байланыс
+﻿com.lapsa.phone.validators.ValidPhoneNumber.message = Енгізілген телефон нөмірі қате. Нөмірдің дұрыстығына көз жеткізіңіз және әрекетті қайталаңыз. Ел коды немесе байланыс операторының коды қате көрсетілуі мүмкін.
 
-com.lapsa.country.validators.ValidCountry.message = Дұрыс көрсетілмеген ел
+com.lapsa.country.validators.ValidCountry.message = Ел қате көрсетілген
 
-com.lapsa.internet.validators.ValidEmail.message = Жарамсыз электрондық пошта мекен-жайы
-com.lapsa.internet.validators.ValidURL.message = Жарамсыз Адрес
+com.lapsa.internet.validators.ValidEmail.message = Қате  e-mail мекенжайы
+com.lapsa.internet.validators.ValidURL.message = Қате сайт мекенжайы 
 
-com.lapsa.cars.validators.ValidVINCode.message = VIN-код дұрыс емес
+com.lapsa.cars.validators.ValidVINCode.message = VIN-коды қатеs
