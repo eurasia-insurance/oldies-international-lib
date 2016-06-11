@@ -28,7 +28,7 @@ public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
     public void testNoExcessRecordsKazakh() {
 	Locale locale = getLocale(LANG_KK);
 	ResourceBundle resources = getResourceBundle(InternationalLocalizationBundleBase.BUNDLE_BASENAME, locale);
-	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Шығыс Тимор")));
+	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Тимор-Лесте")));
 	testBundle(resources);
     }
 
