@@ -1,6 +1,8 @@
 package com.lapsa.localization;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import com.lapsa.country.InternationalLocalizationBundleBase;
 
@@ -10,6 +12,14 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     KAZAKH("kk"), // казахский
     //
     ;
+
+    private final static Map<String, LocalizationLanguage> langTags;
+
+    static {
+	langTags = new HashMap<>();
+	for (LocalizationLanguage ll : LocalizationLanguage.values())
+	    langTags.put(ll.getTag(), ll);
+    }
 
     @Override
     public String canonicalName() {
@@ -33,9 +43,10 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     }
 
     public static LocalizationLanguage byTag(String lang) {
-	for (LocalizationLanguage c : LocalizationLanguage.values())
-	    if (c.getTag().equals(lang))
-		return c;
-	return null;
+	return langTags.get(lang);
+    }
+
+    public static LocalizationLanguage byLocale(Locale locale) {
+	return langTags.get(locale.getLanguage());
     }
 }
