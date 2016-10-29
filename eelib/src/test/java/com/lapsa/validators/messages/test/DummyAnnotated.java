@@ -11,6 +11,6 @@ public interface DummyAnnotated {
     @ValidCountry
     @ValidEmail
     @ValidURL
-    @ValidPhoneNumber
+    @ValidPhoneNumber(areaCodeLength = 3, numberLength = 3)
     void dummy();
 }
