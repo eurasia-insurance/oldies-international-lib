@@ -77,6 +77,8 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
     }
 
     // TODO Криво. Переделать.
+    // длина area code не всегда 3 знака
+    // см. тут https://en.wikipedia.org/wiki/Telephone_numbering_plan#Area_code
     @Override
     public PhoneNumber create(CountryCode country, String number) throws PhoneFormatException {
 	if (number == null)
