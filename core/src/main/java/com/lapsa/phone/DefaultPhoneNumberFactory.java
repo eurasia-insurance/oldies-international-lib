@@ -30,12 +30,11 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	return parse(format, defaultCountryCode, true);
     }
 
-
     @Override
     public PhoneNumber parse(String format, boolean strict) throws PhoneFormatException {
 	return parse(format, null, strict);
     }
-    
+
     private PhoneNumber parse(String format, CountryCode defaultCountryCode, boolean strict)
 	    throws PhoneFormatException {
 	// получаем plain number
@@ -80,8 +79,10 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
     // TODO Криво. Переделать.
     @Override
     public PhoneNumber create(CountryCode country, String number) throws PhoneFormatException {
-	String areaCode = number.substring(0, 3);
-	String num = number.substring(3);
+	if (number == null)
+	    return new PhoneNumber();
+	String areaCode = (number.length() >= 3) ? number.substring(0, 3) : number;
+	String num = (number.length() >= 3) ? number.substring(3) : "";
 	return new PhoneNumber(country, areaCode, num);
     }
 
