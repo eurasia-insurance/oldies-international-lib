@@ -10,10 +10,14 @@ import com.lapsa.phone.PhoneNumberFactoryProvider;
 public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, Object> {
 
     private boolean checkPrefix;
+    private int areaCodeLength;
+    private int numberLength;
 
     @Override
     public void initialize(ValidPhoneNumber a) {
 	this.checkPrefix = a.checkPrefix();
+	this.areaCodeLength = a.areaCodeLength();
+	this.numberLength = a.numberLength();
     }
 
     @Override
@@ -28,10 +32,26 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 		return false;
 	    }
 	}
-	if (!checkPrefix)
-	    return true;
-	if (value instanceof PhoneNumber)
-	    testValue = (PhoneNumber) value;
+
+	if (checkPrefix && !checkPrefix(testValue))
+	    return false;
+	if (areaCodeLength > 0 && !checkAreaCode(testValue))
+	    return false;
+	if (numberLength > 0 && !checkNumberLength(testValue))
+	    return false;
+
+	return true;
+    }
+
+    private boolean checkNumberLength(PhoneNumber testValue) {
+	return testValue.getNumber() != null && testValue.getNumber().length() == numberLength;
+    }
+
+    private boolean checkAreaCode(PhoneNumber testValue) {
+	return testValue.getAreaCode() != null && testValue.getAreaCode().length() == areaCodeLength;
+    }
+
+    private boolean checkPrefix(PhoneNumber testValue) {
 	String plain = testValue.getPlain();
 	for (String prefix : testValue.getCountryCode().prefixes()) {
 	    if (plain.startsWith(prefix))

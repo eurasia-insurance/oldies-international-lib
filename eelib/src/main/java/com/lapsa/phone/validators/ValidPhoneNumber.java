@@ -22,4 +22,8 @@ public @interface ValidPhoneNumber {
 
     boolean checkPrefix() default true;
 
+    int areaCodeLength();
+    
+    int numberLength();
+
 }
