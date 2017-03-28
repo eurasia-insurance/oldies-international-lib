@@ -12,7 +12,7 @@ import javax.validation.Payload;
 import com.lapsa.country.Country;
 import com.lapsa.validators.AllowDenyOrder;
 
-@Target({ METHOD, FIELD, ANNOTATION_TYPE })
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Constraint(validatedBy = ValidCountryConstraintValidator.class)
 public @interface ValidCountry {
