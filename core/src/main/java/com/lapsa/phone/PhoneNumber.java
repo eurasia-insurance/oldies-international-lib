@@ -2,6 +2,11 @@ package com.lapsa.phone;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.lapsa.phone.jaxb.JAXBPhoneNumberAdapter;
+
+@XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
 public class PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 8999997304131725827L;
@@ -10,6 +15,19 @@ public class PhoneNumber implements Serializable {
     private String areaCode;
     private String number;
     private String raw;
+
+    public static PhoneNumber fromString(String raw) {
+	if (raw == null || raw.isEmpty())
+	    return null;
+	return PhoneNumberFactoryProvider.provideDefault().parse(raw);
+    }
+
+    @Override
+    public String toString() {
+	if (isComplete())
+	    return getCanonical();
+	return raw;
+    }
 
     public PhoneNumber() {
     }
@@ -28,20 +46,19 @@ public class PhoneNumber implements Serializable {
     }
 
     public String getFormatted() {
-	if (countryCode == null || areaCode == null || number == null)
+	if (!isComplete())
 	    return null;
 	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    public String getNumbered() {
-	if (countryCode == null || areaCode == null || number == null)
+    public String getCanonical() {
+	if (!isComplete())
 	    return null;
-	return String.format("%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
+	return String.format("+%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    @Override
-    public String toString() {
-	return getFormatted();
+    private boolean isComplete() {
+	return countryCode != null && areaCode != null && !areaCode.isEmpty() && number == null && !number.isEmpty();
     }
 
     @Override
@@ -77,7 +94,7 @@ public class PhoneNumber implements Serializable {
     public String getRaw() {
 	if (raw != null)
 	    return raw;
-	return getFormatted();
+	return getCanonical();
     }
 
     protected void setRaw(String raw) {
