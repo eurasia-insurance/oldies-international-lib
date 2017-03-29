@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactoryProvider;
 
@@ -13,13 +12,24 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 
     private static final Pattern PATTERN_ONLY_NUMBERS = Pattern.compile("^[0-9]*$");
 
-    private int areaCodeLength;
-    private int numberLength;
+    private int areaCodeMinLength;
+    private int areaCodeMaxLength;
+
+    private int numberMinLength;
+    private int numberMaxLength;
+
+    private int fullNumberMinLength;
+
+    private int fullNumberNaxLength;
 
     @Override
     public void initialize(ValidPhoneNumber a) {
-	this.areaCodeLength = a.areaCodeLength();
-	this.numberLength = a.numberLength();
+	this.areaCodeMinLength = a.areaCodeMinLength();
+	this.areaCodeMaxLength = a.areaCodeMaxLength();
+	this.numberMinLength = a.numberMinLength();
+	this.numberMaxLength = a.numberMaxLength();
+	this.fullNumberMinLength = a.getFullNumberMinLength();
+	this.fullNumberNaxLength = a.getFullNumberNaxLength();
     }
 
     @Override
@@ -32,39 +42,41 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	else
 	    testValue = PhoneNumberFactoryProvider.provideDefault().parse(value.toString());
 
-	if (!isValidCountryCode(testValue.getCountryCode()))
-	    return false;
+	{
+	    if (testValue.getCountryCode() == null)
+		return false;
+	}
 
-	if (!isValidAreaCode(testValue.getAreaCode()))
-	    return false;
+	{
+	    String joined = testValue.getAreaCode() + testValue.getNumber();
+	    if (fullNumberMinLength >= 0 && joined.length() < fullNumberMinLength)
+		return false;
+	    if (fullNumberNaxLength >= 0 && joined.length() > fullNumberNaxLength)
+		return false;
+	}
 
-	if (!isValidNumber(testValue.getNumber()))
-	    return false;
+	{
+	    if (testValue.getAreaCode() == null)
+		return false;
+	    if (areaCodeMinLength >= 0 && testValue.getAreaCode().length() < areaCodeMinLength)
+		return false;
+	    if (areaCodeMaxLength >= 0 && testValue.getAreaCode().length() > areaCodeMaxLength)
+		return false;
+	    if (!PATTERN_ONLY_NUMBERS.matcher(testValue.getAreaCode()).matches())
+		return false;
+	}
 
-	return true;
-    }
+	{
+	    if (testValue.getNumber() == null)
+		return false;
+	    if (numberMinLength >= 0 && testValue.getNumber().length() < numberMinLength)
+		return false;
+	    if (numberMaxLength >= 0 && testValue.getNumber().length() > numberMaxLength)
+		return false;
+	    if (!PATTERN_ONLY_NUMBERS.matcher(testValue.getNumber()).matches())
+		return false;
+	}
 
-    protected boolean isValidCountryCode(CountryCode countryCode) {
-	return countryCode != null;
-    }
-
-    private boolean isValidNumber(String number) {
-	if (number == null)
-	    return false;
-	if (number.length() != numberLength)
-	    return false;
-	if (!PATTERN_ONLY_NUMBERS.matcher(number).matches())
-	    return false;
-	return true;
-    }
-
-    private boolean isValidAreaCode(String areaCode) {
-	if (areaCode == null)
-	    return false;
-	if (areaCode.length() != areaCodeLength)
-	    return false;
-	if (!PATTERN_ONLY_NUMBERS.matcher(areaCode).matches())
-	    return false;
 	return true;
     }
 }
