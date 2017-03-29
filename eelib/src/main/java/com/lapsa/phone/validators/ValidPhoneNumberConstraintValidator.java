@@ -1,21 +1,23 @@
 package com.lapsa.phone.validators;
 
+import java.util.regex.Pattern;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.lapsa.phone.PhoneFormatException;
+import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, Object> {
 
-    private boolean checkPrefix;
+    private static final Pattern PATTERN_ONLY_NUMBERS = Pattern.compile("^[0-9]*$");
+
     private int areaCodeLength;
     private int numberLength;
 
     @Override
     public void initialize(ValidPhoneNumber a) {
-	this.checkPrefix = a.checkPrefix();
 	this.areaCodeLength = a.areaCodeLength();
 	this.numberLength = a.numberLength();
     }
@@ -25,38 +27,44 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	if (value == null)
 	    return true;
 	PhoneNumber testValue = null;
-	if (value instanceof String) {
-	    try {
-		testValue = PhoneNumberFactoryProvider.provideDefault().parse((String) value);
-	    } catch (PhoneFormatException e) {
-		return false;
-	    }
-	}
+	if (value instanceof PhoneNumber)
+	    testValue = (PhoneNumber) value;
+	else
+	    testValue = PhoneNumberFactoryProvider.provideDefault().parse(value.toString());
 
-	if (checkPrefix && !checkPrefix(testValue))
+	if (!isValidCountryCode(testValue.getCountryCode()))
 	    return false;
-	if (areaCodeLength > 0 && !checkAreaCode(testValue))
+
+	if (!isValidAreaCode(testValue.getAreaCode()))
 	    return false;
-	if (numberLength > 0 && !checkNumberLength(testValue))
+
+	if (!isValidNumber(testValue.getNumber()))
 	    return false;
 
 	return true;
     }
 
-    private boolean checkNumberLength(PhoneNumber testValue) {
-	return testValue.getNumber() != null && testValue.getNumber().length() == numberLength;
+    protected boolean isValidCountryCode(CountryCode countryCode) {
+	return countryCode != null;
     }
 
-    private boolean checkAreaCode(PhoneNumber testValue) {
-	return testValue.getAreaCode() != null && testValue.getAreaCode().length() == areaCodeLength;
+    private boolean isValidNumber(String number) {
+	if (number == null)
+	    return false;
+	if (number.length() != numberLength)
+	    return false;
+	if (!PATTERN_ONLY_NUMBERS.matcher(number).matches())
+	    return false;
+	return true;
     }
 
-    private boolean checkPrefix(PhoneNumber testValue) {
-	String plain = testValue.getPlain();
-	for (String prefix : testValue.getCountryCode().prefixes()) {
-	    if (plain.startsWith(prefix))
-		return true;
-	}
-	return false;
+    private boolean isValidAreaCode(String areaCode) {
+	if (areaCode == null)
+	    return false;
+	if (areaCode.length() != areaCodeLength)
+	    return false;
+	if (!PATTERN_ONLY_NUMBERS.matcher(areaCode).matches())
+	    return false;
+	return true;
     }
 }

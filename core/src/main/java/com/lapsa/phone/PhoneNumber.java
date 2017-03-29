@@ -9,8 +9,16 @@ public class PhoneNumber implements Serializable {
     private CountryCode countryCode;
     private String areaCode;
     private String number;
+    private String raw;
 
     public PhoneNumber() {
+    }
+
+    PhoneNumber(CountryCode countryCode, String areaCode, String number, String raw) {
+	this.countryCode = countryCode;
+	this.areaCode = areaCode;
+	this.number = number;
+	this.raw = raw;
     }
 
     public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
@@ -20,13 +28,15 @@ public class PhoneNumber implements Serializable {
     }
 
     public String getFormatted() {
-	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
-		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
+	if (countryCode == null || areaCode == null || number == null)
+	    return null;
+	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    public String getPlain() {
-	return (countryCode != null ? countryCode.getPhoneCode() : "") + (areaCode != null ? areaCode : "")
-		+ (number != null ? number : "");
+    public String getNumbered() {
+	if (countryCode == null || areaCode == null || number == null)
+	    return null;
+	return String.format("%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
     @Override
@@ -64,6 +74,16 @@ public class PhoneNumber implements Serializable {
 	return false;
     }
 
+    public String getRaw() {
+	if (raw != null)
+	    return raw;
+	return getFormatted();
+    }
+
+    protected void setRaw(String raw) {
+	this.raw = raw;
+    }
+
     // GENERATED
 
     public CountryCode getCountryCode() {
@@ -71,6 +91,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setCountryCode(CountryCode countryCode) {
+	if (this.countryCode != countryCode)
+	    raw = null;
 	this.countryCode = countryCode;
     }
 
@@ -79,6 +101,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setAreaCode(String areaCode) {
+	if (this.areaCode != areaCode)
+	    raw = null;
 	this.areaCode = areaCode;
     }
 
@@ -87,6 +111,9 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setNumber(String number) {
+	if (this.number != number)
+	    raw = null;
 	this.number = number;
     }
+
 }

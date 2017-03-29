@@ -20,10 +20,8 @@ public @interface ValidPhoneNumber {
 
     Class<? extends Payload>[] payload() default {};
 
-    boolean checkPrefix() default true;
-
-    int areaCodeLength();
+    int areaCodeLength() default 3;
     
-    int numberLength();
+    int numberLength() default 7;
 
 }
