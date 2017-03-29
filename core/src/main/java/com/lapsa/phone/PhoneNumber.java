@@ -80,6 +80,10 @@ public class PhoneNumber implements Serializable {
 	return getFormatted();
     }
 
+    protected void setRaw(String raw) {
+	this.raw = raw;
+    }
+
     // GENERATED
 
     public CountryCode getCountryCode() {
