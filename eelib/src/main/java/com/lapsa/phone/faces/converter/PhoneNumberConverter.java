@@ -23,6 +23,6 @@ public class PhoneNumberConverter implements Converter {
 	if (value == null || !(value instanceof PhoneNumber))
 	    return null;
 	PhoneNumber pn = (PhoneNumber) value;
-	return pn.getFormatted();
+	return pn.getRaw();
     }
 }
