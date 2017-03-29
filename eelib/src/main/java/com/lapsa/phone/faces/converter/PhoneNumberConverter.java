@@ -6,6 +6,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import com.lapsa.phone.PhoneNumber;
+import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {
@@ -14,7 +15,7 @@ public class PhoneNumberConverter implements Converter {
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
 	if (value == null || value.isEmpty())
 	    return null;
-	return new PhoneNumber(value);
+	return PhoneNumberFactoryProvider.provideDefault().parse(value);
     }
 
     @Override

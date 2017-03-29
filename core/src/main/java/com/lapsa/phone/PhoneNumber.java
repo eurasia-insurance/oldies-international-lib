@@ -9,9 +9,16 @@ public class PhoneNumber implements Serializable {
     private CountryCode countryCode;
     private String areaCode;
     private String number;
-    private String plain;
+    private String raw;
 
     public PhoneNumber() {
+    }
+
+    public PhoneNumber(CountryCode countryCode, String areaCode, String number, String plain) {
+	this.countryCode = countryCode;
+	this.areaCode = areaCode;
+	this.number = number;
+	this.raw = plain;
     }
 
     public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
@@ -20,29 +27,20 @@ public class PhoneNumber implements Serializable {
 	this.number = number;
     }
 
-    public PhoneNumber(String plain) {
-	this.plain = plain;
-	try {
-	    PhoneNumber parsed = PhoneNumberFactoryProvider.provideDefault().parse(plain);
-	    this.countryCode = parsed.getCountryCode();
-	    this.areaCode = parsed.getAreaCode();
-	    this.number = parsed.getNumber();
-	} catch (PhoneFormatException ignored) {
-	}
-    }
-
     public String getFormatted() {
 	if (countryCode == null || areaCode == null || number == null)
 	    return null;
-	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
-		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
+	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    public String getPlain() {
-	if (plain != null)
-	    return plain;
-	return (countryCode != null ? countryCode.getPhoneCode() : "") + (areaCode != null ? areaCode : "")
-		+ (number != null ? number : "");
+    public String getNumbered() {
+	if (countryCode == null || areaCode == null || number == null)
+	    return null;
+	return String.format("%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
+    }
+
+    public String getRaw() {
+	return raw;
     }
 
     @Override
@@ -104,5 +102,9 @@ public class PhoneNumber implements Serializable {
 
     public void setNumber(String number) {
 	this.number = number;
+    }
+
+    public void setRaw(String raw) {
+	this.raw = raw;
     }
 }

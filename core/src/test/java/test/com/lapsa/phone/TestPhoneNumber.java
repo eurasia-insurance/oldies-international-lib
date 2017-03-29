@@ -34,7 +34,7 @@ public class TestPhoneNumber {
     private static void printFormat(PhoneNumber a) {
 	logger.info(String.format("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
-		a.getPlain() // $2
+		a.getNumbered() // $2
 	));
 	logger.info(String.format(//
 		"Country code: %1$s Country number: %2$s Area code: %3$s Number: %4$s", //
@@ -104,14 +104,10 @@ public class TestPhoneNumber {
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
 	    String frm = formatted[i];
-	    try {
-		PhoneNumber a = factory.parse(num);
-		printFormat(a);
-		assertThat(a, not(nullValue()));
-		assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
-	    } catch (PhoneFormatException e) {
-		fail();
-	    }
+	    PhoneNumber a = factory.parse(num);
+	    printFormat(a);
+	    assertThat(a, not(nullValue()));
+	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
 	}
     }
 }

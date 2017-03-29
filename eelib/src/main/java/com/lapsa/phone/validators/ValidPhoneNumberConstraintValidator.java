@@ -7,6 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
+import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, Object> {
 
@@ -29,7 +30,7 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	if (value instanceof PhoneNumber)
 	    testValue = (PhoneNumber) value;
 	else
-	    testValue = new PhoneNumber(value.toString());
+	    testValue = PhoneNumberFactoryProvider.provideDefault().parse(value.toString());
 
 	if (!isValidCountryCode(testValue.getCountryCode()))
 	    return false;
