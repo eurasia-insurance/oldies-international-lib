@@ -58,7 +58,7 @@ public class PhoneNumber implements Serializable {
     }
 
     private boolean isComplete() {
-	return countryCode != null && areaCode != null && !areaCode.isEmpty() && number == null && !number.isEmpty();
+	return countryCode != null && areaCode != null && !areaCode.isEmpty() && number != null && !number.isEmpty();
     }
 
     @Override
