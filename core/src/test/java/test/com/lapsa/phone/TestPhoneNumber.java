@@ -33,7 +33,7 @@ public class TestPhoneNumber {
     private static void printFormat(PhoneNumber a) {
 	logger.info(String.format("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
-		a.getNumbered() // $2
+		a.getCanonical() // $2
 	));
 	logger.info(String.format(//
 		"Country code: %1$s Country number: %2$s Area code: %3$s Number: %4$s", //
