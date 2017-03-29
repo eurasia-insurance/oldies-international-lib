@@ -25,9 +25,16 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	if (value == null)
 	    return true;
 	PhoneNumber testValue = null;
-	if (value instanceof String) {
+	if (value instanceof PhoneNumber) {
+	    testValue = (PhoneNumber) value;
+	} else {
+	    String stringValue = null;
+	    if (value instanceof String)
+		stringValue = (String) value;
+	    else
+		stringValue = value.toString();
 	    try {
-		testValue = PhoneNumberFactoryProvider.provideDefault().parse((String) value);
+		testValue = PhoneNumberFactoryProvider.provideDefault().parse(stringValue);
 	    } catch (PhoneFormatException e) {
 		return false;
 	    }
