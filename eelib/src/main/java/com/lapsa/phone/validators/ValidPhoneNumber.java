@@ -20,8 +20,16 @@ public @interface ValidPhoneNumber {
 
     Class<? extends Payload>[] payload() default {};
 
-    int areaCodeLength() default 3;
-    
-    int numberLength() default 7;
+    int areaCodeMinLength() default 3;
+
+    int areaCodeMaxLength() default 4;
+
+    int numberMinLength() default 6;
+
+    int numberMaxLength() default 7;
+
+    int getFullNumberMinLength() default 10;
+
+    int getFullNumberNaxLength() default 10;
 
 }
