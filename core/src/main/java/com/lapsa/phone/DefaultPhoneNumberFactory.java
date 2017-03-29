@@ -40,7 +40,7 @@ public class DefaultPhoneNumberFactory implements PhoneNumberFactory {
 	// получаем plain number
 	// plain number содержит только цифры и символ "+" в начале, если он
 	// нужен
-	String tail = format.replaceAll("[^\\d\\+]", "");
+	String tail = format.replaceAll("[\\s\\-\\(\\)]", "");
 	boolean hasPlus = tail.startsWith("+");
 	tail = tail.replaceAll("^\\+", "");
 

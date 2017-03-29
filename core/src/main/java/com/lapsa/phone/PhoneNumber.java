@@ -9,6 +9,7 @@ public class PhoneNumber implements Serializable {
     private CountryCode countryCode;
     private String areaCode;
     private String number;
+    private String plain;
 
     public PhoneNumber() {
     }
@@ -19,12 +20,27 @@ public class PhoneNumber implements Serializable {
 	this.number = number;
     }
 
+    public PhoneNumber(String plain) {
+	this.plain = plain;
+	try {
+	    PhoneNumber parsed = PhoneNumberFactoryProvider.provideDefault().parse(plain);
+	    this.countryCode = parsed.getCountryCode();
+	    this.areaCode = parsed.getAreaCode();
+	    this.number = parsed.getNumber();
+	} catch (PhoneFormatException ignored) {
+	}
+    }
+
     public String getFormatted() {
+	if (countryCode == null || areaCode == null || number == null)
+	    return null;
 	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
 		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
     }
 
     public String getPlain() {
+	if (plain != null)
+	    return plain;
 	return (countryCode != null ? countryCode.getPhoneCode() : "") + (areaCode != null ? areaCode : "")
 		+ (number != null ? number : "");
     }
