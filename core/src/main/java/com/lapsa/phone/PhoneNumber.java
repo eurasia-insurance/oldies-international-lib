@@ -14,11 +14,11 @@ public class PhoneNumber implements Serializable {
     public PhoneNumber() {
     }
 
-    public PhoneNumber(CountryCode countryCode, String areaCode, String number, String plain) {
+    PhoneNumber(CountryCode countryCode, String areaCode, String number, String raw) {
 	this.countryCode = countryCode;
 	this.areaCode = areaCode;
 	this.number = number;
-	this.raw = plain;
+	this.raw = raw;
     }
 
     public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
@@ -37,10 +37,6 @@ public class PhoneNumber implements Serializable {
 	if (countryCode == null || areaCode == null || number == null)
 	    return null;
 	return String.format("%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
-    }
-
-    public String getRaw() {
-	return raw;
     }
 
     @Override
@@ -78,6 +74,12 @@ public class PhoneNumber implements Serializable {
 	return false;
     }
 
+    public String getRaw() {
+	if (raw != null)
+	    return raw;
+	return getFormatted();
+    }
+
     // GENERATED
 
     public CountryCode getCountryCode() {
@@ -85,6 +87,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setCountryCode(CountryCode countryCode) {
+	if (this.countryCode != countryCode)
+	    raw = null;
 	this.countryCode = countryCode;
     }
 
@@ -93,6 +97,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setAreaCode(String areaCode) {
+	if (this.areaCode != areaCode)
+	    raw = null;
 	this.areaCode = areaCode;
     }
 
@@ -101,10 +107,9 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setNumber(String number) {
+	if (this.number != number)
+	    raw = null;
 	this.number = number;
     }
 
-    public void setRaw(String raw) {
-	this.raw = raw;
-    }
 }
