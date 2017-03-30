@@ -2,6 +2,11 @@ package com.lapsa.phone;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.lapsa.phone.jaxb.JAXBPhoneNumberAdapter;
+
+@XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
 public class PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 8999997304131725827L;
@@ -9,8 +14,29 @@ public class PhoneNumber implements Serializable {
     private CountryCode countryCode;
     private String areaCode;
     private String number;
+    private String raw;
+
+    public static PhoneNumber fromString(String raw) {
+	if (raw == null || raw.isEmpty())
+	    return null;
+	return PhoneNumberFactoryProvider.provideDefault().parse(raw);
+    }
+
+    @Override
+    public String toString() {
+	if (isComplete())
+	    return getCanonical();
+	return raw;
+    }
 
     public PhoneNumber() {
+    }
+
+    PhoneNumber(CountryCode countryCode, String areaCode, String number, String raw) {
+	this.countryCode = countryCode;
+	this.areaCode = areaCode;
+	this.number = number;
+	this.raw = raw;
     }
 
     public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
@@ -20,18 +46,19 @@ public class PhoneNumber implements Serializable {
     }
 
     public String getFormatted() {
-	return String.format("+%1$s (%2$s) %3$s", (countryCode != null ? countryCode.getPhoneCode() : ""),
-		(areaCode != null ? areaCode : ""), (number != null ? number : ""));
+	if (!isComplete())
+	    return null;
+	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    public String getPlain() {
-	return (countryCode != null ? countryCode.getPhoneCode() : "") + (areaCode != null ? areaCode : "")
-		+ (number != null ? number : "");
+    public String getCanonical() {
+	if (!isComplete())
+	    return null;
+	return String.format("+%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
     }
 
-    @Override
-    public String toString() {
-	return getFormatted();
+    private boolean isComplete() {
+	return countryCode != null && areaCode != null && !areaCode.isEmpty() && number != null && !number.isEmpty();
     }
 
     @Override
@@ -64,6 +91,16 @@ public class PhoneNumber implements Serializable {
 	return false;
     }
 
+    public String getRaw() {
+	if (raw != null)
+	    return raw;
+	return getCanonical();
+    }
+
+    protected void setRaw(String raw) {
+	this.raw = raw;
+    }
+
     // GENERATED
 
     public CountryCode getCountryCode() {
@@ -71,6 +108,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setCountryCode(CountryCode countryCode) {
+	if (this.countryCode != countryCode)
+	    raw = null;
 	this.countryCode = countryCode;
     }
 
@@ -79,6 +118,8 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setAreaCode(String areaCode) {
+	if (this.areaCode != areaCode)
+	    raw = null;
 	this.areaCode = areaCode;
     }
 
@@ -87,6 +128,9 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setNumber(String number) {
+	if (this.number != number)
+	    raw = null;
 	this.number = number;
     }
+
 }

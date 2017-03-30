@@ -10,7 +10,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.lapsa.phone.CountryCode;
-import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
 import com.lapsa.phone.PhoneNumberFactory;
 import com.lapsa.phone.PhoneNumberFactoryProvider;
@@ -34,7 +33,7 @@ public class TestPhoneNumber {
     private static void printFormat(PhoneNumber a) {
 	logger.info(String.format("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
-		a.getPlain() // $2
+		a.getCanonical() // $2
 	));
 	logger.info(String.format(//
 		"Country code: %1$s Country number: %2$s Area code: %3$s Number: %4$s", //
@@ -45,7 +44,7 @@ public class TestPhoneNumber {
 	));
     }
 
-    private void testStrict(String value, PhoneNumber expecting, String expectingFormat) throws PhoneFormatException {
+    private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
 	PhoneNumber a = factory.parse(value);
 	printFormat(a);
 	assertThat(a, allOf(not(nullValue()), is(equalTo(expecting))));
@@ -54,43 +53,22 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat1() {
-	try {
-	    testStrict(" 8 (7272)-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
-	} catch (PhoneFormatException e) {
-	    fail(e.getMessage());
-	}
+	testStrict(" 8 (7272)-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
     }
 
     @Test
     public void testStrictFormatRU1() {
-	try {
-	    testStrict(" 8 (963)-777-79 79", new PhoneNumber(CountryCode.RU, "963", "7777979"), "+7 (963) 7777979");
-	} catch (PhoneFormatException e) {
-	    fail(e.getMessage());
-	}
+	testStrict(" 8 (963)-777-79 79", new PhoneNumber(CountryCode.RU, "963", "7777979"), "+7 (963) 7777979");
     }
 
     @Test
     public void testStrictFormat2() {
-	try {
-	    testStrict(" 8 (727)2-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
-	} catch (PhoneFormatException e) {
-	    fail(e.getMessage());
-	}
-    }
-
-    @Test(expected = PhoneFormatException.class)
-    public void testStrictFormat3() throws PhoneFormatException {
-	testStrict(" 8 (2272)-530721 ", new PhoneNumber(CountryCode.KR, "272", "530721"), "+82 (272) 530721");
+	testStrict(" 8 (727)2-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
     }
 
     @Test
-    public void testStrictFormat4() {
-	try {
-	    testStrict(" 8 (701)937-7979", new PhoneNumber(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
-	} catch (PhoneFormatException e) {
-	    fail(e.getMessage());
-	}
+    public void testStrictFormat3() {
+	testStrict(" 8 (701)937-7979", new PhoneNumber(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
     }
 
     @Test
@@ -104,14 +82,10 @@ public class TestPhoneNumber {
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
 	    String frm = formatted[i];
-	    try {
-		PhoneNumber a = factory.parse(num);
-		printFormat(a);
-		assertThat(a, not(nullValue()));
-		assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
-	    } catch (PhoneFormatException e) {
-		fail();
-	    }
+	    PhoneNumber a = factory.parse(num);
+	    printFormat(a);
+	    assertThat(a, not(nullValue()));
+	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
 	}
     }
 }
