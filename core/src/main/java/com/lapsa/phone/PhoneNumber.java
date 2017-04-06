@@ -24,9 +24,17 @@ public class PhoneNumber implements Serializable {
 
     @Override
     public String toString() {
+	return toString(false);
+    }
+
+    public String toString(boolean formatted) {
 	if (isComplete())
-	    return getCanonical();
-	return raw;
+	    if (formatted)
+		return getFormatted();
+	    else
+		return getCanonical();
+	else
+	    return raw;
     }
 
     public PhoneNumber() {
