@@ -9,11 +9,12 @@ import com.lapsa.country.InternationalLocalizationBundleBase;
 
 public enum LocalizationLanguage implements InternationalLocalizationBundleBase {
     RUSSIAN("ru"), // русский
-    ENGLISH("en"), // английский
+    ENGLISH("en", Locale.ENGLISH), // английский
     KAZAKH("kk"), // казахский
     //
     ;
 
+    private static final LocalizationLanguage DEFAULT = LocalizationLanguage.ENGLISH;
     private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG;
 
     static {
@@ -36,6 +37,11 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
 	this.locale = Locale.forLanguageTag(tag);
     }
 
+    private LocalizationLanguage(String tag, Locale locale) {
+	this.tag = tag;
+	this.locale = locale;
+    }
+
     public String getTag() {
 	return tag;
     }
@@ -44,18 +50,34 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
 	return locale;
     }
 
-    public static LocalizationLanguage byTag(String lang) {
-	return LANGUAGES_BY_TAG.get(lang);
+    public static LocalizationLanguage byTag(String tag) {
+	return LANGUAGES_BY_TAG.get(tag);
     }
 
     public static LocalizationLanguage byLocale(Locale locale) {
-	return LANGUAGES_BY_TAG.get(locale.getLanguage());
+	return byTag(locale.getLanguage());
+    }
+
+    public static LocalizationLanguage byTagOrDefault(String tag) {
+	return _orDefault(byTag(tag));
+    }
+
+    public static LocalizationLanguage byLocaleOrDefault(Locale locale) {
+	return _orDefault(byLocale(locale));
     }
 
     public static LocalizationLanguage getDefault() {
-	LocalizationLanguage lang = byLocale(Locale.getDefault());
-	if (lang == null)
-	    lang = LocalizationLanguage.ENGLISH;
-	return lang;
+	return _orDefault(null);
+    }
+
+    // PRIVATE STATIC
+
+    private static LocalizationLanguage _orDefault(final LocalizationLanguage lang) {
+	LocalizationLanguage result = lang;
+	if (result == null)
+	    result = byLocale(Locale.getDefault());
+	if (result == null)
+	    result = DEFAULT;
+	return result;
     }
 }
