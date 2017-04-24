@@ -1,5 +1,6 @@
 package com.lapsa.localization;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -8,17 +9,19 @@ import com.lapsa.country.InternationalLocalizationBundleBase;
 
 public enum LocalizationLanguage implements InternationalLocalizationBundleBase {
     RUSSIAN("ru"), // русский
-    ENGLISH("en"), // английский
+    ENGLISH("en", Locale.ENGLISH), // английский
     KAZAKH("kk"), // казахский
     //
     ;
 
-    private final static Map<String, LocalizationLanguage> langTags;
+    private static final LocalizationLanguage DEFAULT = LocalizationLanguage.ENGLISH;
+    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG;
 
     static {
-	langTags = new HashMap<>();
+	Map<String, LocalizationLanguage> map = new HashMap<>();
 	for (LocalizationLanguage ll : LocalizationLanguage.values())
-	    langTags.put(ll.getTag(), ll);
+	    map.put(ll.getTag(), ll);
+	LANGUAGES_BY_TAG = Collections.unmodifiableMap(map);
     }
 
     @Override
@@ -34,6 +37,11 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
 	this.locale = Locale.forLanguageTag(tag);
     }
 
+    private LocalizationLanguage(String tag, Locale locale) {
+	this.tag = tag;
+	this.locale = locale;
+    }
+
     public String getTag() {
 	return tag;
     }
@@ -42,11 +50,34 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
 	return locale;
     }
 
-    public static LocalizationLanguage byTag(String lang) {
-	return langTags.get(lang);
+    public static LocalizationLanguage byTag(String tag) {
+	return LANGUAGES_BY_TAG.get(tag);
     }
 
     public static LocalizationLanguage byLocale(Locale locale) {
-	return langTags.get(locale.getLanguage());
+	return byTag(locale.getLanguage());
+    }
+
+    public static LocalizationLanguage byTagOrDefault(String tag) {
+	return _orDefault(byTag(tag));
+    }
+
+    public static LocalizationLanguage byLocaleOrDefault(Locale locale) {
+	return _orDefault(byLocale(locale));
+    }
+
+    public static LocalizationLanguage getDefault() {
+	return _orDefault(null);
+    }
+
+    // PRIVATE STATIC
+
+    private static LocalizationLanguage _orDefault(final LocalizationLanguage lang) {
+	LocalizationLanguage result = lang;
+	if (result == null)
+	    result = byLocale(Locale.getDefault());
+	if (result == null)
+	    result = DEFAULT;
+	return result;
     }
 }
