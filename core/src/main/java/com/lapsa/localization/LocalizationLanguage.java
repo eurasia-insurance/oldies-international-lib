@@ -1,5 +1,6 @@
 package com.lapsa.localization;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -13,12 +14,13 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     //
     ;
 
-    private final static Map<String, LocalizationLanguage> langTags;
+    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG;
 
     static {
-	langTags = new HashMap<>();
+	Map<String, LocalizationLanguage> map = new HashMap<>();
 	for (LocalizationLanguage ll : LocalizationLanguage.values())
-	    langTags.put(ll.getTag(), ll);
+	    map.put(ll.getTag(), ll);
+	LANGUAGES_BY_TAG = Collections.unmodifiableMap(map);
     }
 
     @Override
@@ -43,10 +45,17 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
     }
 
     public static LocalizationLanguage byTag(String lang) {
-	return langTags.get(lang);
+	return LANGUAGES_BY_TAG.get(lang);
     }
 
     public static LocalizationLanguage byLocale(Locale locale) {
-	return langTags.get(locale.getLanguage());
+	return LANGUAGES_BY_TAG.get(locale.getLanguage());
+    }
+
+    public static LocalizationLanguage getDefault() {
+	LocalizationLanguage lang = byLocale(Locale.getDefault());
+	if (lang == null)
+	    lang = LocalizationLanguage.ENGLISH;
+	return lang;
     }
 }
