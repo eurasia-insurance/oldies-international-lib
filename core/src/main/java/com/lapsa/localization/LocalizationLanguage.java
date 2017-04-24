@@ -2,6 +2,7 @@ package com.lapsa.localization;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -56,6 +57,18 @@ public enum LocalizationLanguage implements InternationalLocalizationBundleBase 
 
     public static LocalizationLanguage byLocale(Locale locale) {
 	return byTag(locale.getLanguage());
+    }
+
+    public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
+	try {
+	    for (Locale locale : locales) {
+		LocalizationLanguage lang = byLocale(locale);
+		if (lang != null)
+		    return lang;
+	    }
+	} catch (NullPointerException ignored) {
+	}
+	return _orDefault(null);
     }
 
     public static LocalizationLanguage byTagOrDefault(String tag) {
