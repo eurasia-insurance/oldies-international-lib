@@ -1,4 +1,4 @@
-﻿com.lapsa.phone.validators.ValidPhoneNumber.message = Incorrect phone number. Please check the number and try again. Probably, incorrect country code or network operator code
+com.lapsa.phone.validators.ValidPhoneNumber.message = Incorrect phone number. Please check the number and try again. Probably, incorrect country code or network operator code
 
 com.lapsa.country.validators.ValidCountry.message = Incorrect country
 

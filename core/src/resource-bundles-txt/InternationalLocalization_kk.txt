@@ -1,4 +1,4 @@
-﻿com.lapsa.country.Country.AUS = Австралия
+com.lapsa.country.Country.AUS = Австралия
 com.lapsa.country.Country.AUT = Австрия
 com.lapsa.country.Country.AZE = Әзірбайжан
 com.lapsa.country.Country.ALA = Аланд аралдары 
