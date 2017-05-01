@@ -1,4 +1,4 @@
-﻿com.lapsa.country.Country.AUS = Australia
+com.lapsa.country.Country.AUS = Australia
 com.lapsa.country.Country.AUT = Austria
 com.lapsa.country.Country.AZE = Azerbaijan
 com.lapsa.country.Country.ALA = Åland Islands
