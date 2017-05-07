@@ -1,8 +1,10 @@
-package com.lapsa.country;
+package com.lapsa.country.jaxb;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class CountryXmlAdapter extends XmlAdapter<String, Country> {
+import com.lapsa.country.Country;
+
+public class JAXBCountryAdapter extends XmlAdapter<String, Country> {
 
     @Override
     public Country unmarshal(String v) throws Exception {
