@@ -2,6 +2,7 @@ package com.lapsa.phone;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -331,7 +332,14 @@ public enum CountryCode {
 		prefixesMap.put(p, code);
 	    }
 	}
-	Collections.sort(prefixesSortedList, Collections.reverseOrder(new StringLengthComparator()));
+	Collections.sort(prefixesSortedList, Collections.reverseOrder(new Comparator<String>() {
+	    @Override
+	    public int compare(String o1, String o2) {
+		if (o1.length() == o2.length())
+		    return o1.compareTo(o2);
+		return o1.length() - o2.length();
+	    }
+	}));
     }
 
     public String[] prefixes() {
