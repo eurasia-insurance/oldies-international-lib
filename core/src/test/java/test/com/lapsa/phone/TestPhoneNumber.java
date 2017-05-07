@@ -3,49 +3,43 @@ package test.com.lapsa.phone;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.lapsa.country.Country;
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
-import com.lapsa.phone.PhoneNumberFactory;
-import com.lapsa.phone.PhoneNumberFactoryProvider;
 
 public class TestPhoneNumber {
 
     private static Logger logger;
-
-    private PhoneNumberFactory factory;
+    private static ResourceBundle countries;
 
     @BeforeClass
     public static void init() {
 	logger = Logger.getAnonymousLogger();
-    }
-
-    @Before
-    public void beforeTest() {
-	factory = PhoneNumberFactoryProvider.provideDefault();
+	countries = ResourceBundle.getBundle(Country.BUNDLE_BASENAME);
     }
 
     private static void printFormat(PhoneNumber a) {
 	logger.info(String.format("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
-		a.getCanonical() // $2
+		a.getPlain() // $2
 	));
 	logger.info(String.format(//
-		"Country code: %1$s Country number: %2$s Area code: %3$s Number: %4$s", //
-		a.getCountryCode().name(), // $1
+		"Country code: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
+		countries.getString(a.getCountryCode().getCountry().canonicalName()), // $1
 		a.getCountryCode().getPhoneCode(), // $2
 		a.getAreaCode(), // $3
-		a.getNumber() // $4
+		a.getPlain() // $4
 	));
     }
 
     private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
-	PhoneNumber a = factory.parse(value);
+	PhoneNumber a = PhoneNumber.fromString(value);
 	printFormat(a);
 	assertThat(a, allOf(not(nullValue()), is(equalTo(expecting))));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(expectingFormat))));
@@ -53,7 +47,7 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat1() {
-	testStrict(" 8 (7272)-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
+	testStrict(" 8 (7272)-530721 ", new PhoneNumber(CountryCode.KZ, "7272", "530721"), "+7 (7272) 530721");
     }
 
     @Test
@@ -74,15 +68,15 @@ public class TestPhoneNumber {
     @Test
     public void testStrictParseFormat() {
 	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",
-		"87272530721", "+218 91-2345678", "962 7 9012 3456 " };
+		"87272530721" };
 
-	String[] formatted = new String[] { "+7 (727) 2530721", "+1 (268) 4641234", "+56 (793) 77979",
-		"+49 (435) 7019377979", "+7 (727) 2530721", "+218 (912) 345678", "+962 (790) 123456" };
+	String[] formatted = new String[] { "+7 (7272) 530721", "+1 (268) 4641234", "+56 (7) 9377979",
+		"+49 (43) 57019377979", "+7 (727) 2530721" };
 
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
 	    String frm = formatted[i];
-	    PhoneNumber a = factory.parse(num);
+	    PhoneNumber a = PhoneNumber.fromString(num);
 	    printFormat(a);
 	    assertThat(a, not(nullValue()));
 	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
