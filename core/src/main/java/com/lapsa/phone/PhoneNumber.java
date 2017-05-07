@@ -13,13 +13,12 @@ public class PhoneNumber implements Serializable {
 
     private CountryCode countryCode;
     private String areaCode;
-    private String number;
-    private String raw;
+    private String phoneNumber;
 
     public static PhoneNumber fromString(String raw) {
 	if (raw == null || raw.isEmpty())
 	    return null;
-	return PhoneNumberFactoryProvider.provideDefault().parse(raw);
+	return PhoneNumberParser.parse(raw);
     }
 
     @Override
@@ -28,51 +27,37 @@ public class PhoneNumber implements Serializable {
     }
 
     public String toString(boolean formatted) {
-	if (isComplete())
-	    if (formatted)
-		return getFormatted();
-	    else
-		return getCanonical();
+	if (formatted)
+	    return getFormatted();
 	else
-	    return raw;
+	    return getPlain();
     }
 
     public PhoneNumber() {
     }
 
-    PhoneNumber(CountryCode countryCode, String areaCode, String number, String raw) {
+    public PhoneNumber(CountryCode countryCode, String areaCode, String phoneNumber) {
 	this.countryCode = countryCode;
 	this.areaCode = areaCode;
-	this.number = number;
-	this.raw = raw;
+	this.phoneNumber = phoneNumber;
     }
 
-    public PhoneNumber(CountryCode countryCode, String areaCode, String number) {
-	this.countryCode = countryCode;
-	this.areaCode = areaCode;
-	this.number = number;
+    public PhoneNumber(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
     }
 
     public String getFormatted() {
-	if (!isComplete())
-	    return null;
-	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, number);
+	return String.format("+%1$s (%2$s) %3$s", countryCode.getPhoneCode(), areaCode, phoneNumber);
     }
 
-    public String getCanonical() {
-	if (!isComplete())
-	    return null;
-	return String.format("+%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, number);
-    }
-
-    private boolean isComplete() {
-	return countryCode != null && areaCode != null && !areaCode.isEmpty() && number != null && !number.isEmpty();
+    public String getPlain() {
+	return String.format("+%1$s%2$s%3$s", countryCode.getPhoneCode(), areaCode, phoneNumber);
     }
 
     @Override
     public int hashCode() {
 	return this.getClass().hashCode() * (countryCode != null ? countryCode.hashCode() : 555)
-		* (areaCode != null ? areaCode.hashCode() : 666) * (number != null ? number.hashCode() : 777);
+		* (areaCode != null ? areaCode.hashCode() : 666) * (phoneNumber != null ? phoneNumber.hashCode() : 777);
     }
 
     @Override
@@ -81,9 +66,9 @@ public class PhoneNumber implements Serializable {
 	    return false;
 	PhoneNumber pn = (PhoneNumber) obj;
 	boolean ret = true;
-	ret = ret && countryCode == pn.getCountryCode();
-	ret = ret && safeCompareStrings(areaCode, pn.getAreaCode());
-	ret = ret && safeCompareStrings(number, pn.getNumber());
+	ret = ret && countryCode == pn.countryCode;
+	ret = ret && safeCompareStrings(areaCode, pn.areaCode);
+	ret = ret && safeCompareStrings(phoneNumber, pn.phoneNumber);
 	return ret;
     }
 
@@ -99,16 +84,6 @@ public class PhoneNumber implements Serializable {
 	return false;
     }
 
-    public String getRaw() {
-	if (raw != null)
-	    return raw;
-	return getCanonical();
-    }
-
-    protected void setRaw(String raw) {
-	this.raw = raw;
-    }
-
     // GENERATED
 
     public CountryCode getCountryCode() {
@@ -116,8 +91,6 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setCountryCode(CountryCode countryCode) {
-	if (this.countryCode != countryCode)
-	    raw = null;
 	this.countryCode = countryCode;
     }
 
@@ -126,19 +99,15 @@ public class PhoneNumber implements Serializable {
     }
 
     public void setAreaCode(String areaCode) {
-	if (this.areaCode != areaCode)
-	    raw = null;
 	this.areaCode = areaCode;
     }
 
-    public String getNumber() {
-	return number;
+    public String getPhoneNumber() {
+	return phoneNumber;
     }
 
-    public void setNumber(String number) {
-	if (this.number != number)
-	    raw = null;
-	this.number = number;
+    public void setPhoneNumber(String number) {
+	this.phoneNumber = number;
     }
 
 }
