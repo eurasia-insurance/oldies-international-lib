@@ -8,4 +8,8 @@ public class PhoneFormatException extends Exception {
 	super(message);
     }
 
+    public PhoneFormatException(String message, Throwable cause) {
+	super(message, cause);
+    }
+
 }
