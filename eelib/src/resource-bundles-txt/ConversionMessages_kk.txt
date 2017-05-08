@@ -1,1 +1,1 @@
-com.lapsa.phone.faces.converter.PhoneNumberConverter = =KAZ= Неверный формат номера телефона
+com.lapsa.phone.faces.converter.PhoneNumberConverter = =KAZ= Неверный формат номера телефона. Возможно неверно указан код страны или код оператора связи.

@@ -1,4 +1,4 @@
-com.lapsa.phone.validators.ValidPhoneNumber.message = Енгізілген телефон нөмірі қате. Нөмірдің дұрыстығына көз жеткізіңіз және әрекетті қайталаңыз. Ел коды немесе байланыс операторының коды қате көрсетілуі мүмкін.
+com.lapsa.phone.validators.ValidPhoneNumber.message = =KAZ= Введенный номер телефона не соответствует правилам набора телефонных номеров. Убедитесь в правильности ввода номера.
 
 com.lapsa.country.validators.ValidCountry.message = Ел қате көрсетілген
 
