@@ -1,0 +1,1 @@
+com.lapsa.phone.faces.converter.PhoneNumberConverter = Неверный формат номера телефона

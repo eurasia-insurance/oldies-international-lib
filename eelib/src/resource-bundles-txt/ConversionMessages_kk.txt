@@ -1,0 +1,1 @@
+com.lapsa.phone.faces.converter.PhoneNumberConverter = =KAZ= Неверный формат номера телефона
