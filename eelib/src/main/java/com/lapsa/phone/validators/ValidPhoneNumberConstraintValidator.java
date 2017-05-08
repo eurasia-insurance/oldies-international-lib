@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
 
-public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, Object> {
+public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, PhoneNumber> {
 
     private static final Pattern PATTERN_ONLY_NUMBERS = Pattern.compile("^[0-9]*$");
 
@@ -17,42 +17,45 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
     }
 
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext cvc) {
+    public boolean isValid(PhoneNumber value, ConstraintValidatorContext cvc) {
 	if (value == null)
 	    return true;
-	PhoneNumber pn = null;
-	if (value instanceof PhoneNumber)
-	    pn = (PhoneNumber) value;
-	else
-	    pn = PhoneNumber.fromString(value.toString());
 
 	{
-	    if (pn.getCountryCode() == null)
+	    if (value.getCountryCode() == null)
 		return false;
-	    if (pn.getAreaCode() == null)
+	    if (value.getAreaCode() == null)
 		return false;
-	    if (pn.getPhoneNumber() == null)
+	    if (value.getPhoneNumber() == null)
 		return false;
 	}
 
-	CountryCode cc = pn.getCountryCode();
-	String areaNumber = pn.getAreaCode();
-	String fullNumber = pn.getAreaCode() + pn.getPhoneNumber();
-
-	if (!PATTERN_ONLY_NUMBERS.matcher(fullNumber).matches())
+	if (!PATTERN_ONLY_NUMBERS.matcher(value.getAreaCode()).matches())
+	    return false;
+	if (!PATTERN_ONLY_NUMBERS.matcher(value.getPhoneNumber()).matches())
 	    return false;
 
+	CountryCode cc = value.getCountryCode();
+
 	{
-	    if (cc.getMinAreaCodeLength() >= 0 && areaNumber.length() < cc.getMinAreaCodeLength())
+	    String number = value.getAreaCode();
+	    int min = cc.getMinAreaCodeLength();
+	    int max = cc.getMaxAreaCodeLength();
+
+	    if (min >= 0 && number.length() < min)
 		return false;
-	    if (cc.getMaxAreaCodeLength() >= 0 && areaNumber.length() > cc.getMaxAreaCodeLength())
+	    if (max >= 0 && number.length() > max)
 		return false;
 	}
 
 	{
-	    if (cc.getMinNumberLength() >= 0 && fullNumber.length() < pn.getCountryCode().getMinAreaCodeLength())
+	    String number = String.join("", value.getAreaCode(), value.getPhoneNumber());
+	    int min = cc.getMinNumberLength();
+	    int max = cc.getMaxNumberLength();
+
+	    if (min >= 0 && number.length() < min)
 		return false;
-	    if (cc.getMaxNumberLength() >= 0 && fullNumber.length() > cc.getMaxNumberLength())
+	    if (max >= 0 && number.length() > max)
 		return false;
 	}
 
