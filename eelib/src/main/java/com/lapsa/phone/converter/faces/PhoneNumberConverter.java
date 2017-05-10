@@ -1,4 +1,4 @@
-package com.lapsa.phone.faces.converter;
+package com.lapsa.phone.converter.faces;
 
 import java.util.ResourceBundle;
 
@@ -11,7 +11,6 @@ import javax.faces.convert.FacesConverter;
 
 import com.lapsa.phone.PhoneFormatException;
 import com.lapsa.phone.PhoneNumber;
-import com.lapsa.phone.PhoneNumbers;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {
@@ -21,7 +20,7 @@ public class PhoneNumberConverter implements Converter {
 	if (value == null || value.isEmpty())
 	    return null;
 	try {
-	    return PhoneNumbers.parse(value);
+	    return PhoneNumber.parseStrict(value);
 	} catch (PhoneFormatException e) {
 	    ResourceBundle bundle = ResourceBundle.getBundle("ConversionMessages", context.getViewRoot().getLocale());
 	    String summary = bundle.getString(this.getClass().getName());
@@ -36,6 +35,6 @@ public class PhoneNumberConverter implements Converter {
 	    return null;
 	if (!(value instanceof PhoneNumber))
 	    return null;
-	return ((PhoneNumber) value).toString(true);
+	return ((PhoneNumber) value).getFormatted();
     }
 }
