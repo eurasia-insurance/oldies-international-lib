@@ -14,7 +14,7 @@ import com.lapsa.phone.PhoneNumber;
 public final class PhoneNumberComplete extends PhoneNumber implements Serializable {
     private static final long serialVersionUID = 8999997304131725827L;
 
-    private static final String DEFAULT_FORMATTED_FORMAT = "+%1$s %2$s %3$s";
+    private static final String DEFAULT_FORMATTED_FORMAT = "+%1$s (%2$s) %3$s";
     private static final String DEFAULT_PLAIN_FORMAT = "%1$s%2$s%3$s";
 
     private final CountryCode countryCode;
@@ -53,9 +53,11 @@ public final class PhoneNumberComplete extends PhoneNumber implements Serializab
     public String getFormatted() {
 	if (!isComplete())
 	    return getPlain();
-	String format = countryCode != null && countryCode.getFormat() != null ? countryCode.getFormat()
-		: DEFAULT_FORMATTED_FORMAT;
-	return String.format(format, countryCode.getPhoneCode(), areaCode, phoneNumber).replaceAll("\\s+", " ").trim();
+	String ret = String.format(DEFAULT_FORMATTED_FORMAT, countryCode.getPhoneCode(), areaCode, phoneNumber);
+	ret = ret.replaceAll("\\(\\s*\\)", "");
+	ret = ret.trim();
+	ret = ret.replaceAll("\\s+", " ");
+	return ret;
     }
 
     @Override
