@@ -1,4 +1,4 @@
-com.lapsa.phone.validators.ValidPhoneNumber.message = Введенный номер телефона не соответствует правилам набора телефонных номеров. Убедитесь в правильности ввода номера.
+com.lapsa.phone.validators.ValidPhoneNumber.message = Введенный номер телефона не соответствует правилам набора телефонных номеров или неразрешен. Убедитесь в правильности ввода номера и попробуйте еще раз.
 
 com.lapsa.country.validators.ValidCountry.message = Некорректно указана страна
 
