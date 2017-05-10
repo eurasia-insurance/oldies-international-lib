@@ -15,21 +15,21 @@ public enum CountryCode {
     AD("AD", "376", "376"),
     AE("AE", "971", "971"),
     AF("AF", "93", "93"),
-    AG("AG", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1268"),
-    AI("AI", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1264"),
+    AG("AG", "1", 3, 3, 3, 10, 10, "1268"),
+    AI("AI", "1", 3, 3, 3, 10, 10, "1264"),
     AL("AL", "355", "355"),
     AM("AM", "374", "374"),
     AN("AN", "599", "599"),
     AO("AO", "244", "244"),
     AQ("AQ", "672", "672"),
     AR("AR", "54", "54"),
-    AS("AS", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1684"),
-    AT("AT", "43", "+%1$s (%2$s) %3$s", 2, 2, 4, 2, 20, "43"),
+    AS("AS", "1", 3, 3, 3, 10, 10, "1684"),
+    AT("AT", "43", 2, 2, 4, 2, 20, "43"),
     AU("AU", "61", "61"),
     AW("AW", "297", "297"),
     AZ("AZ", "994", "994"),
     BA("BA", "387", "387"),
-    BB("BB", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1246"),
+    BB("BB", "1", 3, 3, 3, 10, 10, "1246"),
     BD("BD", "880", "880"),
     BE("BE", "32", "32"),
     BF("BF", "226", "226"),
@@ -37,16 +37,16 @@ public enum CountryCode {
     BH("BH", "973", "973"),
     BI("BI", "257", "257"),
     BJ("BJ", "229", "229"),
-    BM("BM", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1441"),
+    BM("BM", "1", 3, 3, 3, 10, 10, "1441"),
     BN("BN", "673", "673"),
     BO("BO", "591", "591"),
     BR("BR", "55", "55"),
-    BS("BS", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1242"),
+    BS("BS", "1", 3, 3, 3, 10, 10, "1242"),
     BT("BT", "975", "975"),
     BW("BW", "267", "267"),
-    BY("BY", "375", "+%1$s %2$s %3$s", 2, 2, 2, 9, 9, "375"),
+    BY("BY", "375", 2, 2, 2, 9, 9, "375"),
     BZ("BZ", "501", "501"),
-    CA("CA", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1"),
+    CA("CA", "1", 3, 3, 3, 10, 10, "1"),
     CD("CD", "243", "243"),
     CF("CF", "236", "236"),
     CG("CG", "242", "242"),
@@ -62,11 +62,11 @@ public enum CountryCode {
     CV("CV", "238", "238"),
     CY("CY", "357", "357"),
     CZ("CZ", "420", "420"),
-    DE("DE", "49", "+%1$s (%2$s) %3$s", 2, 2, 6, 2, 20, "49"),
+    DE("DE", "49", 2, 2, 6, 2, 20, "49"),
     DJ("DJ", "253", "253"),
     DK("DK", "45", "45"),
-    DM("DM", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1767"),
-    DO("DO", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1809", "1829", "1849"),
+    DM("DM", "1", 3, 3, 3, 10, 10, "1767"),
+    DO("DO", "1", 3, 3, 3, 10, 10, "1809", "1829", "1849"),
     DZ("DZ", "213", "213"),
     EC("EC", "593", "593"),
     EE("EE", "372", "372"),
@@ -82,8 +82,8 @@ public enum CountryCode {
     FO("FO", "298", "298"),
     FR("FR", "33", "33"),
     GA("GA", "241", "241"),
-    GB("GB", "44", "+%1$s (%2$s) %3$s", 3, 3, 6, 10, 11, "44"),
-    GD("GD", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1473"),
+    GB("GB", "44", 3, 3, 6, 10, 11, "44"),
+    GD("GD", "1", 3, 3, 3, 10, 10, "1473"),
     GE("GE", "995", "995"),
     GF("GF", "594", "594"),
     GH("GH", "233", "233"),
@@ -93,9 +93,9 @@ public enum CountryCode {
     GN("GN", "224", "224"),
     GP("GP", "590", "590"),
     GQ("GQ", "240", "240"),
-    GR("GR", "30", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "30"),
+    GR("GR", "30", 3, 3, 3, 10, 10, "30"),
     GT("GT", "502", "502"),
-    GU("GU", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1671"),
+    GU("GU", "1", 3, 3, 3, 10, 10, "1671"),
     GW("GW", "245", "245"),
     GY("GY", "592", "592"),
     HK("HK", "852", "852"),
@@ -105,14 +105,14 @@ public enum CountryCode {
     HU("HU", "36", "36"),
     ID("ID", "62", "62"),
     IE("IE", "353", "353"),
-    IL("IL", "972", "+%1$s (%2$s) %3$s", 2, 2, 3, 9, 10, "972"),
+    IL("IL", "972", 2, 2, 3, 9, 10, "972"),
     IN("IN", "91", "91"),
     IO("IO", "246", "246"),
     IQ("IQ", "964", "964"),
     IR("IR", "98", "98"),
     IS("IS", "354", "354"),
     IT("IT", "39", "39"),
-    JM("JM", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1876"),
+    JM("JM", "1", 3, 3, 3, 10, 10, "1876"),
     JO("JO", "962", "962"),
     JP("JP", "81", "81"),
     KE("KE", "254", "254"),
@@ -120,15 +120,15 @@ public enum CountryCode {
     KH("KH", "855", "855"),
     KI("KI", "686", "686"),
     KM("KM", "269", "269"),
-    KN("KN", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1869"),
+    KN("KN", "1", 3, 3, 3, 10, 10, "1869"),
     KP("KP", "850", "850"),
     KR("KR", "82", "82"),
     KW("KW", "965", "965"),
-    KY("KY", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1345"),
-    KZ("KZ", "7", "+%1$s (%2$s) %3$s", 3, 3, 4, 10, 10, "76", "77", "78"),
+    KY("KY", "1", 3, 3, 3, 10, 10, "1345"),
+    KZ("KZ", "7", 3, 3, 4, 10, 10, "76", "77", "78"),
     LA("LA", "856", "856"),
     LB("LB", "961", "961"),
-    LC("LC", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1758"),
+    LC("LC", "1", 3, 3, 3, 10, 10, "1758"),
     LI("LI", "423", "423"),
     LK("LK", "94", "94"),
     LR("LR", "231", "231"),
@@ -139,7 +139,7 @@ public enum CountryCode {
     LY("LY", "218", "218"),
     MA("MA", "212", "212"),
     MC("MC", "377", "377"),
-    MD("MD", "373", "+%1$s (%2$s) %3$s", 2, 2, 3, 8, 8, "373"),
+    MD("MD", "373", 2, 2, 3, 8, 8, "373"),
     ME("ME", "382", "382"),
     MG("MG", "261", "261"),
     MH("MH", "692", "692"),
@@ -148,10 +148,10 @@ public enum CountryCode {
     MM("MM", "95", "95"),
     MN("MN", "976", "976"),
     MO("MO", "853", "853"),
-    MP("MP", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1670"),
+    MP("MP", "1", 3, 3, 3, 10, 10, "1670"),
     MQ("MQ", "596", "596"),
     MR("MR", "222", "222"),
-    MS("MS", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1664"),
+    MS("MS", "1", 3, 3, 3, 10, 10, "1664"),
     MT("MT", "356", "356"),
     MU("MU", "230", "230"),
     MV("MV", "960", "960"),
@@ -180,7 +180,7 @@ public enum CountryCode {
     PK("PK", "92", "92"),
     PL("PL", "48", "48"),
     PM("PM", "508", "508"),
-    PR("PR", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1787", "1939"),
+    PR("PR", "1", 3, 3, 3, 10, 10, "1787", "1939"),
     PS("PS", "970", "970"),
     PT("PT", "351", "351"),
     PW("PW", "680", "680"),
@@ -189,7 +189,7 @@ public enum CountryCode {
     RE("RE", "262", "262"),
     RO("RO", "40", "40"),
     RS("RS", "381", "381"),
-    RU("RU", "7", "+%1$s (%2$s) %3$s", 3, 3, 4, 10, 10, "73", "74", "75", "79"),
+    RU("RU", "7", 3, 3, 4, 10, 10, "73", "74", "75", "79"),
     RW("RW", "250", "250"),
     SA("SA", "966", "966"),
     SB("SB", "677", "677"),
@@ -208,10 +208,10 @@ public enum CountryCode {
     SS("SS", "211", "211"),
     ST("ST", "239", "239"),
     SV("SV", "503", "503"),
-    SX("SX", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1721"),
+    SX("SX", "1", 3, 3, 3, 10, 10, "1721"),
     SY("SY", "963", "963"),
     SZ("SZ", "268", "268"),
-    TC("TC", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1649"),
+    TC("TC", "1", 3, 3, 3, 10, 10, "1649"),
     TD("TD", "235", "235"),
     TG("TG", "228", "228"),
     TH("TH", "66", "66"),
@@ -222,20 +222,20 @@ public enum CountryCode {
     TN("TN", "216", "216"),
     TO("TO", "676", "676"),
     TR("TR", "90", "90"),
-    TT("TT", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1868"),
+    TT("TT", "1", 3, 3, 3, 10, 10, "1868"),
     TV("TV", "688", "688"),
     TW("TW", "886", "886"),
     TZ("TZ", "255", "255"),
-    UA("UA", "380", "+%1$s %2$s %3$s", 2, 2, 2, 9, 9, "380"),
+    UA("UA", "380", 2, 2, 2, 9, 9, "380"),
     UG("UG", "256", "256"),
-    US("US", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1"),
+    US("US", "1", 3, 3, 3, 10, 10, "1"),
     UY("UY", "598", "598"),
     UZ("UZ", "998", "998"),
     VA("VA", "379", "379"),
-    VC("VC", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1784"),
+    VC("VC", "1", 3, 3, 3, 10, 10, "1784"),
     VE("VE", "58", "58"),
-    VG("VG", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1284"),
-    VI("VI", "1", "+%1$s %2$s %3$s", 3, 3, 3, 10, 10, "1340"),
+    VG("VG", "1", 3, 3, 3, 10, 10, "1284"),
+    VI("VI", "1", 3, 3, 3, 10, 10, "1340"),
     VN("VN", "84", "84"),
     VU("VU", "678", "678"),
     WF("WF", "681", "681"),
@@ -260,7 +260,6 @@ public enum CountryCode {
     private final Country country;
 
     private final int defaultAreaCodeLength;
-    private final String format;
 
     private final int minAreaCodeLength;
     private final int maxAreaCodeLength;
@@ -274,8 +273,6 @@ public enum CountryCode {
 	assertStringNotEmpty(phoneCode, "Phone code is required");
 	this.phoneCode = phoneCode;
 
-	this.format = "+%1$s %2$s %3$s";
-
 	this.defaultAreaCodeLength = -1;
 	this.minAreaCodeLength = -1;
 	this.maxAreaCodeLength = -1;
@@ -287,9 +284,8 @@ public enum CountryCode {
 		.toArray(String[]::new);
     }
 
-    CountryCode(String alpha2, String phoneCode, String format, int defaultAreaCodeLength,
-	    int minAreaCodeLength, int maxAreaCodeLength, int minNumberLength, int maxNumberLength,
-	    String prefix,
+    CountryCode(String alpha2, String phoneCode, int defaultAreaCodeLength, int minAreaCodeLength,
+	    int maxAreaCodeLength, int minNumberLength, int maxNumberLength, String prefix,
 	    String... additionalPrefixes) {
 
 	assertStringNotEmpty(alpha2, "Alpha2 code is required");
@@ -297,9 +293,6 @@ public enum CountryCode {
 
 	assertStringNotEmpty(phoneCode, "Phone code is required");
 	this.phoneCode = phoneCode;
-
-	assertStringNotEmpty(format, "Country code is required");
-	this.format = format;
 
 	this.defaultAreaCodeLength = defaultAreaCodeLength;
 	this.minAreaCodeLength = minAreaCodeLength;
@@ -399,9 +392,5 @@ public enum CountryCode {
 
     public int getDefaultAreaCodeLength() {
 	return defaultAreaCodeLength;
-    }
-
-    public String getFormat() {
-	return format;
     }
 }
