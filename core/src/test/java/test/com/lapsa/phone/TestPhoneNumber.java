@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.lapsa.country.Country;
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
+import com.lapsa.phone.PhoneNumbers;
 
 public class TestPhoneNumber {
 
@@ -31,38 +32,80 @@ public class TestPhoneNumber {
 	));
 	logger.info(String.format(//
 		"Country code: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
-		countries.getString(a.getCountryCode().getCountry().canonicalName()), // $1
-		a.getCountryCode().getPhoneCode(), // $2
+		a.getCountryCode() != null ? countries.getString(a.getCountryCode().getCountry().canonicalName()) : "", // $1
+		a.getCountryCode() != null ? a.getCountryCode().getPhoneCode() : "", // $2
 		a.getAreaCode(), // $3
 		a.getPlain() // $4
 	));
     }
 
     private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
-	PhoneNumber a = PhoneNumber.fromString(value);
+	PhoneNumber a = PhoneNumbers.parse(value);
 	printFormat(a);
 	assertThat(a, allOf(not(nullValue()), is(equalTo(expecting))));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(expectingFormat))));
     }
 
-    @Test
-    public void testStrictFormat1() {
-	testStrict(" 8 (7272)-530721 ", new PhoneNumber(CountryCode.KZ, "7272", "530721"), "+7 (7272) 530721");
+    private void testNonStrict(String value) {
+	PhoneNumber a = PhoneNumbers.parse(value);
+	printFormat(a);
+	assertThat(a, not(nullValue()));
+	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(value))));
     }
 
     @Test
-    public void testStrictFormatRU1() {
-	testStrict(" 8 (963)-777-79 79", new PhoneNumber(CountryCode.RU, "963", "7777979"), "+7 (963) 7777979");
+    public void testStrictFormat1() {
+	testStrict(" 8 (7272)-530721 ", PhoneNumbers.of(CountryCode.KZ, "7272", "530721"), "+7 (7272) 530721");
     }
 
     @Test
     public void testStrictFormat2() {
-	testStrict(" 8 (727)2-530721 ", new PhoneNumber(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
+	testStrict(" 8 (963)-777-79 79", PhoneNumbers.of(CountryCode.RU, "963", "7777979"), "+7 (963) 7777979");
     }
 
     @Test
     public void testStrictFormat3() {
-	testStrict(" 8 (701)937-7979", new PhoneNumber(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
+	testStrict(" 8 (727)2-530721 ", PhoneNumbers.of(CountryCode.KZ, "727", "2530721"), "+7 (727) 2530721");
+    }
+
+    @Test
+    public void testStrictFormat4() {
+	testStrict(" 8 (701)937-7979", PhoneNumbers.of(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
+    }
+
+    @Test
+    public void testStrictFormat5() {
+	testStrict("001 268-464-1234", PhoneNumbers.of(CountryCode.AG, "268", "4641234"), "+1 (268) 4641234");
+    }
+
+    @Test
+    public void testStrictFormat6() {
+	testStrict("00007(701)9377979", PhoneNumbers.of(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
+    }
+
+    @Test
+    public void testStrictFormat7() {
+	testStrict("+7(701)9377979", PhoneNumbers.of(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
+    }
+
+    @Test
+    public void testStrictFormat8() {
+	testStrict("+77019377979", PhoneNumbers.of(CountryCode.KZ, "701", "9377979"), "+7 (701) 9377979");
+    }
+
+    @Test
+    public void testStrictFormat9() {
+	testStrict("+380 (93) 1828087", PhoneNumbers.of(CountryCode.UA, "93", "1828087"), "+380 (93) 1828087");
+    }
+
+    @Test
+    public void testStrictFormat10() {
+	testStrict("+37368346711", PhoneNumbers.of(CountryCode.MD, "68", "346711"), "+373 (68) 346711");
+    }
+
+    @Test
+    public void testNonStrictFormat1() {
+	testNonStrict("+8737368346711");
     }
 
     @Test
@@ -76,10 +119,11 @@ public class TestPhoneNumber {
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
 	    String frm = formatted[i];
-	    PhoneNumber a = PhoneNumber.fromString(num);
+	    PhoneNumber a = PhoneNumbers.parse(num);
 	    printFormat(a);
 	    assertThat(a, not(nullValue()));
 	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
 	}
     }
+
 }

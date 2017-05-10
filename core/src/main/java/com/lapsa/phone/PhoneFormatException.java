@@ -1,6 +1,6 @@
 package com.lapsa.phone;
 
-public class PhoneFormatException extends Exception {
+public class PhoneFormatException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
