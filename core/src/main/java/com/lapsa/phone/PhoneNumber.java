@@ -61,7 +61,7 @@ public abstract class PhoneNumber {
 	    String phoneNumber = numberWithoutCountryCode.substring(cc.getDefaultAreaCodeLength());
 	    return new PhoneNumberComplete(cc, areaNumber, phoneNumber);
 	}
-	throw new PhoneFormatException(String.format("There is no area code at '%1$s'", raw));
+	return new PhoneNumberComplete(cc, "", numberWithoutCountryCode);
     }
 
     // format +7(701)9377979
