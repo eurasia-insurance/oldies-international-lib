@@ -114,12 +114,20 @@ public class TestPhoneNumber {
 
     @Test
     public void testTwoWays1() {
-	String source = "+86 0747124545";
+	String source = "+86 (4) 7124545";
 	PhoneNumber p = PhoneNumber.parse(source);
 	String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
 
+    @Test
+    public void testTwoWays2() {
+	String source = "+370 (07) 47124545";
+	PhoneNumber p = PhoneNumber.parse(source);
+	String target = p.getFormatted();
+	assertThat(target, equalTo(source));
+    }
+    
     @Test
     public void testStrictParseFormat() {
 	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",
