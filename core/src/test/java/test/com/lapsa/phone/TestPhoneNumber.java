@@ -74,7 +74,7 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat5() {
-	testStrict("001 268-464-1234", PhoneNumber.of(CountryCode.AG, "268", "4641234"), "+1 268 4641234");
+	testStrict("001 268-464-1234", PhoneNumber.of(CountryCode.AG, "268", "4641234"), "+1 (268) 4641234");
     }
 
     @Test
@@ -94,7 +94,7 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat9() {
-	testStrict("+380 (93) 1828087", PhoneNumber.of(CountryCode.UA, "93", "1828087"), "+380 93 1828087");
+	testStrict("+380 (93) 1828087", PhoneNumber.of(CountryCode.UA, "93", "1828087"), "+380 (93) 1828087");
     }
 
     @Test
@@ -104,7 +104,7 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat11() {
-	testStrict("375 17 566 17 56", PhoneNumber.of(CountryCode.BY, "17", "5661756"), "+375 17 5661756");
+	testStrict("375 17 566 17 56", PhoneNumber.of(CountryCode.BY, "17", "5661756"), "+375 (17) 5661756");
     }
 
     @Test
@@ -125,7 +125,7 @@ public class TestPhoneNumber {
 	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",
 		"87272530721" };
 
-	String[] formatted = new String[] { "+7 (7272) 530721", "+1 268 4641234", "+56 7 9377979",
+	String[] formatted = new String[] { "+7 (7272) 530721", "+1 (268) 4641234", "+56 (7) 9377979",
 		"+49 (43) 57019377979", "+7 (727) 2530721" };
 
 	for (int i = 0; i < numbers.length; i++) {
