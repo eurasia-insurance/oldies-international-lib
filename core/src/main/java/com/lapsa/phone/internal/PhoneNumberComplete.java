@@ -55,7 +55,7 @@ public final class PhoneNumberComplete extends PhoneNumber implements Serializab
 	    return getPlain();
 	String format = countryCode != null && countryCode.getFormat() != null ? countryCode.getFormat()
 		: DEFAULT_FORMATTED_FORMAT;
-	return String.format(format, countryCode.getPhoneCode(), areaCode, phoneNumber);
+	return String.format(format, countryCode.getPhoneCode(), areaCode, phoneNumber).replaceAll("\\s+", " ").trim();
     }
 
     @Override
@@ -64,7 +64,7 @@ public final class PhoneNumberComplete extends PhoneNumber implements Serializab
 		countryCode == null ? "" : countryCode.getPhoneCode(), // 1
 		areaCode == null ? "" : areaCode, // 2
 		phoneNumber == null ? "" : phoneNumber // 3
-	);
+	).replaceAll("\\s+", " ").trim();
     }
 
     // GENERATED
