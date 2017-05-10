@@ -305,11 +305,6 @@ public enum CountryCode {
 	return phoneCode;
     }
 
-    @Override
-    public String toString() {
-	return "+" + phoneCode;
-    }
-
     public static CountryCode getByPhonePrefix(String number) {
 	if (number == null || number.isEmpty())
 	    return null;
