@@ -99,7 +99,7 @@ public class TestPhoneNumber {
 
     @Test
     public void testStrictFormat10() {
-	testStrict("+37368346711", PhoneNumber.of(CountryCode.MD, "68", "346711"), "+373 68 346711");
+	testStrict("+37368346711", PhoneNumber.of(CountryCode.MD, "68", "346711"), "+373 (68) 346711");
     }
 
     @Test
@@ -113,12 +113,20 @@ public class TestPhoneNumber {
     }
 
     @Test
+    public void testTwoWays1() {
+	String source = "+86 0747124545";
+	PhoneNumber p = PhoneNumber.parse(source);
+	String target = p.getFormatted();
+	assertThat(target, equalTo(source));
+    }
+
+    @Test
     public void testStrictParseFormat() {
 	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",
 		"87272530721" };
 
 	String[] formatted = new String[] { "+7 (7272) 530721", "+1 268 4641234", "+56 7 9377979",
-		"+49 43 57019377979", "+7 (727) 2530721" };
+		"+49 (43) 57019377979", "+7 (727) 2530721" };
 
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
