@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.lapsa.phone.converter.jaxb.JAXBPhoneNumberAdapter;
 import com.lapsa.phone.internal.PhoneNumberComplete;
 import com.lapsa.phone.internal.PhoneNumberUncomplete;
-import com.lapsa.phone.jaxb.JAXBPhoneNumberAdapter;
 
 @XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
 public abstract class PhoneNumber {
