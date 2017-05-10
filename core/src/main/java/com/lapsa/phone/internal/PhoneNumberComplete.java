@@ -1,4 +1,4 @@
-package com.lapsa.phone;
+package com.lapsa.phone.internal;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,7 +8,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-final class PhoneNumberComplete implements Serializable, PhoneNumber {
+import com.lapsa.phone.CountryCode;
+import com.lapsa.phone.PhoneNumber;
+
+public final class PhoneNumberComplete extends PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 8999997304131725827L;
 
@@ -16,7 +19,7 @@ final class PhoneNumberComplete implements Serializable, PhoneNumber {
     private final String areaCode;
     private final String phoneNumber;
 
-    PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber) {
+    public PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber) {
 	Objects.requireNonNull(countryCode, "Country code can not be null");
 	Objects.requireNonNull(countryCode, "Area code can not be null");
 	Objects.requireNonNull(phoneNumber, "Phone number can not be null");
@@ -25,7 +28,6 @@ final class PhoneNumberComplete implements Serializable, PhoneNumber {
 	this.phoneNumber = phoneNumber;
     }
 
-    @Override
     public boolean isComplete() {
 	return countryCode != null && areaCode != null && phoneNumber != null;
     }
