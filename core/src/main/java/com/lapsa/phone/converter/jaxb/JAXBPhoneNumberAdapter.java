@@ -1,4 +1,4 @@
-package com.lapsa.phone.jaxb;
+package com.lapsa.phone.converter.jaxb;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
@@ -10,7 +10,7 @@ public class JAXBPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
     public PhoneNumber unmarshal(String v) throws Exception {
 	if (v == null || v.isEmpty())
 	    return null;
-	return PhoneNumber.fromString(v);
+	return PhoneNumber.parse(v);
     }
 
     @Override

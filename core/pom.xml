@@ -13,6 +13,13 @@
 	<name>Internationalization Lib : Core POJOs</name>
 
 	<dependencies>
+		<!-- external -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>

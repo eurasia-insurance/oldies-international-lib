@@ -32,6 +32,12 @@
 				<artifactId>international-eelib</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!-- external -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.4</version>
+			</dependency>
 			<!-- test -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
