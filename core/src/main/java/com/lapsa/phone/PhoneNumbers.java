@@ -27,7 +27,7 @@ public final class PhoneNumbers {
 	// Если force то обязатльно должно быть совпадение по базе кодов иначе
 	// ошибка
 	if (pcc == null && forceException)
-	    throw new PhoneFormatException(String.format("Three are no country code at '%1$s'", raw));
+	    throw new PhoneFormatException(String.format("There is no country code at '%1$s'", raw));
 
 	// возвращаем либо наденный код либо null
 	return pcc;
@@ -48,7 +48,7 @@ public final class PhoneNumbers {
 	    String phoneNumber = numberWithoutCountryCode.substring(cc.getDefaultAreaCodeLength());
 	    return new PhoneNumberComplete(cc, areaNumber, phoneNumber);
 	}
-	throw new PhoneFormatException(String.format("There are no area code at '%1$s'", raw));
+	throw new PhoneFormatException(String.format("There is no area code at '%1$s'", raw));
     }
 
     // format +7(701)9377979
