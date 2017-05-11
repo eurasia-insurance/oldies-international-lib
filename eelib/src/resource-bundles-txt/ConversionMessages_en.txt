@@ -1,1 +1,1 @@
-com.lapsa.phone.converter.faces.PhoneNumberConverter = =ENG= Неверный формат номера телефона. Возможно неверно указан код страны или код оператора связи или номер содержит неразрешенные символы
+com.lapsa.phone.converter.faces.PhoneNumberConverter = Incorrect phone number format. Perhaps the country code or communication service provider code may be incorrectly specified, or the number contains illegal characters
