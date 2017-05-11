@@ -1,8 +1,8 @@
-com.lapsa.phone.validators.ValidPhoneNumber.message = =KAZ= Введенный номер телефона не соответствует правилам набора телефонных номеров или неразрешен. Убедитесь в правильности ввода номера и попробуйте еще раз.
+com.lapsa.phone.validators.ValidPhoneNumber.message = Телефонның енгізілген нөмірі телефон нөмірлерін теру ережелеріне сәйкес келмейді немесе рұқсат етілмеген.  Нөмірдің дұрыс енгізілгендігіне көз жеткізіңіз және тағы бір рет байқап көріңіз.
 
 com.lapsa.country.validators.ValidCountry.message = Ел қате көрсетілген
 
 com.lapsa.internet.validators.ValidEmail.message = Қате  e-mail мекенжайы
 com.lapsa.internet.validators.ValidURL.message = Қате сайт мекенжайы 
 
-com.lapsa.cars.validators.ValidVINCode.message = VIN-коды қатеs
+com.lapsa.cars.validators.ValidVINCode.message = VIN-коды қате
