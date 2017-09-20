@@ -15,7 +15,7 @@ import com.lapsa.international.phone.PhoneType;
 
 public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 
-    public static final String BUNDLE_BASENAME = InternationalLocalizedElement.BUNDDLE_BASE_NAME;
+    public static final String BUNDLE_BASENAME = InternationalLocalizedElement.BUNDLE_BASENAME;
 
     @Test
     public void testNoExcessRecordsRussian() {

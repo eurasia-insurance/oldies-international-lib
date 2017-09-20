@@ -21,7 +21,7 @@ public class TestPhoneNumber {
     @BeforeClass
     public static void init() {
 	logger = Logger.getAnonymousLogger();
-	countries = ResourceBundle.getBundle(InternationalLocalizedElement.BUNDDLE_BASE_NAME);
+	countries = ResourceBundle.getBundle(InternationalLocalizedElement.BUNDLE_BASENAME);
     }
 
     private static void printFormat(PhoneNumber a) {
