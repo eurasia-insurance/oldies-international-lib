@@ -258,11 +258,6 @@ public enum Country implements LocalizedElement {
     //
     ;
 
-    @Override
-    public String canonicalName() {
-	return String.format("%1$s.%2$s", this.getClass().getName(), name());
-    }
-
     private final String alpha2Code;
     private final String alpha3Code;
     private final String digitalCode;

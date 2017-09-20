@@ -25,11 +25,6 @@ public enum LocalizationLanguage implements LocalizedElement {
 	LANGUAGES_BY_TAG = Collections.unmodifiableMap(map);
     }
 
-    @Override
-    public String canonicalName() {
-	return String.format("%1$s.%2$s", this.getClass().getName(), name());
-    }
-
     private final String tag;
     private final Locale locale;
 

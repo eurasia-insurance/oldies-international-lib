@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lapsa.country.Country;
+import com.lapsa.country.LocalizedElement;
 import com.lapsa.phone.CountryCode;
 import com.lapsa.phone.PhoneNumber;
 
@@ -21,7 +21,7 @@ public class TestPhoneNumber {
     @BeforeClass
     public static void init() {
 	logger = Logger.getAnonymousLogger();
-	countries = ResourceBundle.getBundle(Country.BUNDLE_BASENAME);
+	countries = ResourceBundle.getBundle(LocalizedElement.BUNDDLE_BASE_NAME);
     }
 
     private static void printFormat(PhoneNumber a) {
@@ -127,7 +127,7 @@ public class TestPhoneNumber {
 	String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
-    
+
     @Test
     public void testStrictParseFormat() {
 	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",

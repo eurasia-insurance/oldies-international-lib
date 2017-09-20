@@ -1,6 +1,5 @@
 package com.lapsa.country.test.messages;
 
-import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.Enumeration;
@@ -9,34 +8,33 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
-import com.lapsa.country.LocalizedElement;
 import com.lapsa.country.Country;
+import com.lapsa.country.LocalizedElement;
 import com.lapsa.localization.LocalizationLanguage;
 import com.lapsa.phone.PhoneType;
 
 public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 
+    public static final String BUNDLE_BASENAME = LocalizedElement.BUNDDLE_BASE_NAME;
+
     @Test
     public void testNoExcessRecordsRussian() {
 	Locale locale = getLocale(LANG_RU);
-	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
-	assertThat(resources.getString("com.lapsa.country.Country.AND"), allOf(not(nullValue()), is("Андорра")));
+	ResourceBundle resources = getResourceBundle(BUNDLE_BASENAME, locale);
 	testBundle(resources);
     }
 
     @Test
     public void testNoExcessRecordsKazakh() {
 	Locale locale = getLocale(LANG_KK);
-	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
-	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Тимор-Лесте")));
+	ResourceBundle resources = getResourceBundle(BUNDLE_BASENAME, locale);
 	testBundle(resources);
     }
 
     @Test
     public void testNoExcessRecordsEnglish() {
 	Locale locale = getLocale(LANG_EN);
-	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
-	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Timor-Leste")));
+	ResourceBundle resources = getResourceBundle(BUNDLE_BASENAME, locale);
 	testBundle(resources);
     }
 
