@@ -20,16 +20,16 @@
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
-		<!-- test.localization -->
+		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
