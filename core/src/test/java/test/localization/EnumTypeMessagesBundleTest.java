@@ -7,9 +7,9 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.country.InternationalLocalizedElement;
 
-public abstract class EnumTypeMessagesBundleTest<T extends LocalizedElement> extends BaseMessagesBundleTest {
+public abstract class EnumTypeMessagesBundleTest<T extends InternationalLocalizedElement> extends BaseMessagesBundleTest {
 
     @Test
     public void testRussianBundle() {

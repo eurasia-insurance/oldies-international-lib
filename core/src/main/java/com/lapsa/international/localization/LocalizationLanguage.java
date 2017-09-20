@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.country.InternationalLocalizedElement;
 
-public enum LocalizationLanguage implements LocalizedElement {
+public enum LocalizationLanguage implements InternationalLocalizedElement {
     RUSSIAN("ru"), // русский
     ENGLISH("en", Locale.ENGLISH), // английский
     KAZAKH("kk"), // казахский

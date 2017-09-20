@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.country.InternationalLocalizedElement;
 import com.lapsa.international.phone.CountryCode;
 import com.lapsa.international.phone.PhoneNumber;
 
@@ -21,7 +21,7 @@ public class TestPhoneNumber {
     @BeforeClass
     public static void init() {
 	logger = Logger.getAnonymousLogger();
-	countries = ResourceBundle.getBundle(LocalizedElement.BUNDDLE_BASE_NAME);
+	countries = ResourceBundle.getBundle(InternationalLocalizedElement.BUNDDLE_BASE_NAME);
     }
 
     private static void printFormat(PhoneNumber a) {

@@ -1,6 +1,6 @@
 package com.lapsa.international.country;
 
-public enum Country implements LocalizedElement {
+public enum Country implements InternationalLocalizedElement {
     AUS("AU", "AUS", "036", "ISO 3166-2:AU", true),
     AUT("AT", "AUT", "040", "ISO 3166-2:AT", true),
     AZE("AZ", "AZE", "031", "ISO 3166-2:AZ", true),

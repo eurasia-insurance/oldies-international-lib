@@ -19,6 +19,11 @@
 		<module>eelib</module>
 	</modules>
 
+	<properties>
+		<!-- APIs -->
+		<lapsa-lib.version>2.2-SNAPSHOT</lapsa-lib.version>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- own -->
@@ -31,6 +36,12 @@
 				<groupId>com.lapsa.international-lib</groupId>
 				<artifactId>international-eelib</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<!-- internal lapsa -->
+			<dependency>
+				<groupId>com.lapsa.lapsa-lib</groupId>
+				<artifactId>lapsa-commons</artifactId>
+				<version>${lapsa-lib.version}</version>
 			</dependency>
 			<!-- external -->
 			<dependency>

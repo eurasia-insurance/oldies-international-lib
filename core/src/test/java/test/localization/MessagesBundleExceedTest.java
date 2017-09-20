@@ -9,13 +9,13 @@ import java.util.ResourceBundle;
 import org.junit.Test;
 
 import com.lapsa.international.country.Country;
-import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.country.InternationalLocalizedElement;
 import com.lapsa.international.localization.LocalizationLanguage;
 import com.lapsa.international.phone.PhoneType;
 
 public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 
-    public static final String BUNDLE_BASENAME = LocalizedElement.BUNDDLE_BASE_NAME;
+    public static final String BUNDLE_BASENAME = InternationalLocalizedElement.BUNDDLE_BASE_NAME;
 
     @Test
     public void testNoExcessRecordsRussian() {
