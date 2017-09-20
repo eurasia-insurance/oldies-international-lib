@@ -1,4 +1,4 @@
-package com.lapsa.cars.validators;
+package com.lapsa.international.cars.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;

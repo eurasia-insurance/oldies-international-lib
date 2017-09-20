@@ -1,4 +1,4 @@
-package com.lapsa.phone.converter.rs;
+package com.lapsa.international.phone.converter.rs;
 
 import javax.ws.rs.ext.ParamConverter;
 

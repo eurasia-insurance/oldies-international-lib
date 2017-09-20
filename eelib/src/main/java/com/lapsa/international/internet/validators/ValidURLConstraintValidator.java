@@ -1,4 +1,4 @@
-package com.lapsa.internet.validators;
+package com.lapsa.international.internet.validators;
 
 import java.util.regex.Pattern;
 

@@ -1,4 +1,4 @@
-package com.lapsa.phone.converter.jpa;
+package com.lapsa.international.phone.converter.jpa;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

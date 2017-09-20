@@ -1,4 +1,4 @@
-package com.lapsa.validators;
+package com.lapsa.international.validators;
 
 public enum AllowDenyOrder {
     // запрещено все, что не разрешено

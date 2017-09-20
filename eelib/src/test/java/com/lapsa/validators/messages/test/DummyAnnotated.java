@@ -1,10 +1,10 @@
 package com.lapsa.validators.messages.test;
 
-import com.lapsa.cars.validators.ValidVINCode;
-import com.lapsa.country.validators.ValidCountry;
-import com.lapsa.internet.validators.ValidEmail;
-import com.lapsa.internet.validators.ValidURL;
-import com.lapsa.phone.validators.ValidPhoneNumber;
+import com.lapsa.international.cars.validators.ValidVINCode;
+import com.lapsa.international.country.validators.ValidCountry;
+import com.lapsa.international.internet.validators.ValidEmail;
+import com.lapsa.international.internet.validators.ValidURL;
+import com.lapsa.international.phone.validators.ValidPhoneNumber;
 
 public interface DummyAnnotated {
     @ValidVINCode

@@ -2,7 +2,7 @@ com.lapsa.international.phone.validators.ValidPhoneNumber.message = Введен
 
 com.lapsa.international.country.validators.ValidCountry.message = Некорректно указана страна
 
-com.lapsa.internet.validators.ValidEmail.message = Некорректный адрес e-mail
-com.lapsa.internet.validators.ValidURL.message = Некорректный адрес сайта
+com.lapsa.international.internet.validators.ValidEmail.message = Некорректный адрес e-mail
+com.lapsa.international.internet.validators.ValidURL.message = Некорректный адрес сайта
 
 com.lapsa.international.cars.validators.ValidVINCode.message = VIN-код некорректен

@@ -1,4 +1,4 @@
-package com.lapsa.country.validators;
+package com.lapsa.international.country.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -10,7 +10,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 import com.lapsa.international.country.Country;
-import com.lapsa.validators.AllowDenyOrder;
+import com.lapsa.international.validators.AllowDenyOrder;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)

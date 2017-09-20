@@ -1,4 +1,4 @@
-package com.lapsa.phone.validators;
+package com.lapsa.international.phone.validators;
 
 import java.util.regex.Pattern;
 

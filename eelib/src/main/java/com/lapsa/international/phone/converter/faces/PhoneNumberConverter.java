@@ -1,4 +1,4 @@
-package com.lapsa.phone.converter.faces;
+package com.lapsa.international.phone.converter.faces;
 
 import java.util.ResourceBundle;
 

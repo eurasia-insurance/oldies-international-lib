@@ -1,4 +1,4 @@
-package com.lapsa.internet.validators;
+package com.lapsa.international.internet.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 @Constraint(validatedBy = ValidEmailConstraintValidator.class)
 public @interface ValidEmail {
-    String message() default "{com.lapsa.internet.validators.ValidEmail.message}";
+    String message() default "{com.lapsa.international.internet.validators.ValidEmail.message}";
 
     Class<?>[] groups() default {};
 

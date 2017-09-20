@@ -2,7 +2,7 @@ com.lapsa.international.phone.validators.ValidPhoneNumber.message = The entered 
 
 com.lapsa.international.country.validators.ValidCountry.message = Incorrect country
 
-com.lapsa.internet.validators.ValidEmail.message = Incorrect e-mail address
-com.lapsa.internet.validators.ValidURL.message = Incorrect website address
+com.lapsa.international.internet.validators.ValidEmail.message = Incorrect e-mail address
+com.lapsa.international.internet.validators.ValidURL.message = Incorrect website address
 
 com.lapsa.international.cars.validators.ValidVINCode.message = Incorrect VIN-code

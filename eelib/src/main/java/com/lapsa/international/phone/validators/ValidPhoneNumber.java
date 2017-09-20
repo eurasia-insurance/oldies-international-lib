@@ -1,4 +1,4 @@
-package com.lapsa.phone.validators;
+package com.lapsa.international.phone.validators;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
