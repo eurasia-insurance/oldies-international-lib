@@ -1,4 +1,4 @@
-package com.lapsa.cars;
+package com.lapsa.international.cars;
 
 public interface VINCodeValidator {
     boolean isValid(String vinCode);

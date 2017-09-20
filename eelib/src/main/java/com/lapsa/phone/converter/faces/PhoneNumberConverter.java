@@ -9,8 +9,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-import com.lapsa.phone.PhoneFormatException;
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.PhoneFormatException;
+import com.lapsa.international.phone.PhoneNumber;
 
 @FacesConverter(forClass = PhoneNumber.class)
 public class PhoneNumberConverter implements Converter {

@@ -1,4 +1,4 @@
-package com.lapsa.localization;
+package com.lapsa.international.localization;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.lapsa.country.LocalizedElement;
+import com.lapsa.international.country.LocalizedElement;
 
 public enum LocalizationLanguage implements LocalizedElement {
     RUSSIAN("ru"), // русский

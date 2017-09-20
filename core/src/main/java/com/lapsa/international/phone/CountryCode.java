@@ -1,4 +1,4 @@
-package com.lapsa.phone;
+package com.lapsa.international.phone;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import com.lapsa.country.Country;
+import com.lapsa.international.country.Country;
 
 public enum CountryCode {
     AC("SH", "247", "247"),

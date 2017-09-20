@@ -3,8 +3,8 @@ package com.lapsa.cars.validators;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.lapsa.cars.VINCodeValidator;
-import com.lapsa.cars.VINCodeValidatorProvider;
+import com.lapsa.international.cars.VINCodeValidator;
+import com.lapsa.international.cars.VINCodeValidatorProvider;
 
 public class ValidVINCodeConstraintValidator implements ConstraintValidator<ValidVINCode, String> {
 

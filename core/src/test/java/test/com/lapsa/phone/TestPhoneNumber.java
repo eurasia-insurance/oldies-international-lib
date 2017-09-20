@@ -9,9 +9,9 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lapsa.country.LocalizedElement;
-import com.lapsa.phone.CountryCode;
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.phone.CountryCode;
+import com.lapsa.international.phone.PhoneNumber;
 
 public class TestPhoneNumber {
 

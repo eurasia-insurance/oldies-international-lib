@@ -1,4 +1,4 @@
-package com.lapsa.country;
+package com.lapsa.international.country;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import com.lapsa.localization.LocalizationLanguage;
+import com.lapsa.international.localization.LocalizationLanguage;
 
 public interface LocalizedElement {
 

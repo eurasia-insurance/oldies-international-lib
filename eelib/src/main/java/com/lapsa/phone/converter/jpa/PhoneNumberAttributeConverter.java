@@ -3,7 +3,7 @@ package com.lapsa.phone.converter.jpa;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.PhoneNumber;
 
 @Converter(autoApply = true)
 public class PhoneNumberAttributeConverter implements AttributeConverter<PhoneNumber, String> {

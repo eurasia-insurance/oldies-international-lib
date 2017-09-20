@@ -2,7 +2,7 @@ package com.lapsa.phone.converter.rs;
 
 import javax.ws.rs.ext.ParamConverter;
 
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.PhoneNumber;
 
 public class PhoneNumberParamConverter implements ParamConverter<PhoneNumber> {
 

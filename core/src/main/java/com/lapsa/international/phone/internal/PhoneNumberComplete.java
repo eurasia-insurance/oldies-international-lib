@@ -1,4 +1,4 @@
-package com.lapsa.phone.internal;
+package com.lapsa.international.phone.internal;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,8 +8,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.lapsa.phone.CountryCode;
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.CountryCode;
+import com.lapsa.international.phone.PhoneNumber;
 
 public final class PhoneNumberComplete extends PhoneNumber implements Serializable {
     private static final long serialVersionUID = 8999997304131725827L;

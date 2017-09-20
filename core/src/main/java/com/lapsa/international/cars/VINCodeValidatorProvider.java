@@ -1,4 +1,4 @@
-package com.lapsa.cars;
+package com.lapsa.international.cars;
 
 public abstract class VINCodeValidatorProvider {
 

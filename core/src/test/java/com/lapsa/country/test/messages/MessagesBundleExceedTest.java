@@ -8,10 +8,10 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
-import com.lapsa.country.Country;
-import com.lapsa.country.LocalizedElement;
-import com.lapsa.localization.LocalizationLanguage;
-import com.lapsa.phone.PhoneType;
+import com.lapsa.international.country.Country;
+import com.lapsa.international.country.LocalizedElement;
+import com.lapsa.international.localization.LocalizationLanguage;
+import com.lapsa.international.phone.PhoneType;
 
 public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
 

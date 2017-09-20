@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.lapsa.country.Country;
+import com.lapsa.international.country.Country;
 import com.lapsa.validators.AllowDenyOrder;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
@@ -21,7 +21,7 @@ public @interface ValidCountry {
 
     Country[] denyValues() default {};
 
-    String message() default "{com.lapsa.country.validators.ValidCountry.message}";
+    String message() default "{com.lapsa.international.country.validators.ValidCountry.message}";
 
     Class<?>[] groups() default {};
 

@@ -1,8 +1,8 @@
-package com.lapsa.phone.converter.jaxb;
+package com.lapsa.international.phone.converter.jaxb;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.PhoneNumber;
 
 public class JAXBPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
 

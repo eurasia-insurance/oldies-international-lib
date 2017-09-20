@@ -1,8 +1,8 @@
-package com.lapsa.country.jaxb;
+package com.lapsa.international.country.jaxb;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import com.lapsa.country.Country;
+import com.lapsa.international.country.Country;
 
 public class JAXBCountryAdapter extends XmlAdapter<String, Country> {
 

@@ -1,8 +1,8 @@
-com.lapsa.phone.validators.ValidPhoneNumber.message = Введенный номер телефона не соответствует правилам набора телефонных номеров или неразрешен. Убедитесь в правильности ввода номера и попробуйте еще раз.
+com.lapsa.international.phone.validators.ValidPhoneNumber.message = Введенный номер телефона не соответствует правилам набора телефонных номеров или неразрешен. Убедитесь в правильности ввода номера и попробуйте еще раз.
 
-com.lapsa.country.validators.ValidCountry.message = Некорректно указана страна
+com.lapsa.international.country.validators.ValidCountry.message = Некорректно указана страна
 
 com.lapsa.internet.validators.ValidEmail.message = Некорректный адрес e-mail
 com.lapsa.internet.validators.ValidURL.message = Некорректный адрес сайта
 
-com.lapsa.cars.validators.ValidVINCode.message = VIN-код некорректен
+com.lapsa.international.cars.validators.ValidVINCode.message = VIN-код некорректен

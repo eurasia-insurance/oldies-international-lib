@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.lapsa.phone.CountryCode;
-import com.lapsa.phone.PhoneNumber;
+import com.lapsa.international.phone.CountryCode;
+import com.lapsa.international.phone.PhoneNumber;
 
 public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<ValidPhoneNumber, PhoneNumber> {
 

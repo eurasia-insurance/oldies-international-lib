@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.lapsa.country.Country;
-import com.lapsa.phone.CountryCode;
+import com.lapsa.international.country.Country;
+import com.lapsa.international.phone.CountryCode;
 
 public class TestCountryCode {
 

@@ -18,7 +18,7 @@ public @interface ValidVINCode {
 
     boolean caseSensitive() default false;
 
-    String message() default "{com.lapsa.cars.validators.ValidVINCode.message}";
+    String message() default "{com.lapsa.international.cars.validators.ValidVINCode.message}";
 
     Class<?>[] groups() default {};
 

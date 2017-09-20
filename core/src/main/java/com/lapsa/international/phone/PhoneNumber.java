@@ -1,13 +1,13 @@
-package com.lapsa.phone;
+package com.lapsa.international.phone;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import com.lapsa.phone.converter.jaxb.JAXBPhoneNumberAdapter;
-import com.lapsa.phone.internal.PhoneNumberComplete;
-import com.lapsa.phone.internal.PhoneNumberUncomplete;
+import com.lapsa.international.phone.converter.jaxb.JAXBPhoneNumberAdapter;
+import com.lapsa.international.phone.internal.PhoneNumberComplete;
+import com.lapsa.international.phone.internal.PhoneNumberUncomplete;
 
 @XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
 public abstract class PhoneNumber {

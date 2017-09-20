@@ -1,4 +1,4 @@
-package com.lapsa.phone;
+package com.lapsa.international.phone;
 
 public class PhoneFormatException extends RuntimeException {
 

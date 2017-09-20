@@ -1,4 +1,4 @@
-package com.lapsa.cars;
+package com.lapsa.international.cars;
 
 import java.util.Locale;
 import java.util.regex.Pattern;

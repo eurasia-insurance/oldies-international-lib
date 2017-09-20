@@ -3,7 +3,7 @@ package com.lapsa.country.validators;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.lapsa.country.Country;
+import com.lapsa.international.country.Country;
 import com.lapsa.validators.AllowDenyOrder;
 
 public class ValidCountryConstraintValidator implements ConstraintValidator<ValidCountry, Country> {
