@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
-import com.lapsa.country.InternationalLocalizationBundleBase;
+import com.lapsa.country.LocalizedElement;
 import com.lapsa.country.Country;
 import com.lapsa.localization.LocalizationLanguage;
 import com.lapsa.phone.PhoneType;
@@ -19,7 +19,7 @@ public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
     @Test
     public void testNoExcessRecordsRussian() {
 	Locale locale = getLocale(LANG_RU);
-	ResourceBundle resources = getResourceBundle(InternationalLocalizationBundleBase.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
 	assertThat(resources.getString("com.lapsa.country.Country.AND"), allOf(not(nullValue()), is("Андорра")));
 	testBundle(resources);
     }
@@ -27,7 +27,7 @@ public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
     @Test
     public void testNoExcessRecordsKazakh() {
 	Locale locale = getLocale(LANG_KK);
-	ResourceBundle resources = getResourceBundle(InternationalLocalizationBundleBase.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
 	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Тимор-Лесте")));
 	testBundle(resources);
     }
@@ -35,7 +35,7 @@ public class MessagesBundleExceedTest extends BaseMessagesBundleTest {
     @Test
     public void testNoExcessRecordsEnglish() {
 	Locale locale = getLocale(LANG_EN);
-	ResourceBundle resources = getResourceBundle(InternationalLocalizationBundleBase.BUNDLE_BASENAME, locale);
+	ResourceBundle resources = getResourceBundle(LocalizedElement.BUNDLE_BASENAME, locale);
 	assertThat(resources.getString("com.lapsa.country.Country.TLS"), allOf(not(nullValue()), is("Timor-Leste")));
 	testBundle(resources);
     }

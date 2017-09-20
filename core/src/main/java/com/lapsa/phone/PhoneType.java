@@ -1,8 +1,8 @@
 package com.lapsa.phone;
 
-import com.lapsa.country.InternationalLocalizationBundleBase;
+import com.lapsa.country.LocalizedElement;
 
-public enum PhoneType implements InternationalLocalizationBundleBase {
+public enum PhoneType implements LocalizedElement {
     MAIN("fa-phone"), // основной телефон
     FAX("fa-fax"), // телефон факса
     MOBILE("fa-mobile"), // мобильный телефон
