@@ -1,4 +1,4 @@
-package com.lapsa.country.test.messages;
+package test.localization;
 
 import com.lapsa.international.country.Country;
 

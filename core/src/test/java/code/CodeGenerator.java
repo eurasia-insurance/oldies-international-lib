@@ -2,7 +2,6 @@ package code;
 
 import com.lapsa.international.country.Country;
 import com.lapsa.international.phone.CountryCode;
-import com.lapsa.phone.CCode;
 
 public class CodeGenerator {
 

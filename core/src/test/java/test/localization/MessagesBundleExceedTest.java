@@ -1,4 +1,4 @@
-package com.lapsa.country.test.messages;
+package test.localization;
 
 import static org.junit.Assert.*;
 
