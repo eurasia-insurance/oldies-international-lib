@@ -1,10 +1,12 @@
 package com.lapsa.international.localization;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.lapsa.international.country.InternationalLocalizedElement;
 
@@ -15,18 +17,10 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
     //
     ;
 
-    private static final LocalizationLanguage DEFAULT = LocalizationLanguage.ENGLISH;
-    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG;
-
-    static {
-	Map<String, LocalizationLanguage> map = new HashMap<>();
-	for (LocalizationLanguage ll : LocalizationLanguage.values())
-	    map.put(ll.getTag(), ll);
-	LANGUAGES_BY_TAG = Collections.unmodifiableMap(map);
-    }
-
     private final String tag;
     private final Locale locale;
+
+    //
 
     private LocalizationLanguage(String tag) {
 	this.tag = tag;
@@ -38,13 +32,16 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
 	this.locale = locale;
     }
 
-    public String getTag() {
-	return tag;
-    }
+    //
 
-    public Locale getLocale() {
-	return locale;
-    }
+    private static final LocalizationLanguage DEFAULT = LocalizationLanguage.ENGLISH;
+
+    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG = Stream.of(LocalizationLanguage.values()) //
+	    .collect(Collectors.collectingAndThen(
+		    Collectors.toMap(LocalizationLanguage::getTag, Function.identity()),
+		    Collections::unmodifiableMap));
+
+    //
 
     public static LocalizationLanguage byTag(String tag) {
 	return LANGUAGES_BY_TAG.get(tag);
@@ -78,8 +75,6 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
 	return _orDefault(null);
     }
 
-    // PRIVATE STATIC
-
     private static LocalizationLanguage _orDefault(final LocalizationLanguage lang) {
 	LocalizationLanguage result = lang;
 	if (result == null)
@@ -88,4 +83,15 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
 	    result = DEFAULT;
 	return result;
     }
+
+    // GENERATED
+
+    public String getTag() {
+	return tag;
+    }
+
+    public Locale getLocale() {
+	return locale;
+    }
+
 }
