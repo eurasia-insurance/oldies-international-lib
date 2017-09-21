@@ -20,7 +20,25 @@
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
+		<!-- internal lapsa -->
+		<dependency>
+			<groupId>com.lapsa.lapsa-lib</groupId>
+			<artifactId>lapsa-commons</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.lapsa.lapsa-lib</groupId>
+			<artifactId>lapsa-faces</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
 		<!-- Java EE -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>javax.faces-api</artifactId>
@@ -41,26 +59,26 @@
 			<artifactId>javax.persistence</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!-- test.localization -->
+		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>javax.el</artifactId>
-			<scope>test.localization</scope>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
