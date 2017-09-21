@@ -13,9 +13,13 @@ public enum PhoneType implements InternationalLocalizedElement {
 
     private final String fontAwesomeCodeIcon;
 
-    PhoneType(String fontAwesomeCode) {
+    //
+
+    private PhoneType(String fontAwesomeCode) {
 	this.fontAwesomeCodeIcon = fontAwesomeCode;
     }
+
+    // GENERATED
 
     public String getFontAwesomeIcon() {
 	return fontAwesomeCodeIcon;
