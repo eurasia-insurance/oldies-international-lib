@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.lapsa.international.country.InternationalLocalizedElement;
+import com.lapsa.international.InternationalLocalizedElement;
 
 public enum LocalizationLanguage implements InternationalLocalizedElement {
     RUSSIAN("ru"), // русский

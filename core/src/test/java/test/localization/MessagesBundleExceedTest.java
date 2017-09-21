@@ -8,8 +8,8 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
+import com.lapsa.international.InternationalLocalizedElement;
 import com.lapsa.international.country.Country;
-import com.lapsa.international.country.InternationalLocalizedElement;
 import com.lapsa.international.localization.LocalizationLanguage;
 import com.lapsa.international.phone.PhoneType;
 

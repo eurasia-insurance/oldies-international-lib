@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lapsa.international.country.InternationalLocalizedElement;
+import com.lapsa.international.InternationalLocalizedElement;
 import com.lapsa.international.phone.CountryCode;
 import com.lapsa.international.phone.PhoneNumber;
 

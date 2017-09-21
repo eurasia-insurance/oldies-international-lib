@@ -1,6 +1,6 @@
 package com.lapsa.international.phone;
 
-import com.lapsa.international.country.InternationalLocalizedElement;
+import com.lapsa.international.InternationalLocalizedElement;
 
 public enum PhoneType implements InternationalLocalizedElement {
     MAIN("fa-phone"), // основной телефон

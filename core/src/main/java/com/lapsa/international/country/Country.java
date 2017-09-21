@@ -3,6 +3,8 @@ package com.lapsa.international.country;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import com.lapsa.international.InternationalLocalizedElement;
+
 public enum Country implements InternationalLocalizedElement {
     AUS("AU", "AUS", "036", "ISO 3166-2:AU"),
     AUT("AT", "AUT", "040", "ISO 3166-2:AT"),

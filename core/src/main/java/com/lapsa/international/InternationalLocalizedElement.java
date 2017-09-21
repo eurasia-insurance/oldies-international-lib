@@ -1,4 +1,4 @@
-package com.lapsa.international.country;
+package com.lapsa.international;
 
 import com.lapsa.commons.elements.LocalizedElement;
 
