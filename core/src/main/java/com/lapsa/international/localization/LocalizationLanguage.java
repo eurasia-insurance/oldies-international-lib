@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,13 +24,13 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
     //
 
     private LocalizationLanguage(String tag) {
-	this.tag = tag;
+	this.tag = Objects.requireNonNull(tag);
 	this.locale = Locale.forLanguageTag(tag);
     }
 
     private LocalizationLanguage(String tag, Locale locale) {
-	this.tag = tag;
-	this.locale = locale;
+	this.tag = Objects.requireNonNull(tag);
+	this.locale = Objects.requireNonNull(locale);
     }
 
     //
@@ -96,5 +97,4 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
     public Locale getLocale() {
 	return locale;
     }
-
 }
