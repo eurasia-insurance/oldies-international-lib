@@ -289,10 +289,16 @@ public enum Country implements InternationalLocalizedElement {
 
     //
 
+    public static final Stream<Country> valuesStream() {
+	return Stream.of(values());
+    }
+
+    //
+
     private static final Predicate<Country> SELECTABLE_FILTER = Country::isActual;
 
     public static final Country[] selectableValues() {
-	return Stream.of(values()) //
+	return valuesStream() //
 		.filter(SELECTABLE_FILTER) //
 		.toArray(Country[]::new);
     }
@@ -300,7 +306,7 @@ public enum Country implements InternationalLocalizedElement {
     private static final Predicate<Country> NON_SELECTABLE_FILTER = SELECTABLE_FILTER.negate();
 
     public static final Country[] nonSelectableValues() {
-	return Stream.of(values()) //
+	return valuesStream() //
 		.filter(NON_SELECTABLE_FILTER) //
 		.toArray(Country[]::new);
     }
@@ -312,7 +318,7 @@ public enum Country implements InternationalLocalizedElement {
     }
 
     public static Country forDigitalCode(String digitalCode) {
-	return Stream.of(values()) //
+	return valuesStream() //
 		.filter(x -> x.digitalCode == digitalCode) //
 		.findAny() //
 		.orElse(null);

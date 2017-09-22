@@ -19,6 +19,12 @@ public enum PhoneType implements InternationalLocalizedElement {
 	this.fontAwesomeCodeIcon = fontAwesomeCode;
     }
 
+    //
+
+    public static final Stream<PhoneType> valuesStream() {
+	return Stream.of(values());
+    }
+
     // GENERATED
 
     public String getFontAwesomeIcon() {

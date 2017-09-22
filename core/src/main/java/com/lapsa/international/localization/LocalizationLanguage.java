@@ -34,9 +34,15 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
 
     //
 
+    public static final Stream<LocalizationLanguage> valuesStream() {
+	return Stream.of(values());
+    }
+
+    //
+
     private static final LocalizationLanguage DEFAULT = LocalizationLanguage.ENGLISH;
 
-    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG = Stream.of(LocalizationLanguage.values()) //
+    private final static Map<String, LocalizationLanguage> LANGUAGES_BY_TAG = valuesStream() //
 	    .collect(Collectors.collectingAndThen(
 		    Collectors.toMap(LocalizationLanguage::getTag, Function.identity()),
 		    Collections::unmodifiableMap));
@@ -52,15 +58,12 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
     }
 
     public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
-	try {
-	    for (Locale locale : locales) {
-		LocalizationLanguage lang = byLocale(locale);
-		if (lang != null)
-		    return lang;
-	    }
-	} catch (NullPointerException ignored) {
-	}
-	return _orDefault(null);
+	return locales.stream() //
+		.filter(Predicates.objectNotNull()) //
+		.map(LocalizationLanguage::byLocale) //
+		.filter(Predicates.objectNotNull()) //
+		.findFirst() //
+		.orElse(_orDefault(null));
     }
 
     public static LocalizationLanguage byTagOrDefault(String tag) {
