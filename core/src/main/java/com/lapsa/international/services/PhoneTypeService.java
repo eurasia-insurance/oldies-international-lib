@@ -12,11 +12,11 @@ public interface PhoneTypeService extends NamingListingService<PhoneType> {
 
     @Override
     default PhoneType[] getSelectable() {
-	return PhoneType.values();
+	return PhoneType.selectableValues();
     }
 
     @Override
     default PhoneType[] getNonSelectable() {
-	return new PhoneType[0];
+	return PhoneType.nonSelectableValues();
     }
 }

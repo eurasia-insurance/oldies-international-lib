@@ -13,11 +13,11 @@ public interface LocalizationLanguageService extends NamingListingService<Locali
 
     @Override
     default LocalizationLanguage[] getSelectable() {
-	return LocalizationLanguage.values();
+	return LocalizationLanguage.selectableValues();
     }
 
     @Override
     default LocalizationLanguage[] getNonSelectable() {
-	return new LocalizationLanguage[0];
+	return LocalizationLanguage.nonSelectableValues();
     }
 }
