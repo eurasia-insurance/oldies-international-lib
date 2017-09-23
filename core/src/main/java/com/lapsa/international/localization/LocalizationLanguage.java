@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.lapsa.commons.function.Predicates;
+import com.lapsa.commons.function.MyPredicates;
 import com.lapsa.international.InternationalLocalizedElement;
 
 public enum LocalizationLanguage implements InternationalLocalizedElement {
@@ -82,9 +82,9 @@ public enum LocalizationLanguage implements InternationalLocalizedElement {
 
     public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
 	return locales.stream() //
-		.filter(Predicates.objectNotNull()) //
+		.filter(MyPredicates.objectNotNull()) //
 		.map(LocalizationLanguage::byLocale) //
-		.filter(Predicates.objectNotNull()) //
+		.filter(MyPredicates.objectNotNull()) //
 		.findFirst() //
 		.orElse(_orDefault(null));
     }
