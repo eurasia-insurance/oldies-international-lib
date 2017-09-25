@@ -11,20 +11,23 @@ import javax.inject.Named;
 
 import com.lapsa.faces.services.FacesSelectItemService;
 import com.lapsa.international.localization.LocalizationLanguage;
-import com.lapsa.international.services.LocalizationLanguageService;
 
 @Named("localizationLanguageService")
 @ApplicationScoped
-public class LocalizationLanguageServiceBean
-	implements LocalizationLanguageService, FacesSelectItemService<LocalizationLanguage> {
+public class LocalizationLanguageServiceBean implements FacesSelectItemService<LocalizationLanguage> {
+
+    @Override
+    public LocalizationLanguage[] getAll() {
+	return LocalizationLanguage.values();
+    }
 
     @Override
     public LocalizationLanguage[] getSelectable() {
-	// TODO HACK подумать как развести CDI и JSF бины
 	if (FacesContext.getCurrentInstance() == null)
-	    return LocalizationLanguageService.super.getSelectable();
+	    // is not on Faces context so use default implementation
+	    return LocalizationLanguage.selectableValues();
 
-	return Stream.of(LocalizationLanguage.values()) //
+	return LocalizationLanguage.valuesStream() //
 		.filter(x -> facesSupportedLocalesStream() //
 			.anyMatch(l -> l.getLanguage().equals(x.getTag())))
 		.toArray(LocalizationLanguage[]::new);
@@ -32,11 +35,11 @@ public class LocalizationLanguageServiceBean
 
     @Override
     public LocalizationLanguage[] getNonSelectable() {
-	// TODO HACK подумать как развести CDI и JSF бины
 	if (FacesContext.getCurrentInstance() == null)
-	    return LocalizationLanguageService.super.getNonSelectable();
+	    // is not on Faces context so use default implementation
+	    return LocalizationLanguage.nonSelectableValues();
 
-	return Stream.of(LocalizationLanguage.values()) //
+	return LocalizationLanguage.valuesStream() //
 		.filter(x -> facesSupportedLocalesStream() //
 			.noneMatch(l -> l.getLanguage().equals(x.getTag())))
 		.toArray(LocalizationLanguage[]::new);

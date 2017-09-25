@@ -5,9 +5,23 @@ import javax.inject.Named;
 
 import com.lapsa.faces.services.FacesSelectItemService;
 import com.lapsa.international.country.Country;
-import com.lapsa.international.services.CountryService;
 
 @Named("countryService")
 @ApplicationScoped
-public class CountryServiceBean implements CountryService, FacesSelectItemService<Country> {
+public class CountryServiceBean implements FacesSelectItemService<Country> {
+
+    @Override
+    public Country[] getAll() {
+	return Country.values();
+    }
+
+    @Override
+    public Country[] getSelectable() {
+	return Country.selectableValues();
+    }
+
+    @Override
+    public Country[] getNonSelectable() {
+	return Country.nonSelectableValues();
+    }
 }
