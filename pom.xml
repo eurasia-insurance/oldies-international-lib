@@ -22,6 +22,7 @@
 	<properties>
 		<!-- APIs -->
 		<lapsa-lib.version>2.2-SNAPSHOT</lapsa-lib.version>
+		<lapsa-commons-lib.version>2.2-SNAPSHOT</lapsa-commons-lib.version>
 	</properties>
 
 	<dependencyManagement>
@@ -40,13 +41,19 @@
 			<!-- internal lapsa -->
 			<dependency>
 				<groupId>com.lapsa.lapsa-lib</groupId>
-				<artifactId>lapsa-commons</artifactId>
-				<version>${lapsa-lib.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.lapsa.lapsa-lib</groupId>
 				<artifactId>lapsa-faces</artifactId>
 				<version>${lapsa-lib.version}</version>
+			</dependency>
+			<!-- internal lapsa-commons -->
+			<dependency>
+				<groupId>com.lapsa.lapsa-commons-lib</groupId>
+				<artifactId>lapsa-commons</artifactId>
+				<version>${lapsa-commons-lib.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lapsa.lapsa-commons-lib</groupId>
+				<artifactId>lapsa-commons-test</artifactId>
+				<version>${lapsa-commons-lib.version}</version>
 			</dependency>
 			<!-- external -->
 			<dependency>

@@ -4,9 +4,9 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import com.lapsa.international.InternationalLocalizedElement;
+import com.lapsa.commons.elements.LocalizedElement;
 
-public enum Country implements InternationalLocalizedElement {
+public enum Country implements LocalizedElement {
     AUS("AU", "AUS", "036", "ISO 3166-2:AU"),
     AUT("AT", "AUT", "040", "ISO 3166-2:AT"),
     AZE("AZ", "AZE", "031", "ISO 3166-2:AZ"),

@@ -10,10 +10,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.lapsa.commons.elements.LocalizedElement;
 import com.lapsa.commons.function.MyPredicates;
-import com.lapsa.international.InternationalLocalizedElement;
 
-public enum LocalizationLanguage implements InternationalLocalizedElement {
+public enum LocalizationLanguage implements LocalizedElement {
     RUSSIAN("ru"), // русский
     ENGLISH("en", Locale.ENGLISH), // английский
     KAZAKH("kk"), // казахский
