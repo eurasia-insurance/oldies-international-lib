@@ -1,6 +1,8 @@
-package test.localization;
+package test.localization.country;
 
 import com.lapsa.international.country.Country;
+
+import test.localization.ElementsLocalizationTest;
 
 public class CountryEnglishTest extends ElementsLocalizationTest<Country> {
 
