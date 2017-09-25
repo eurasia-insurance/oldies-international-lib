@@ -2,9 +2,9 @@ package test.localization;
 
 import com.lapsa.international.localization.LocalizationLanguage;
 
-public class LocalizationLanguageKazakh extends ElementsLocalizationTest<LocalizationLanguage> {
+public class LocalizationLanguageKazakhTest extends ElementsLocalizationTest<LocalizationLanguage> {
 
-    public LocalizationLanguageKazakh() {
+    public LocalizationLanguageKazakhTest() {
 	super(LocalizationLanguage.values(), LocalizationLanguage.class, LOCALE_KAZAKH);
     }
 }

@@ -2,9 +2,9 @@ package test.localization;
 
 import com.lapsa.international.phone.PhoneType;
 
-public class PhoneTypeEnglish extends ElementsLocalizationTest<PhoneType> {
+public class PhoneTypeEnglishTest extends ElementsLocalizationTest<PhoneType> {
 
-    public PhoneTypeEnglish() {
+    public PhoneTypeEnglishTest() {
 	super(PhoneType.values(), PhoneType.class, LOCALE_ENGLISH);
     }
 }

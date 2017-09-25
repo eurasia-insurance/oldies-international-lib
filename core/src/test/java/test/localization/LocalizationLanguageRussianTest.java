@@ -2,9 +2,9 @@ package test.localization;
 
 import com.lapsa.international.localization.LocalizationLanguage;
 
-public class LocalizationLanguageRussian extends ElementsLocalizationTest<LocalizationLanguage> {
+public class LocalizationLanguageRussianTest extends ElementsLocalizationTest<LocalizationLanguage> {
 
-    public LocalizationLanguageRussian() {
+    public LocalizationLanguageRussianTest() {
 	super(LocalizationLanguage.values(), LocalizationLanguage.class, LOCALE_RUSSIAN);
     }
 }
