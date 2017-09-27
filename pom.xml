@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>core</module>
+		<module>faces</module>
 		<module>eelib</module>
 	</modules>
 
@@ -29,12 +30,17 @@
 		<dependencies>
 			<!-- own -->
 			<dependency>
-				<groupId>com.lapsa.international-lib</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>international-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.lapsa.international-lib</groupId>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>international-faces</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>international-eelib</artifactId>
 				<version>${project.version}</version>
 			</dependency>

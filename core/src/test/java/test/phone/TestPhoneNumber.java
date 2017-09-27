@@ -31,7 +31,7 @@ public class TestPhoneNumber {
 	));
 	logger.info(String.format(//
 		"Country code: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
-		a.getCountryCode() != null ? countries.getString(a.getCountryCode().getCountry().canonicalName()) : "", // $1
+		a.getCountryCode() != null ? countries.getString(Country.class.getCanonicalName()) : "", // $1
 		a.getCountryCode() != null ? a.getCountryCode().getPhoneCode() : "", // $2
 		a.getAreaCode(), // $3
 		a.getPlain() // $4

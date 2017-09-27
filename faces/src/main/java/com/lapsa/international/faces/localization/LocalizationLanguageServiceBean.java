@@ -1,5 +1,5 @@
 
-package com.lapsa.international.services.bean;
+package com.lapsa.international.faces.localization;
 
 import java.util.Locale;
 import java.util.stream.Stream;
@@ -9,12 +9,12 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import com.lapsa.faces.services.FacesSelectItemService;
+import com.lapsa.faces.services.FacesSelectItemListingService;
 import com.lapsa.international.localization.LocalizationLanguage;
 
 @Named("localizationLanguageService")
 @ApplicationScoped
-public class LocalizationLanguageServiceBean implements FacesSelectItemService<LocalizationLanguage> {
+public class LocalizationLanguageServiceBean implements FacesSelectItemListingService<LocalizationLanguage> {
 
     @Override
     public LocalizationLanguage[] getAll() {

@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.lapsa.commons.elements.LocalizedElement;
-import com.lapsa.commons.function.MyPredicates;
 
 public enum LocalizationLanguage implements LocalizedElement {
     RUSSIAN("ru"), // русский
@@ -82,9 +81,9 @@ public enum LocalizationLanguage implements LocalizedElement {
 
     public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
 	return locales.stream() //
-		.filter(MyPredicates.objectNotNull()) //
+		.filter(Objects::nonNull) //
 		.map(LocalizationLanguage::byLocale) //
-		.filter(MyPredicates.objectNotNull()) //
+		.filter(Objects::nonNull) //
 		.findFirst() //
 		.orElse(_orDefault(null));
     }
