@@ -18,7 +18,6 @@
 			<groupId>com.lapsa.international-lib</groupId>
 			<artifactId>international-core</artifactId>
 			<scope>compile</scope>
-			<optional>false</optional>
 		</dependency>
 		<!-- Java EE -->
 		<dependency>
