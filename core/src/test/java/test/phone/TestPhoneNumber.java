@@ -3,12 +3,13 @@ package test.phone;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.lapsa.commons.elements.Localized;
+import com.lapsa.commons.function.MyOptionals;
 import com.lapsa.international.country.Country;
 import com.lapsa.international.phone.CountryCode;
 import com.lapsa.international.phone.PhoneNumber;
@@ -16,12 +17,10 @@ import com.lapsa.international.phone.PhoneNumber;
 public class TestPhoneNumber {
 
     private static Logger logger;
-    private static ResourceBundle countries;
 
     @BeforeClass
     public static void init() {
 	logger = Logger.getAnonymousLogger();
-	countries = ResourceBundle.getBundle(Country.class.getCanonicalName());
     }
 
     private static void printFormat(PhoneNumber a) {
@@ -30,9 +29,15 @@ public class TestPhoneNumber {
 		a.getPlain() // $2
 	));
 	logger.info(String.format(//
-		"Country code: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
-		a.getCountryCode() != null ? countries.getString(Country.class.getCanonicalName()) : "", // $1
-		a.getCountryCode() != null ? a.getCountryCode().getPhoneCode() : "", // $2
+		"Country: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
+		MyOptionals.of(a.getCountryCode()) //
+			.map(CountryCode::name) //
+			.map(Country::forAlpha2Code) //
+			.map(Localized::displayName) //
+			.orElse(""), // $1
+		MyOptionals.of(a.getCountryCode()) //
+			.map(CountryCode::getPhoneCode) //
+			.orElse(""), // $2
 		a.getAreaCode(), // $3
 		a.getPlain() // $4
 	));
