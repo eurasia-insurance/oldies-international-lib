@@ -1,10 +1,10 @@
 package com.lapsa.international.country;
 
-import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import com.lapsa.commons.elements.LocalizedElement;
+import com.lapsa.commons.function.MyObjects;
 
 public enum Country implements LocalizedElement {
     AUS("AU", "AUS", "036", "ISO 3166-2:AU"),
@@ -273,18 +273,18 @@ public enum Country implements LocalizedElement {
     //
 
     private Country(String alpha2Code, String alpha3Code, String digitalCode, String isoCode, boolean actual) {
-	this.alpha2Code = Objects.requireNonNull(alpha2Code);
-	this.alpha3Code = Objects.requireNonNull(alpha3Code);
-	this.digitalCode = Objects.requireNonNull(digitalCode);
-	this.isoCode = Objects.requireNonNull(isoCode);
+	this.alpha2Code = MyObjects.requireNonNull(alpha2Code);
+	this.alpha3Code = MyObjects.requireNonNull(alpha3Code);
+	this.digitalCode = MyObjects.requireNonNull(digitalCode);
+	this.isoCode = MyObjects.requireNonNull(isoCode);
 	this.actual = actual;
     }
 
     private Country(String alpha2Code, String alpha3Code, String digitalCode, String isoCode) {
-	this.alpha2Code = Objects.requireNonNull(alpha2Code);
-	this.alpha3Code = Objects.requireNonNull(alpha3Code);
-	this.digitalCode = Objects.requireNonNull(digitalCode);
-	this.isoCode = Objects.requireNonNull(isoCode);
+	this.alpha2Code = MyObjects.requireNonNull(alpha2Code);
+	this.alpha3Code = MyObjects.requireNonNull(alpha3Code);
+	this.digitalCode = MyObjects.requireNonNull(digitalCode);
+	this.isoCode = MyObjects.requireNonNull(isoCode);
 	this.actual = true;
     }
 

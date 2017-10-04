@@ -4,13 +4,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.lapsa.commons.elements.LocalizedElement;
+import com.lapsa.commons.function.MyObjects;
 
 public enum LocalizationLanguage implements LocalizedElement {
     RUSSIAN("ru"), // русский
@@ -25,14 +25,14 @@ public enum LocalizationLanguage implements LocalizedElement {
     //
 
     private LocalizationLanguage(String tag) {
-	this.tag = Objects.requireNonNull(tag);
+	this.tag = MyObjects.requireNonNull(tag);
 	this.locale = Locale.forLanguageTag(tag);
 	this.selectable = true;
     }
 
     private LocalizationLanguage(String tag, Locale locale) {
-	this.tag = Objects.requireNonNull(tag);
-	this.locale = Objects.requireNonNull(locale);
+	this.tag = MyObjects.requireNonNull(tag);
+	this.locale = MyObjects.requireNonNull(locale);
 	this.selectable = true;
     }
 
@@ -81,9 +81,9 @@ public enum LocalizationLanguage implements LocalizedElement {
 
     public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
 	return locales.stream() //
-		.filter(Objects::nonNull) //
+		.filter(MyObjects::nonNull) //
 		.map(LocalizationLanguage::byLocale) //
-		.filter(Objects::nonNull) //
+		.filter(MyObjects::nonNull) //
 		.findFirst() //
 		.orElse(_orDefault(null));
     }

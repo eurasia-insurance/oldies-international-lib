@@ -1,13 +1,13 @@
 package com.lapsa.international.phone.internal;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import com.lapsa.commons.function.MyObjects;
 import com.lapsa.international.phone.CountryCode;
 import com.lapsa.international.phone.PhoneNumber;
 
@@ -22,9 +22,9 @@ public final class PhoneNumberComplete extends PhoneNumber implements Serializab
     private final String phoneNumber;
 
     public PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber) {
-	Objects.requireNonNull(countryCode, "Country code can not be null");
-	Objects.requireNonNull(countryCode, "Area code can not be null");
-	Objects.requireNonNull(phoneNumber, "Phone number can not be null");
+	MyObjects.requireNonNull(countryCode, "Country code can not be null");
+	MyObjects.requireNonNull(countryCode, "Area code can not be null");
+	MyObjects.requireNonNull(phoneNumber, "Phone number can not be null");
 	this.countryCode = countryCode;
 	this.areaCode = areaCode;
 	this.phoneNumber = phoneNumber;
