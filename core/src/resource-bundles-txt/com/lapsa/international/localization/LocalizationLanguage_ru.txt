@@ -1,0 +1,7 @@
+com.lapsa.international.localization.LocalizationLanguage.RUSSIAN = Русский
+com.lapsa.international.localization.LocalizationLanguage.ENGLISH = English
+com.lapsa.international.localization.LocalizationLanguage.KAZAKH = Қазақ
+
+com.lapsa.international.localization.LocalizationLanguage.RUSSIAN.short = рус
+com.lapsa.international.localization.LocalizationLanguage.ENGLISH.short = eng
+com.lapsa.international.localization.LocalizationLanguage.KAZAKH.short = қаз

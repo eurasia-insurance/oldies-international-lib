@@ -1,0 +1,11 @@
+com.lapsa.international.phone.PhoneType.FAX = факс нөмірі
+com.lapsa.international.phone.PhoneType.HOME = үй телефоны
+com.lapsa.international.phone.PhoneType.MAIN = телефон
+com.lapsa.international.phone.PhoneType.MOBILE = ұялы телефон
+com.lapsa.international.phone.PhoneType.WORK = жұмыс телефон
+
+com.lapsa.international.phone.PhoneType.FAX.short = факс
+com.lapsa.international.phone.PhoneType.HOME.short = үй.
+com.lapsa.international.phone.PhoneType.MAIN.short = тел.
+com.lapsa.international.phone.PhoneType.MOBILE.short = ұял.
+com.lapsa.international.phone.PhoneType.WORK.short = жұм.

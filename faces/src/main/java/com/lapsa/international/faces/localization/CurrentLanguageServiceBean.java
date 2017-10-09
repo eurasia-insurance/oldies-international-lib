@@ -1,0 +1,103 @@
+package com.lapsa.international.faces.localization;
+
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.logging.Logger;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import com.lapsa.international.localization.LocalizationLanguage;
+
+@Named("currentLanguageService")
+@SessionScoped
+public class CurrentLanguageServiceBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private LocalizationLanguage language;
+
+    private transient Logger logger;
+
+    @PostConstruct
+    public void init() {
+	logger = Logger.getLogger(this.getClass().getCanonicalName());
+
+	// try to set language defined in user agent
+	{
+	    final Locale requestedLocale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
+	    logger.finer(String.format("Request locale is '%1$s'", requestedLocale));
+	    if (isSupportedLocale(requestedLocale))
+		language = byLocale(requestedLocale);
+	    logger.finer(String.format("Language is : '%1$s'", language));
+	}
+
+	// if fails trying to set language defined in application as
+	// default
+	if (language == null) {
+	    final Locale defaultLocale = FacesContext.getCurrentInstance().getApplication().getDefaultLocale();
+	    logger.finer(String.format("Application default locale is '%1$s'", defaultLocale));
+	    if (isSupportedLocale(defaultLocale))
+		language = byLocale(defaultLocale);
+	    logger.finer(String.format("Language is : '%1$s'", language));
+	}
+
+	// if fails then first supported locale used
+	if (language == null) {
+	    final Locale supportedLocale = firstSupportedLocale();
+	    logger.finer(String.format("First supported locale is '%1$s'", supportedLocale));
+	    language = byLocale(supportedLocale);
+	    logger.finer(String.format("Language is : '%1$s'", language));
+	}
+
+	// if fails seting hardcoded language - RUSSIAN
+	if (language == null) {
+	    language = LocalizationLanguage.RUSSIAN;
+	    logger.finer(String.format("Language is : '%1$s'", language));
+	}
+    }
+
+    private boolean isSupportedLocale(Locale locale) {
+	if (locale == null)
+	    return false;
+	Iterator<Locale> supportedLocales = FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
+	while (supportedLocales.hasNext()) {
+	    Locale supported = supportedLocales.next();
+	    if (supported.getLanguage().equals(locale.getLanguage()))
+		return true;
+	}
+	return false;
+    }
+
+    private Locale firstSupportedLocale() {
+	final Iterator<Locale> lls = FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
+	if (lls.hasNext())
+	    return lls.next();
+	return null;
+    }
+
+    public Locale getLocale() {
+	return Locale.forLanguageTag(language.getTag());
+    }
+
+    public LocalizationLanguage getLanguage() {
+	return language;
+    }
+
+    public void setLanguage(final LocalizationLanguage language) {
+	if (language == null)
+	    return;
+	final Locale locale = Locale.forLanguageTag(language.getTag());
+	if (isSupportedLocale(locale)) {
+	    this.language = language;
+	    FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+	}
+    }
+
+    private static LocalizationLanguage byLocale(final Locale locale) {
+	return LocalizationLanguage.byTag(locale.getLanguage());
+    }
+}

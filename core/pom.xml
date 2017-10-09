@@ -13,6 +13,18 @@
 	<name>Internationalization Lib : Core POJOs</name>
 
 	<dependencies>
+		<!-- tech -->
+		<dependency>
+			<groupId>tech.lapsa.java</groupId>
+			<artifactId>java-commons</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>tech.lapsa.java</groupId>
+			<artifactId>java-commons-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- external -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
