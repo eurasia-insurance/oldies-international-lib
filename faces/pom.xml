@@ -20,7 +20,7 @@
 			<artifactId>international-core</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		<!-- internal lapsa -->
+		<!-- oldies -->
 		<dependency>
 			<groupId>com.lapsa.lapsa-lib</groupId>
 			<artifactId>lapsa-faces</artifactId>

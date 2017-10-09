@@ -15,7 +15,7 @@
 	<dependencies>
 		<!-- own -->
 		<dependency>
-			<groupId>com.lapsa.international-lib</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>international-core</artifactId>
 			<scope>compile</scope>
 			<optional>false</optional>
@@ -58,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.glassfish.web</groupId>
+			<groupId>org.glassfish</groupId>
 			<artifactId>javax.el</artifactId>
 			<scope>test</scope>
 		</dependency>
