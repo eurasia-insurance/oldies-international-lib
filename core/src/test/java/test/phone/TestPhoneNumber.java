@@ -8,11 +8,12 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lapsa.commons.elements.Localized;
-import com.lapsa.commons.function.MyOptionals;
 import com.lapsa.international.country.Country;
 import com.lapsa.international.phone.CountryCode;
 import com.lapsa.international.phone.PhoneNumber;
+
+import tech.lapsa.java.commons.function.MyOptionals;
+import tech.lapsa.java.commons.localization.Localized;
 
 public class TestPhoneNumber {
 
