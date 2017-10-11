@@ -3,7 +3,7 @@ package com.lapsa.international.phone;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import com.lapsa.commons.elements.LocalizedElement;
+import tech.lapsa.java.commons.localization.LocalizedElement;
 
 public enum PhoneType implements LocalizedElement {
     MAIN("fa-phone"), // основной телефон

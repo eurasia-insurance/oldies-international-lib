@@ -9,8 +9,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.lapsa.commons.elements.LocalizedElement;
-import com.lapsa.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.localization.LocalizedElement;
 
 public enum LocalizationLanguage implements LocalizedElement {
     RUSSIAN("ru"), // русский
