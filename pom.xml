@@ -8,7 +8,7 @@
 	</parent>
 
 	<groupId>com.lapsa.international-lib</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>international-root</artifactId>
 	<version>3.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -72,8 +72,10 @@
 			<!-- oldies -->
 			<dependency>
 				<groupId>com.lapsa.lapsa-lib</groupId>
-				<artifactId>lapsa-faces</artifactId>
+				<artifactId>lapsa-root</artifactId>
 				<version>${lapsa-lib.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<!-- external -->
 			<dependency>

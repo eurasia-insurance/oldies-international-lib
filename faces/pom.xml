@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lapsa.international-lib</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>international-root</artifactId>
 		<version>3.2-SNAPSHOT</version>
 	</parent>
 
