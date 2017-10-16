@@ -34,7 +34,7 @@ public class TestPhoneNumber {
 		MyOptionals.of(a.getCountryCode()) //
 			.map(CountryCode::name) //
 			.map(Country::forAlpha2Code) //
-			.map(Localized::displayName) //
+			.map(Localized::regular) //
 			.orElse(""), // $1
 		MyOptionals.of(a.getCountryCode()) //
 			.map(CountryCode::getPhoneCode) //
