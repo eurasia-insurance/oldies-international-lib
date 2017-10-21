@@ -3,12 +3,13 @@ package com.lapsa.international.faces.country;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
-import com.lapsa.faces.services.FacesSelectItemListingService;
 import com.lapsa.international.country.Country;
 
-@Named("countryService")
+import tech.lapsa.javax.faces.beans.localization.ListingBean;
+
+@Named("country")
 @ApplicationScoped
-public class CountryServiceBean implements FacesSelectItemListingService<Country> {
+public class CountryBean implements ListingBean<Country> {
 
     @Override
     public Country[] getAll() {

@@ -9,12 +9,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import com.lapsa.faces.services.FacesSelectItemListingService;
 import com.lapsa.international.localization.LocalizationLanguage;
 
-@Named("localizationLanguageService")
+import tech.lapsa.javax.faces.beans.localization.ListingBean;
+
+@Named("localizationLanguage")
 @ApplicationScoped
-public class LocalizationLanguageServiceBean implements FacesSelectItemListingService<LocalizationLanguage> {
+public class LocalizationLanguageBean implements ListingBean<LocalizationLanguage> {
 
     @Override
     public LocalizationLanguage[] getAll() {

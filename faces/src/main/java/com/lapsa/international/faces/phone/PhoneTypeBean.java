@@ -3,12 +3,13 @@ package com.lapsa.international.faces.phone;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
-import com.lapsa.faces.services.FacesSelectItemListingService;
 import com.lapsa.international.phone.PhoneType;
 
-@Named("phoneTypeService")
+import tech.lapsa.javax.faces.beans.localization.ListingBean;
+
+@Named("phoneType")
 @ApplicationScoped
-public class PhoneTypeServiceBean implements FacesSelectItemListingService<PhoneType> {
+public class PhoneTypeBean implements ListingBean<PhoneType> {
 
     @Override
     public PhoneType[] getAll() {
