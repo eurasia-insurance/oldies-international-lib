@@ -13,7 +13,7 @@ import com.lapsa.international.localization.LocalizationLanguage;
 
 import tech.lapsa.javax.faces.beans.localization.ListingBean;
 
-@Named("localizationLanguage")
+@Named("LocalizationLanguage")
 @ApplicationScoped
 public class LocalizationLanguageBean implements ListingBean<LocalizationLanguage> {
 

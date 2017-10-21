@@ -7,7 +7,7 @@ import com.lapsa.international.country.Country;
 
 import tech.lapsa.javax.faces.beans.localization.ListingBean;
 
-@Named("country")
+@Named("Country")
 @ApplicationScoped
 public class CountryBean implements ListingBean<Country> {
 

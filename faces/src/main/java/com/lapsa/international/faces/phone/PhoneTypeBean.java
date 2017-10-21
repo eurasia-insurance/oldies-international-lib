@@ -7,7 +7,7 @@ import com.lapsa.international.phone.PhoneType;
 
 import tech.lapsa.javax.faces.beans.localization.ListingBean;
 
-@Named("phoneType")
+@Named("PhoneType")
 @ApplicationScoped
 public class PhoneTypeBean implements ListingBean<PhoneType> {
 
