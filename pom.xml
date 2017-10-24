@@ -23,7 +23,7 @@
 	<properties>
 		<!-- BOMS -->
 		<javax-javaee-bom.version>7.0-SNAPSHOT</javax-javaee-bom.version>
-		<java-commons-root.version>1.0-SNAPSHOT</java-commons-root.version>
+		<java-commons.version>1.0-SNAPSHOT</java-commons.version>
 		<javax-faces-commons.version>1.0-SNAPSHOT</javax-faces-commons.version>
 		<payara-bom.version>4.1.2-1-SNAPSHOT</payara-bom.version>
 	</properties>
@@ -41,7 +41,7 @@
 			<dependency>
 				<groupId>tech.lapsa.java</groupId>
 				<artifactId>java-commons-root</artifactId>
-				<version>${java-commons-root.version}</version>
+				<version>${java-commons.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

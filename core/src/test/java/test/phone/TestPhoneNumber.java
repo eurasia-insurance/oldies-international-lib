@@ -3,9 +3,6 @@ package test.phone;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import java.util.logging.Logger;
-
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.lapsa.international.country.Country;
@@ -14,22 +11,18 @@ import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.java.commons.function.MyOptionals;
 import tech.lapsa.java.commons.localization.Localized;
+import tech.lapsa.java.commons.logging.MyLogger;
 
 public class TestPhoneNumber {
 
-    private static Logger logger;
-
-    @BeforeClass
-    public static void init() {
-	logger = Logger.getAnonymousLogger();
-    }
+    private static MyLogger logger = MyLogger.getDefault();
 
     private static void printFormat(PhoneNumber a) {
-	logger.info(String.format("Formatted: '%1$s' Plain: '%2$s'", //
+	logger.INFO.log("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
 		a.getPlain() // $2
-	));
-	logger.info(String.format(//
+	);
+	logger.INFO.log(
 		"Country: \"%1$s\" Country number: +%2$s Area code: \"%3$s\" Phone number: \"%4$s\"", //
 		MyOptionals.of(a.getCountryCode()) //
 			.map(CountryCode::name) //
@@ -41,7 +34,7 @@ public class TestPhoneNumber {
 			.orElse(""), // $2
 		a.getAreaCode(), // $3
 		a.getPlain() // $4
-	));
+	);
     }
 
     private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
