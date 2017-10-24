@@ -22,7 +22,7 @@ public class CurrentLanguageServiceBean implements Serializable {
     private LocalizationLanguage language;
 
     private static MyLogger logger = MyLogger.newBuilder() //
-	    .withPackageNameOf(CurrentLanguageServiceBean.class) //
+	    .withNameOf(CurrentLanguageServiceBean.class) //
 	    .build();
 
     @PostConstruct
