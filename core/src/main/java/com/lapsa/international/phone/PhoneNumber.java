@@ -1,5 +1,6 @@
 package com.lapsa.international.phone;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +11,9 @@ import com.lapsa.international.phone.internal.PhoneNumberComplete;
 import com.lapsa.international.phone.internal.PhoneNumberUncomplete;
 
 @XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
-public abstract class PhoneNumber {
+public abstract class PhoneNumber implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public abstract String getFormatted();
 
