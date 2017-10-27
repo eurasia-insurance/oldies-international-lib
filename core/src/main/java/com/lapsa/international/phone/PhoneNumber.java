@@ -6,9 +6,14 @@ import java.util.regex.Pattern;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.lapsa.international.phone.converter.jaxb.JAXBPhoneNumberAdapter;
-import com.lapsa.international.phone.internal.PhoneNumberComplete;
-import com.lapsa.international.phone.internal.PhoneNumberUncomplete;
+
+import tech.lapsa.java.commons.function.MyObjects;
 
 @XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
 public abstract class PhoneNumber implements Serializable {
@@ -179,5 +184,135 @@ public abstract class PhoneNumber implements Serializable {
 
     public static PhoneNumber of(CountryCode countryCode, String areaCode, String phoneNumber) {
 	return new PhoneNumberComplete(countryCode, areaCode, phoneNumber);
+    }
+
+    private static final class PhoneNumberComplete extends PhoneNumber {
+
+	private static final long serialVersionUID = 1L;
+
+	private static final String DEFAULT_FORMATTED_FORMAT = "+%1$s (%2$s) %3$s";
+	private static final String DEFAULT_PLAIN_FORMAT = "%1$s%2$s%3$s";
+
+	private final CountryCode countryCode;
+	private final String areaCode;
+	private final String phoneNumber;
+
+	private PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber) {
+	    MyObjects.requireNonNull(countryCode, "Country code can not be null");
+	    MyObjects.requireNonNull(countryCode, "Area code can not be null");
+	    MyObjects.requireNonNull(phoneNumber, "Phone number can not be null");
+	    this.countryCode = countryCode;
+	    this.areaCode = areaCode;
+	    this.phoneNumber = phoneNumber;
+	}
+
+	public boolean isComplete() {
+	    return countryCode != null && areaCode != null && phoneNumber != null;
+	}
+
+	@Override
+	public int hashCode() {
+	    return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public String toString() {
+	    return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
+	}
+
+	@Override
+	public String getFormatted() {
+	    if (!isComplete())
+		return getPlain();
+	    String ret = String.format(DEFAULT_FORMATTED_FORMAT, countryCode.getPhoneCode(), areaCode, phoneNumber);
+	    ret = ret.replaceAll("\\(\\s*\\)", "");
+	    ret = ret.trim();
+	    ret = ret.replaceAll("\\s+", " ");
+	    return ret;
+	}
+
+	@Override
+	public String getPlain() {
+	    return String.format(DEFAULT_PLAIN_FORMAT, //
+		    countryCode == null ? "" : countryCode.getPhoneCode(), // 1
+		    areaCode == null ? "" : areaCode, // 2
+		    phoneNumber == null ? "" : phoneNumber // 3
+	    ).replaceAll("\\s+", " ").trim();
+	}
+
+	// GENERATED
+
+	@Override
+	public CountryCode getCountryCode() {
+	    return countryCode;
+	}
+
+	@Override
+	public String getAreaCode() {
+	    return areaCode;
+	}
+
+	@Override
+	public String getPhoneNumber() {
+	    return phoneNumber;
+	}
+    }
+
+    private static final class PhoneNumberUncomplete extends PhoneNumber {
+
+	private static final long serialVersionUID = 1L;
+
+	private final String raw;
+
+	private PhoneNumberUncomplete(String raw) {
+	    MyObjects.requireNonNull(raw, "Phone number code can not be null");
+	    this.raw = raw;
+	}
+
+	@Override
+	public int hashCode() {
+	    return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public String toString() {
+	    return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
+	}
+
+	@Override
+	public String getFormatted() {
+	    return raw;
+	}
+
+	@Override
+	public String getPlain() {
+	    return raw;
+	}
+
+	@Override
+	public CountryCode getCountryCode() {
+	    return null;
+	}
+
+	@Override
+	public String getAreaCode() {
+	    return null;
+	}
+
+	@Override
+	public String getPhoneNumber() {
+	    return null;
+	}
+
     }
 }
