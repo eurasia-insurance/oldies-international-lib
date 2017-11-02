@@ -1,6 +1,6 @@
 package com.lapsa.international.phone;
 
-public class PhoneFormatException extends RuntimeException {
+public class PhoneFormatException extends IllegalArgumentException {
 
     private static final long serialVersionUID = 1L;
 
