@@ -38,14 +38,14 @@ public class TestPhoneNumber {
     }
 
     private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
-	PhoneNumber a = PhoneNumber.parse(value);
+	PhoneNumber a = PhoneNumber.of(value);
 	printFormat(a);
 	assertThat(a, allOf(not(nullValue()), is(equalTo(expecting))));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(expectingFormat))));
     }
 
     private void testNonStrict(String value) {
-	PhoneNumber a = PhoneNumber.parse(value);
+	PhoneNumber a = PhoneNumber.assertValid(value);
 	printFormat(a);
 	assertThat(a, not(nullValue()));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(value))));
@@ -114,7 +114,7 @@ public class TestPhoneNumber {
     @Test
     public void testTwoWays1() {
 	String source = "+86 (4) 7124545";
-	PhoneNumber p = PhoneNumber.parse(source);
+	PhoneNumber p = PhoneNumber.assertValid(source);
 	String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
@@ -122,7 +122,7 @@ public class TestPhoneNumber {
     @Test
     public void testTwoWays2() {
 	String source = "+370 (07) 47124545";
-	PhoneNumber p = PhoneNumber.parse(source);
+	PhoneNumber p = PhoneNumber.assertValid(source);
 	String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
@@ -138,7 +138,7 @@ public class TestPhoneNumber {
 	for (int i = 0; i < numbers.length; i++) {
 	    String num = numbers[i];
 	    String frm = formatted[i];
-	    PhoneNumber a = PhoneNumber.parse(num);
+	    PhoneNumber a = PhoneNumber.assertValid(num);
 	    printFormat(a);
 	    assertThat(a, not(nullValue()));
 	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));
