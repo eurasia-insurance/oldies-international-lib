@@ -4,20 +4,23 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import com.lapsa.international.phone.PhoneNumber;
 
-public class JAXBPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
+import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyStrings;
+
+public class XmlPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
 
     @Override
     public PhoneNumber unmarshal(String v) throws Exception {
-	if (v == null || v.isEmpty())
-	    return null;
-	return PhoneNumber.parse(v);
+	return MyStrings.empty(v) //
+		? null //
+		: PhoneNumber.assertValid(v);
     }
 
     @Override
     public String marshal(PhoneNumber v) throws Exception {
-	if (v == null)
-	    return null;
-	return v.toString();
+	return MyObjects.isNull(v) //
+		? null //
+		: v.toString();
     }
 
 }
