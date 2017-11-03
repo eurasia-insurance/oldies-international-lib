@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import com.lapsa.international.country.Country;
 
-public class JAXBCountryAdapter extends XmlAdapter<String, Country> {
+public class XmlCountryAdapter extends XmlAdapter<String, Country> {
 
     @Override
     public Country unmarshal(String v) throws Exception {

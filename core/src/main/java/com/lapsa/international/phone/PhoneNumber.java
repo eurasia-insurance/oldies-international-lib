@@ -11,14 +11,70 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.lapsa.international.phone.converter.jaxb.JAXBPhoneNumberAdapter;
+import com.lapsa.international.phone.converter.jaxb.XmlPhoneNumberAdapter;
 
 import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyStrings;
 
-@XmlJavaTypeAdapter(JAXBPhoneNumberAdapter.class)
+@XmlJavaTypeAdapter(XmlPhoneNumberAdapter.class)
 public abstract class PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * @param value
+     *            must not be null
+     * @return new phone number valid or not
+     * @throws IllegalArgumentException
+     *             if phone number is null
+     */
+    public static PhoneNumber assertValid(final String value) throws IllegalArgumentException {
+	try {
+	    return of(value);
+	} catch (IllegalArgumentException e) {
+	    return new PhoneNumberUncomplete(value);
+	}
+    }
+
+    /**
+     * @param value
+     * @return valid phone number
+     * @throws IllegalArgumentException
+     *             if phone number can'not be parsed or argument empty or null
+     */
+    public static PhoneNumber of(final String value) throws IllegalArgumentException {
+	MyStrings.requireNonEmpty(value, "value");
+	PhoneNumber pn = null;
+	pn = checkPlusOrZeroWithArea(value);
+	if (pn != null)
+	    return pn;
+	pn = checkPlusOrZeroNOArea(value);
+	if (pn != null)
+	    return pn;
+	pn = checkNOPlusOrZeroWithArea(value);
+	if (pn != null)
+	    return pn;
+	pn = checNOPlusOrZeroNOArea(value);
+	if (pn != null)
+	    return pn;
+	throw new PhoneFormatException(String.format("Invalid phone format at '%1$s'", value));
+    }
+
+    /**
+     * @param countryCode
+     *            can not be null
+     * @param areaCode
+     *            can not be null or empty
+     * @param phoneNumber
+     *            can not be null or empty
+     * @return valid phone number
+     * @throws IllegalArgumentException
+     *             when passing null values
+     */
+    public static PhoneNumber of(CountryCode countryCode, String areaCode, String phoneNumber)
+	    throws IllegalArgumentException {
+	return new PhoneNumberComplete(countryCode, areaCode, phoneNumber);
+    }
 
     public abstract String getFormatted();
 
@@ -157,35 +213,6 @@ public abstract class PhoneNumber implements Serializable {
 	return raw.replaceAll("[\\s\\-]", "");
     }
 
-    public static PhoneNumber parseStrict(final String raw) throws PhoneFormatException {
-	PhoneNumber pn = null;
-	pn = checkPlusOrZeroWithArea(raw);
-	if (pn != null)
-	    return pn;
-	pn = checkPlusOrZeroNOArea(raw);
-	if (pn != null)
-	    return pn;
-	pn = checkNOPlusOrZeroWithArea(raw);
-	if (pn != null)
-	    return pn;
-	pn = checNOPlusOrZeroNOArea(raw);
-	if (pn != null)
-	    return pn;
-	throw new PhoneFormatException(String.format("Invalid phone format at '%1$s'", raw));
-    }
-
-    public static PhoneNumber parse(final String raw) {
-	try {
-	    return parseStrict(raw);
-	} catch (PhoneFormatException e) {
-	    return new PhoneNumberUncomplete(raw);
-	}
-    }
-
-    public static PhoneNumber of(CountryCode countryCode, String areaCode, String phoneNumber) {
-	return new PhoneNumberComplete(countryCode, areaCode, phoneNumber);
-    }
-
     private static final class PhoneNumberComplete extends PhoneNumber {
 
 	private static final long serialVersionUID = 1L;
@@ -269,9 +296,8 @@ public abstract class PhoneNumber implements Serializable {
 
 	private final String raw;
 
-	private PhoneNumberUncomplete(String raw) {
-	    MyObjects.requireNonNull(raw, "Phone number code can not be null");
-	    this.raw = raw;
+	private PhoneNumberUncomplete(String number) {
+	    this.raw = MyObjects.requireNonNull(number, "number");
 	}
 
 	@Override
