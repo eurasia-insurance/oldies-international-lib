@@ -2,7 +2,4 @@ com.lapsa.international.phone.validators.ValidPhoneNumber.message = Телефо
 
 com.lapsa.international.country.validators.ValidCountry.message = Ел қате көрсетілген
 
-com.lapsa.international.internet.validators.ValidEmail.message = Қате  e-mail мекенжайы
-com.lapsa.international.internet.validators.ValidURL.message = Қате сайт мекенжайы 
-
 com.lapsa.international.cars.validators.ValidVINCode.message = VIN-коды қате
