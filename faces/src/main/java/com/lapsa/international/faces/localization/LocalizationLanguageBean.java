@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import com.lapsa.international.localization.LocalizationLanguage;
 
-import tech.lapsa.javax.faces.beans.localization.ListingBean;
+import tech.lapsa.javax.faces.commons.beans.localization.ListingBean;
 
 @Named("LocalizationLanguage")
 @ApplicationScoped
