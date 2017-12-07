@@ -15,14 +15,14 @@ import tech.lapsa.java.commons.logging.MyLogger;
 
 @Named("currentLanguageService")
 @SessionScoped
-public class CurrentLanguageServiceBean implements Serializable {
+public class CurrentLanguageServiceCDIBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private LocalizationLanguage language;
 
     private static MyLogger logger = MyLogger.newBuilder() //
-	    .withNameOf(CurrentLanguageServiceBean.class) //
+	    .withNameOf(CurrentLanguageServiceCDIBean.class) //
 	    .build();
 
     @PostConstruct

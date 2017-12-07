@@ -9,7 +9,7 @@ import tech.lapsa.javax.faces.commons.beans.localization.ListingBean;
 
 @Named("Country")
 @ApplicationScoped
-public class CountryBean implements ListingBean<Country> {
+public class CountryCDIBean implements ListingBean<Country> {
 
     @Override
     public Country[] getAll() {
