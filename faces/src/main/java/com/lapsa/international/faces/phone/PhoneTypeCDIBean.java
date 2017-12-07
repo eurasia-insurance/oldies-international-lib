@@ -5,11 +5,11 @@ import javax.inject.Named;
 
 import com.lapsa.international.phone.PhoneType;
 
-import tech.lapsa.javax.faces.beans.localization.ListingBean;
+import tech.lapsa.javax.faces.commons.beans.localization.ListingBean;
 
 @Named("PhoneType")
 @ApplicationScoped
-public class PhoneTypeBean implements ListingBean<PhoneType> {
+public class PhoneTypeCDIBean implements ListingBean<PhoneType> {
 
     @Override
     public PhoneType[] getAll() {

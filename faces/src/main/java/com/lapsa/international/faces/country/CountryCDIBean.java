@@ -5,11 +5,11 @@ import javax.inject.Named;
 
 import com.lapsa.international.country.Country;
 
-import tech.lapsa.javax.faces.beans.localization.ListingBean;
+import tech.lapsa.javax.faces.commons.beans.localization.ListingBean;
 
 @Named("Country")
 @ApplicationScoped
-public class CountryBean implements ListingBean<Country> {
+public class CountryCDIBean implements ListingBean<Country> {
 
     @Override
     public Country[] getAll() {
