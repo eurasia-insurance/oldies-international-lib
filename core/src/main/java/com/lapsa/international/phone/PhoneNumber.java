@@ -101,7 +101,7 @@ public abstract class PhoneNumber implements Serializable {
     }
 
     public static String requireOnlyNumbers(String value) throws PhoneFormatException {
-	return requireOnlyNumbers(value, String.format("Invalid characters found at '%1$s'", value));
+	return requireOnlyNumbers(value, MyStrings.format("Invalid characters found at '%1$s'", value));
     }
 
     private static CountryCode identifyCountryCode(final String num, boolean forceException, final String raw)
@@ -110,7 +110,7 @@ public abstract class PhoneNumber implements Serializable {
 	// Если force то обязатльно должно быть совпадение по базе кодов иначе
 	// ошибка
 	if (pcc == null && forceException)
-	    throw new PhoneFormatException(String.format("There is no country code at '%1$s'", raw));
+	    throw new PhoneFormatException(MyStrings.format("There is no country code at '%1$s'", raw));
 
 	// возвращаем либо наденный код либо null
 	return pcc;
@@ -123,7 +123,7 @@ public abstract class PhoneNumber implements Serializable {
     }
 
     private static PhoneNumber processFullNumber(final CountryCode cc, final String fullNumber, final String raw)
-	    throws PhoneFormatException {
+	    throws IllegalArgumentException {
 	String numberWithoutCountryCode = fullNumber.substring(cc.getPhoneCode().length());
 	if (cc.getDefaultAreaCodeLength() > 0
 		&& numberWithoutCountryCode.length() >= cc.getDefaultAreaCodeLength()) {
@@ -137,7 +137,7 @@ public abstract class PhoneNumber implements Serializable {
     // format +7(701)9377979
     private static final Pattern PLUSORZERO_WITH_AREA = Pattern.compile("^(?:\\+|0+)(\\d*)\\((\\d*)\\)(\\d*)$");
 
-    private static PhoneNumber checkPlusOrZeroWithArea(final String raw) throws PhoneFormatException {
+    private static PhoneNumber checkPlusOrZeroWithArea(final String raw) throws IllegalArgumentException {
 	final String plain = raw2plain(raw);
 	Matcher m = PLUSORZERO_WITH_AREA.matcher(plain);
 	if (!m.matches())
@@ -154,7 +154,7 @@ public abstract class PhoneNumber implements Serializable {
     // format 7(701)9377979
     private static Pattern NO_PLUS_WITH_AREA = Pattern.compile("^(\\d*)\\((\\d*)\\)(\\d*)$");
 
-    private static PhoneNumber checkNOPlusOrZeroWithArea(final String raw) throws PhoneFormatException {
+    private static PhoneNumber checkNOPlusOrZeroWithArea(final String raw) throws IllegalArgumentException {
 	final String plain = raw2plain(raw);
 	Matcher m = NO_PLUS_WITH_AREA.matcher(plain);
 	if (!m.matches())
@@ -230,7 +230,8 @@ public abstract class PhoneNumber implements Serializable {
 	private final String areaCode;
 	private final String phoneNumber;
 
-	private PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber) {
+	private PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber)
+		throws IllegalArgumentException {
 	    MyObjects.requireNonNull(countryCode, "Country code can not be null");
 	    MyObjects.requireNonNull(countryCode, "Area code can not be null");
 	    MyObjects.requireNonNull(phoneNumber, "Phone number can not be null");
@@ -302,7 +303,7 @@ public abstract class PhoneNumber implements Serializable {
 
 	private final String raw;
 
-	private PhoneNumberUncomplete(String number) {
+	private PhoneNumberUncomplete(String number) throws IllegalArgumentException {
 	    this.raw = MyObjects.requireNonNull(number, "number");
 	}
 
