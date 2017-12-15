@@ -12,13 +12,12 @@ public class TestCountryCode {
 
     @Test
     public void testCountyLinks() {
-	for (CountryCode cc : CountryCode.values()) {
+	for (final CountryCode cc : CountryCode.values())
 	    assertThat(String.format(//
 		    "%1$s.%2$s is not linked to a %3$s entity", //
 		    cc.getClass().getName(), // $1
 		    cc.name(), // $2
 		    Country.class.getName() // $3
 	    ), cc.getCountry(), not(nullValue()));
-	}
     }
 }

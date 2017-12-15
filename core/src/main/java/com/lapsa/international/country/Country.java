@@ -272,7 +272,8 @@ public enum Country implements LocalizedElement {
 
     //
 
-    private Country(String alpha2Code, String alpha3Code, String digitalCode, String isoCode, boolean actual) {
+    private Country(final String alpha2Code, final String alpha3Code, final String digitalCode, final String isoCode,
+	    final boolean actual) {
 	this.alpha2Code = MyObjects.requireNonNull(alpha2Code);
 	this.alpha3Code = MyObjects.requireNonNull(alpha3Code);
 	this.digitalCode = MyObjects.requireNonNull(digitalCode);
@@ -280,12 +281,12 @@ public enum Country implements LocalizedElement {
 	this.actual = actual;
     }
 
-    private Country(String alpha2Code, String alpha3Code, String digitalCode, String isoCode) {
+    private Country(final String alpha2Code, final String alpha3Code, final String digitalCode, final String isoCode) {
 	this.alpha2Code = MyObjects.requireNonNull(alpha2Code);
 	this.alpha3Code = MyObjects.requireNonNull(alpha3Code);
 	this.digitalCode = MyObjects.requireNonNull(digitalCode);
 	this.isoCode = MyObjects.requireNonNull(isoCode);
-	this.actual = true;
+	actual = true;
     }
 
     //
@@ -314,32 +315,32 @@ public enum Country implements LocalizedElement {
 
     //
 
-    public static Country forDigit(int digitalCode) {
+    public static Country forDigit(final int digitalCode) {
 	return forDigitalCode(String.valueOf(digitalCode));
     }
 
-    public static Country forDigitalCode(String digitalCode) {
+    public static Country forDigitalCode(final String digitalCode) {
 	return valuesStream() //
 		.filter(x -> x.digitalCode.equals(digitalCode)) //
 		.findAny() //
 		.orElse(null);
     }
 
-    public static Country forAlpha2Code(String alpha2Code) {
+    public static Country forAlpha2Code(final String alpha2Code) {
 	return valuesStream() //
 		.filter(x -> x.alpha2Code.equals(alpha2Code)) //
 		.findAny() //
 		.orElse(null);
     }
 
-    public static Country forAlpha3Code(String alpha3Code) {
+    public static Country forAlpha3Code(final String alpha3Code) {
 	return valuesStream() //
 		.filter(x -> x.alpha3Code.equals(alpha3Code)) //
 		.findAny() //
 		.orElse(null);
     }
 
-    public static Country forISOCode(String isoCode) {
+    public static Country forISOCode(final String isoCode) {
 	return valuesStream() //
 		.filter(x -> x.isoCode.equals(isoCode)) //
 		.findAny() //

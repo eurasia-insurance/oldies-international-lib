@@ -5,8 +5,8 @@ import com.lapsa.international.phone.CountryCode;
 
 public class CodeGenerator {
 
-    public static void main(String[] args) {
-	CodeGenerator p = new CodeGenerator();
+    public static void main(final String[] args) {
+	final CodeGenerator p = new CodeGenerator();
 	p.generatePhoneCCodeEnum();
 	p.generateCountryEnum();
     }
@@ -14,16 +14,14 @@ public class CodeGenerator {
     public void generatePhoneCCodeEnum() {
 	System.out.println(String.format("-------- %s --------", CountryCode.class.getName()));
 	boolean first = true;
-	for (String countryCode : CCode.getPhoneCountries()) {
-	    if (!first) {
+	for (final String countryCode : CCode.getPhoneCountries()) {
+	    if (!first)
 		System.out.println(",");
-	    }
-	    String phoneCode = CCode.getPhoneCode(countryCode);
-	    String[] phonePrefixes = CCode.getPhonePrefixes(countryCode);
+	    final String phoneCode = CCode.getPhoneCode(countryCode);
+	    final String[] phonePrefixes = CCode.getPhonePrefixes(countryCode);
 	    System.out.print(String.format("%1$s(\"%1$s\", \"%2$s\"", countryCode, phoneCode));
-	    for (String prefix : phonePrefixes) {
+	    for (final String prefix : phonePrefixes)
 		System.out.print(String.format(", \"%1$s\"", prefix));
-	    }
 	    System.out.print(")");
 	    first = false;
 	}
@@ -34,11 +32,10 @@ public class CodeGenerator {
     public void generateCountryEnum() {
 	System.out.println(String.format("-------- %s --------", Country.class.getName()));
 	boolean first = true;
-	for (Country c : Country.values()) {
+	for (final Country c : Country.values()) {
 
-	    if (!first) {
+	    if (!first)
 		System.out.println(",");
-	    }
 	    System.out.print(String.format("%2$s(\"%1$s\", \"%2$s\", \"%3$s\", \"%4$s\")", c.getAlpha2Code(),
 		    c.getAlpha3Code(), c.getDigitalCode(), c.getISOCode()));
 

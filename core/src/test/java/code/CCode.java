@@ -268,22 +268,22 @@ public class CCode {
 	codesPut("UZ", "998", null);
     }
 
-    private static void codesPut(String a2, String mainPhoneCode, String countryCodePrefix) {
+    private static void codesPut(final String a2, final String mainPhoneCode, String countryCodePrefix) {
 	if (countryCodePrefix == null)
 	    countryCodePrefix = mainPhoneCode;
 	if (countryCodes.containsKey(a2) && !countryCodes.get(a2).equals(mainPhoneCode))
 	    throw new RuntimeException("Code must be uniue '" + a2 + "'");
 	countryCodes.put(a2, mainPhoneCode);
 	if (!countryCodePrefixes.containsKey(a2)) {
-	    List<String> s = new ArrayList<>(1);
+	    final List<String> s = new ArrayList<>(1);
 	    countryCodePrefixes.put(a2, s);
 	}
 	countryCodePrefixes.get(a2).add(countryCodePrefix);
     }
 
     public static List<String> getPhoneCountries() {
-	Set<String> cc = countryCodePrefixes.keySet();
-	List<String> l = new ArrayList<>(cc.size());
+	final Set<String> cc = countryCodePrefixes.keySet();
+	final List<String> l = new ArrayList<>(cc.size());
 	l.addAll(cc);
 	// Collections.sort(l, Collections.reverseOrder(new
 	// StringLengthComparator()));
@@ -291,19 +291,19 @@ public class CCode {
 	return l;
     }
 
-    public static String getPhoneCode(String phoneCountry) {
+    public static String getPhoneCode(final String phoneCountry) {
 	return countryCodes.get(phoneCountry);
     }
 
-    public static String[] getPhonePrefixes(String phoneCountry) {
-	List<String> prefixes = countryCodePrefixes.get(phoneCountry);
+    public static String[] getPhonePrefixes(final String phoneCountry) {
+	final List<String> prefixes = countryCodePrefixes.get(phoneCountry);
 	Collections.sort(prefixes, new StringLengthComparator());
 	return prefixes.toArray(new String[0]);
     }
 
     static class StringLengthComparator implements Comparator<String> {
 	@Override
-	public int compare(String o1, String o2) {
+	public int compare(final String o1, final String o2) {
 	    if (o1.length() == o2.length())
 		return o1.compareTo(o2);
 	    return o1.length() - o2.length();

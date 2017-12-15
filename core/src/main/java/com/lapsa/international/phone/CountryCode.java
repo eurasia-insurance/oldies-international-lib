@@ -2,7 +2,6 @@ package com.lapsa.international.phone;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -266,30 +265,31 @@ public enum CountryCode {
     private final int minNumberLength;
     private final int maxNumberLength;
 
-    CountryCode(String alpha2, String phoneCode, String prefix, String... additionalPrefixes) {
+    CountryCode(final String alpha2, final String phoneCode, final String prefix, final String... additionalPrefixes) {
 	assertStringNotEmpty(alpha2, "Alpha2 code is required");
-	this.country = Country.forAlpha2Code(alpha2);
+	country = Country.forAlpha2Code(alpha2);
 
 	assertStringNotEmpty(phoneCode, "Phone code is required");
 	this.phoneCode = phoneCode;
 
-	this.defaultAreaCodeLength = -1;
-	this.minAreaCodeLength = -1;
-	this.maxAreaCodeLength = -1;
-	this.minNumberLength = -1;
-	this.maxNumberLength = -1;
+	defaultAreaCodeLength = -1;
+	minAreaCodeLength = -1;
+	maxAreaCodeLength = -1;
+	minNumberLength = -1;
+	maxNumberLength = -1;
 
 	assertStringNotEmpty(prefix, "Phone prefix is required");
-	this.prefixes = Stream.concat(Stream.of(prefix), Stream.of(additionalPrefixes))
+	prefixes = Stream.concat(Stream.of(prefix), Stream.of(additionalPrefixes))
 		.toArray(String[]::new);
     }
 
-    CountryCode(String alpha2, String phoneCode, int defaultAreaCodeLength, int minAreaCodeLength,
-	    int maxAreaCodeLength, int minNumberLength, int maxNumberLength, String prefix,
-	    String... additionalPrefixes) {
+    CountryCode(final String alpha2, final String phoneCode, final int defaultAreaCodeLength,
+	    final int minAreaCodeLength,
+	    final int maxAreaCodeLength, final int minNumberLength, final int maxNumberLength, final String prefix,
+	    final String... additionalPrefixes) {
 
 	assertStringNotEmpty(alpha2, "Alpha2 code is required");
-	this.country = Country.forAlpha2Code(alpha2);
+	country = Country.forAlpha2Code(alpha2);
 
 	assertStringNotEmpty(phoneCode, "Phone code is required");
 	this.phoneCode = phoneCode;
@@ -301,7 +301,7 @@ public enum CountryCode {
 	this.maxNumberLength = maxNumberLength;
 
 	assertStringNotEmpty(prefix, "First phone prefix is required");
-	this.prefixes = Stream.concat(Stream.of(prefix), Stream.of(additionalPrefixes))
+	prefixes = Stream.concat(Stream.of(prefix), Stream.of(additionalPrefixes))
 		.toArray(String[]::new);
     }
 
@@ -311,47 +311,42 @@ public enum CountryCode {
     private final static Map<String, CountryCode> PREFIXES_MAP;
 
     static {
-	Map<String, CountryCode> prefixesMap = new HashMap<>();
-	for (CountryCode code : CountryCode.values())
-	    for (String p : code.prefixes)
+	final Map<String, CountryCode> prefixesMap = new HashMap<>();
+	for (final CountryCode code : CountryCode.values())
+	    for (final String p : code.prefixes)
 		prefixesMap.put(p, code);
-	List<String> prefixesList = new ArrayList<>(prefixesMap.keySet());
-	Collections.sort(prefixesList, Collections.reverseOrder(new Comparator<String>() {
-	    @Override
-	    public int compare(String o1, String o2) {
-		if (o1.length() == o2.length())
-		    return o1.compareTo(o2);
-		return o1.length() - o2.length();
-	    }
+	final List<String> prefixesList = new ArrayList<>(prefixesMap.keySet());
+	Collections.sort(prefixesList, Collections.reverseOrder((o1, o2) -> {
+	    if (o1.length() == o2.length())
+		return o1.compareTo(o2);
+	    return o1.length() - o2.length();
 	}));
 	PREFIXES_SORTED_LIST = Collections.unmodifiableList(prefixesList);
 	PREFIXES_MAP = Collections.unmodifiableMap(prefixesMap);
     }
 
-    public static CountryCode getByPhonePrefix(String number) {
+    public static CountryCode getByPhonePrefix(final String number) {
 	if (number == null || number.isEmpty())
 	    return null;
-	for (String prefix : PREFIXES_SORTED_LIST) {
+	for (final String prefix : PREFIXES_SORTED_LIST)
 	    if (number.startsWith(prefix))
 		return PREFIXES_MAP.get(prefix);
-	}
 	return null;
     }
 
-    public static CountryCode getFirstByCode(String code) {
+    public static CountryCode getFirstByCode(final String code) {
 	if (code == null || code.isEmpty())
 	    return null;
-	for (CountryCode i : CountryCode.values()) {
+	for (final CountryCode i : CountryCode.values())
 	    if (code.startsWith(i.getPhoneCode()))
 		return i;
-	}
 	return null;
     }
 
-    public String getApplicablePrefix(String number) {
+    public String getApplicablePrefix(final String number) {
 	if (number == null)
 	    return null;
-	for (String prefix : prefixes)
+	for (final String prefix : prefixes)
 	    if (number.startsWith(prefix))
 		return prefix;
 	return null;
@@ -359,7 +354,7 @@ public enum CountryCode {
 
     // PRIVATE STATIC
 
-    private static void assertStringNotEmpty(String value, String message) {
+    private static void assertStringNotEmpty(final String value, final String message) {
 	if (value == null || value.isEmpty())
 	    throw new AssertionError(message);
     }

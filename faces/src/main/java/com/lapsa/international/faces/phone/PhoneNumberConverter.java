@@ -14,14 +14,14 @@ import tech.lapsa.java.commons.function.MyOptionals;
 public class PhoneNumberConverter implements Converter {
 
     @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+    public Object getAsObject(final FacesContext context, final UIComponent component, final String value) {
 	return MyOptionals.of(value) //
 		.map(PhoneNumber::assertValid) //
 		.orElse(null);
     }
 
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
+    public String getAsString(final FacesContext context, final UIComponent component, final Object value) {
 	return MyOptionals.of(value) //
 		.map(MyObjects.cast(PhoneNumber.class)) //
 		.map(PhoneNumber::getFormatted) //

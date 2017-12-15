@@ -4,11 +4,11 @@ public class PhoneFormatException extends IllegalArgumentException {
 
     private static final long serialVersionUID = 1L;
 
-    public PhoneFormatException(String message) {
+    public PhoneFormatException(final String message) {
 	super(message);
     }
 
-    public PhoneFormatException(String message, Throwable cause) {
+    public PhoneFormatException(final String message, final Throwable cause) {
 	super(message, cause);
     }
 

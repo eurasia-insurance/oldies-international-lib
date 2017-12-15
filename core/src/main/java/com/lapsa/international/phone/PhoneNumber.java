@@ -31,7 +31,7 @@ public abstract class PhoneNumber implements Serializable {
     public static PhoneNumber assertValid(final String value) throws IllegalArgumentException {
 	try {
 	    return of(value);
-	} catch (IllegalArgumentException e) {
+	} catch (final IllegalArgumentException e) {
 	    return new PhoneNumberUncomplete(value);
 	}
     }
@@ -71,7 +71,7 @@ public abstract class PhoneNumber implements Serializable {
      * @throws IllegalArgumentException
      *             when passing null values
      */
-    public static PhoneNumber of(CountryCode countryCode, String areaCode, String phoneNumber)
+    public static PhoneNumber of(final CountryCode countryCode, final String areaCode, final String phoneNumber)
 	    throws IllegalArgumentException {
 	return new PhoneNumberComplete(countryCode, areaCode, phoneNumber);
     }
@@ -94,19 +94,19 @@ public abstract class PhoneNumber implements Serializable {
 
     private static final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("^\\d*$");
 
-    public static String requireOnlyNumbers(String value, String message) throws PhoneFormatException {
+    public static String requireOnlyNumbers(final String value, final String message) throws PhoneFormatException {
 	if (!ONLY_NUMBERS_PATTERN.matcher(value).matches())
 	    throw new PhoneFormatException(message);
 	return value;
     }
 
-    public static String requireOnlyNumbers(String value) throws PhoneFormatException {
+    public static String requireOnlyNumbers(final String value) throws PhoneFormatException {
 	return requireOnlyNumbers(value, MyStrings.format("Invalid characters found at '%1$s'", value));
     }
 
-    private static CountryCode identifyCountryCode(final String num, boolean forceException, final String raw)
+    private static CountryCode identifyCountryCode(final String num, final boolean forceException, final String raw)
 	    throws PhoneFormatException {
-	CountryCode pcc = CountryCode.getByPhonePrefix(num);
+	final CountryCode pcc = CountryCode.getByPhonePrefix(num);
 	// Если force то обязатльно должно быть совпадение по базе кодов иначе
 	// ошибка
 	if (pcc == null && forceException)
@@ -116,7 +116,8 @@ public abstract class PhoneNumber implements Serializable {
 	return pcc;
     }
 
-    private static CountryCode identifyCountryCode(String ccNumber, String areaNumber, boolean forceException,
+    private static CountryCode identifyCountryCode(final String ccNumber, final String areaNumber,
+	    final boolean forceException,
 	    final String raw)
 	    throws PhoneFormatException {
 	return identifyCountryCode(ccNumber + areaNumber, forceException, raw);
@@ -124,11 +125,11 @@ public abstract class PhoneNumber implements Serializable {
 
     private static PhoneNumber processFullNumber(final CountryCode cc, final String fullNumber, final String raw)
 	    throws IllegalArgumentException {
-	String numberWithoutCountryCode = fullNumber.substring(cc.getPhoneCode().length());
+	final String numberWithoutCountryCode = fullNumber.substring(cc.getPhoneCode().length());
 	if (cc.getDefaultAreaCodeLength() > 0
 		&& numberWithoutCountryCode.length() >= cc.getDefaultAreaCodeLength()) {
-	    String areaNumber = numberWithoutCountryCode.substring(0, cc.getDefaultAreaCodeLength());
-	    String phoneNumber = numberWithoutCountryCode.substring(cc.getDefaultAreaCodeLength());
+	    final String areaNumber = numberWithoutCountryCode.substring(0, cc.getDefaultAreaCodeLength());
+	    final String phoneNumber = numberWithoutCountryCode.substring(cc.getDefaultAreaCodeLength());
 	    return new PhoneNumberComplete(cc, areaNumber, phoneNumber);
 	}
 	return new PhoneNumberComplete(cc, "", numberWithoutCountryCode);
@@ -139,14 +140,14 @@ public abstract class PhoneNumber implements Serializable {
 
     private static PhoneNumber checkPlusOrZeroWithArea(final String raw) throws IllegalArgumentException {
 	final String plain = raw2plain(raw);
-	Matcher m = PLUSORZERO_WITH_AREA.matcher(plain);
+	final Matcher m = PLUSORZERO_WITH_AREA.matcher(plain);
 	if (!m.matches())
 	    return null;
-	String ccNumber = m.group(1);
-	String areaNumber = m.group(2);
-	String phoneNumber = m.group(3);
+	final String ccNumber = m.group(1);
+	final String areaNumber = m.group(2);
+	final String phoneNumber = m.group(3);
 
-	CountryCode cc = identifyCountryCode(ccNumber, areaNumber, true, raw);
+	final CountryCode cc = identifyCountryCode(ccNumber, areaNumber, true, raw);
 
 	return new PhoneNumberComplete(cc, areaNumber, phoneNumber);
     }
@@ -156,17 +157,17 @@ public abstract class PhoneNumber implements Serializable {
 
     private static PhoneNumber checkNOPlusOrZeroWithArea(final String raw) throws IllegalArgumentException {
 	final String plain = raw2plain(raw);
-	Matcher m = NO_PLUS_WITH_AREA.matcher(plain);
+	final Matcher m = NO_PLUS_WITH_AREA.matcher(plain);
 	if (!m.matches())
 	    return null;
 	String ccNumber = m.group(1);
-	String areaNumber = m.group(2);
-	String phoneNumber = m.group(3);
+	final String areaNumber = m.group(2);
+	final String phoneNumber = m.group(3);
 
 	if ("8".equals(ccNumber))
 	    ccNumber = "7";
 
-	CountryCode cc = identifyCountryCode(ccNumber, areaNumber, true, raw);
+	final CountryCode cc = identifyCountryCode(ccNumber, areaNumber, true, raw);
 
 	return new PhoneNumberComplete(cc, areaNumber, phoneNumber);
     }
@@ -176,12 +177,12 @@ public abstract class PhoneNumber implements Serializable {
 
     private static PhoneNumber checkPlusOrZeroNOArea(final String raw) throws PhoneFormatException {
 	final String plain = raw2plain(raw);
-	Matcher m = PLUSORZERO_NO_AREA.matcher(plain);
+	final Matcher m = PLUSORZERO_NO_AREA.matcher(plain);
 	if (!m.matches())
 	    return null;
 
-	String fullNumber = m.group(1);
-	CountryCode cc = identifyCountryCode(fullNumber, true, raw);
+	final String fullNumber = m.group(1);
+	final CountryCode cc = identifyCountryCode(fullNumber, true, raw);
 
 	return processFullNumber(cc, fullNumber, raw);
     }
@@ -191,14 +192,14 @@ public abstract class PhoneNumber implements Serializable {
 
     private static PhoneNumber checNOPlusOrZeroNOArea(final String raw) throws PhoneFormatException {
 	final String plain = raw2plain(raw);
-	Matcher m = NO_PLUS_NO_AREA.matcher(plain);
+	final Matcher m = NO_PLUS_NO_AREA.matcher(plain);
 	if (!m.matches())
 	    return null;
 
 	String fullNumber = plain;
 
 	{ // сначала ищем совпадение даже если в начале "8"
-	    CountryCode cc = identifyCountryCode(fullNumber, false, raw);
+	    final CountryCode cc = identifyCountryCode(fullNumber, false, raw);
 	    if (cc != null)
 		return processFullNumber(cc, fullNumber, raw);
 	}
@@ -207,7 +208,7 @@ public abstract class PhoneNumber implements Serializable {
 	if (fullNumber.startsWith("8")) {
 	    fullNumber = "7" + fullNumber.substring(1);
 
-	    CountryCode cc = identifyCountryCode(fullNumber, false, raw);
+	    final CountryCode cc = identifyCountryCode(fullNumber, false, raw);
 	    if (cc != null)
 		return processFullNumber(cc, fullNumber, raw);
 	}
@@ -230,7 +231,7 @@ public abstract class PhoneNumber implements Serializable {
 	private final String areaCode;
 	private final String phoneNumber;
 
-	private PhoneNumberComplete(CountryCode countryCode, String areaCode, String phoneNumber)
+	private PhoneNumberComplete(final CountryCode countryCode, final String areaCode, final String phoneNumber)
 		throws IllegalArgumentException {
 	    MyObjects.requireNonNull(countryCode, "Country code can not be null");
 	    MyObjects.requireNonNull(countryCode, "Area code can not be null");
@@ -250,7 +251,7 @@ public abstract class PhoneNumber implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 	    return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
@@ -303,8 +304,8 @@ public abstract class PhoneNumber implements Serializable {
 
 	private final String raw;
 
-	private PhoneNumberUncomplete(String number) throws IllegalArgumentException {
-	    this.raw = MyObjects.requireNonNull(number, "number");
+	private PhoneNumberUncomplete(final String number) throws IllegalArgumentException {
+	    raw = MyObjects.requireNonNull(number, "number");
 	}
 
 	@Override
@@ -313,7 +314,7 @@ public abstract class PhoneNumber implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 	    return EqualsBuilder.reflectionEquals(this, obj);
 	}
 

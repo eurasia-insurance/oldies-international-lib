@@ -61,12 +61,13 @@ public class CurrentLanguageServiceCDIBean implements Serializable {
 	}
     }
 
-    private boolean isSupportedLocale(Locale locale) {
+    private boolean isSupportedLocale(final Locale locale) {
 	if (locale == null)
 	    return false;
-	Iterator<Locale> supportedLocales = FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
+	final Iterator<Locale> supportedLocales = FacesContext.getCurrentInstance().getApplication()
+		.getSupportedLocales();
 	while (supportedLocales.hasNext()) {
-	    Locale supported = supportedLocales.next();
+	    final Locale supported = supportedLocales.next();
 	    if (supported.getLanguage().equals(locale.getLanguage()))
 		return true;
 	}
