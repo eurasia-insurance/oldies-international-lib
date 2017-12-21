@@ -49,7 +49,7 @@ public class LocalizationLanguageCDIBean implements ListingBean<LocalizationLang
     //
 
     private static Stream<Locale> facesSupportedLocalesStream() {
-	Iterable<Locale> it = FacesContext.getCurrentInstance()
+	final Iterable<Locale> it = FacesContext.getCurrentInstance()
 		.getApplication()::getSupportedLocales;
 	return StreamSupport.stream(it.spliterator(), false);
     }

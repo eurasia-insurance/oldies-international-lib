@@ -24,16 +24,16 @@ public enum LocalizationLanguage implements LocalizedElement {
 
     //
 
-    private LocalizationLanguage(String tag) {
+    private LocalizationLanguage(final String tag) {
 	this.tag = MyObjects.requireNonNull(tag);
-	this.locale = Locale.forLanguageTag(tag);
-	this.selectable = true;
+	locale = Locale.forLanguageTag(tag);
+	selectable = true;
     }
 
-    private LocalizationLanguage(String tag, Locale locale) {
+    private LocalizationLanguage(final String tag, final Locale locale) {
 	this.tag = MyObjects.requireNonNull(tag);
 	this.locale = MyObjects.requireNonNull(locale);
-	this.selectable = true;
+	selectable = true;
     }
 
     //
@@ -71,15 +71,15 @@ public enum LocalizationLanguage implements LocalizedElement {
 
     //
 
-    public static LocalizationLanguage byTag(String tag) {
+    public static LocalizationLanguage byTag(final String tag) {
 	return LANGUAGES_BY_TAG.get(tag);
     }
 
-    public static LocalizationLanguage byLocale(Locale locale) {
+    public static LocalizationLanguage byLocale(final Locale locale) {
 	return byTag(locale.getLanguage());
     }
 
-    public static LocalizationLanguage byLocalePriorityListOrDefault(List<Locale> locales) {
+    public static LocalizationLanguage byLocalePriorityListOrDefault(final List<Locale> locales) {
 	return locales.stream() //
 		.filter(MyObjects::nonNull) //
 		.map(LocalizationLanguage::byLocale) //
@@ -88,11 +88,11 @@ public enum LocalizationLanguage implements LocalizedElement {
 		.orElse(_orDefault(null));
     }
 
-    public static LocalizationLanguage byTagOrDefault(String tag) {
+    public static LocalizationLanguage byTagOrDefault(final String tag) {
 	return _orDefault(byTag(tag));
     }
 
-    public static LocalizationLanguage byLocaleOrDefault(Locale locale) {
+    public static LocalizationLanguage byLocaleOrDefault(final Locale locale) {
 	return _orDefault(byLocale(locale));
     }
 

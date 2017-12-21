@@ -9,12 +9,12 @@ import com.lapsa.international.phone.PhoneNumber;
 public class PhoneNumberAttributeConverter implements AttributeConverter<PhoneNumber, String> {
 
     @Override
-    public String convertToDatabaseColumn(PhoneNumber attribute) {
+    public String convertToDatabaseColumn(final PhoneNumber attribute) {
 	return attribute == null ? null : attribute.getFormatted();
     }
 
     @Override
-    public PhoneNumber convertToEntityAttribute(String dbData) {
+    public PhoneNumber convertToEntityAttribute(final String dbData) {
 	return dbData == null ? null : PhoneNumber.assertValid(dbData);
     }
 

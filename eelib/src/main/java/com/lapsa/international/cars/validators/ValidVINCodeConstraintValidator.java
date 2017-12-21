@@ -14,14 +14,14 @@ public class ValidVINCodeConstraintValidator implements ConstraintValidator<Vali
     private VINCodeValidator validator;
 
     @Override
-    public void initialize(ValidVINCode constraintAnnotation) {
+    public void initialize(final ValidVINCode constraintAnnotation) {
 	validator = VINCodeValidatorProvider.provideDefault();
 	checkDigit = constraintAnnotation.checkDigit();
 	caseSensitive = constraintAnnotation.caseSensitive();
     }
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
+    public boolean isValid(final String value, final ConstraintValidatorContext context) {
 	if (value == null)
 	    return true;
 	return validator.isValid(value, checkDigit, caseSensitive);

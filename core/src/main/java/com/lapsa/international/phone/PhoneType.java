@@ -20,13 +20,13 @@ public enum PhoneType implements LocalizedElement {
 
     //
 
-    private PhoneType(String fontAwesomeCode) {
-	this.fontAwesomeCodeIcon = fontAwesomeCode;
-	this.selectable = true;
+    private PhoneType(final String fontAwesomeCode) {
+	fontAwesomeCodeIcon = fontAwesomeCode;
+	selectable = true;
     }
 
-    private PhoneType(String fontAwesomeCode, boolean selectable) {
-	this.fontAwesomeCodeIcon = fontAwesomeCode;
+    private PhoneType(final String fontAwesomeCode, final boolean selectable) {
+	fontAwesomeCodeIcon = fontAwesomeCode;
 	this.selectable = selectable;
     }
 

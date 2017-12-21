@@ -17,7 +17,7 @@ public class TestPhoneNumber {
 
     private static MyLogger logger = MyLogger.getDefault();
 
-    private static void printFormat(PhoneNumber a) {
+    private static void printFormat(final PhoneNumber a) {
 	logger.INFO.log("Formatted: '%1$s' Plain: '%2$s'", //
 		a.getFormatted(), // $1
 		a.getPlain() // $2
@@ -37,15 +37,15 @@ public class TestPhoneNumber {
 	);
     }
 
-    private void testStrict(String value, PhoneNumber expecting, String expectingFormat) {
-	PhoneNumber a = PhoneNumber.of(value);
+    private void testStrict(final String value, final PhoneNumber expecting, final String expectingFormat) {
+	final PhoneNumber a = PhoneNumber.of(value);
 	printFormat(a);
 	assertThat(a, allOf(not(nullValue()), is(equalTo(expecting))));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(expectingFormat))));
     }
 
-    private void testNonStrict(String value) {
-	PhoneNumber a = PhoneNumber.assertValid(value);
+    private void testNonStrict(final String value) {
+	final PhoneNumber a = PhoneNumber.assertValid(value);
 	printFormat(a);
 	assertThat(a, not(nullValue()));
 	assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(value))));
@@ -113,32 +113,33 @@ public class TestPhoneNumber {
 
     @Test
     public void testTwoWays1() {
-	String source = "+86 (4) 7124545";
-	PhoneNumber p = PhoneNumber.assertValid(source);
-	String target = p.getFormatted();
+	final String source = "+86 (4) 7124545";
+	final PhoneNumber p = PhoneNumber.assertValid(source);
+	final String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
 
     @Test
     public void testTwoWays2() {
-	String source = "+370 (07) 47124545";
-	PhoneNumber p = PhoneNumber.assertValid(source);
-	String target = p.getFormatted();
+	final String source = "+370 (07) 47124545";
+	final PhoneNumber p = PhoneNumber.assertValid(source);
+	final String target = p.getFormatted();
 	assertThat(target, equalTo(source));
     }
 
     @Test
     public void testStrictParseFormat() {
-	String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979", "494357019377979",
+	final String[] numbers = new String[] { " 8 (7272)-530721 ", "+1 268-464-1234", "+56(7)9377979",
+		"494357019377979",
 		"87272530721" };
 
-	String[] formatted = new String[] { "+7 (7272) 530721", "+1 (268) 4641234", "+56 (7) 9377979",
+	final String[] formatted = new String[] { "+7 (7272) 530721", "+1 (268) 4641234", "+56 (7) 9377979",
 		"+49 (43) 57019377979", "+7 (727) 2530721" };
 
 	for (int i = 0; i < numbers.length; i++) {
-	    String num = numbers[i];
-	    String frm = formatted[i];
-	    PhoneNumber a = PhoneNumber.assertValid(num);
+	    final String num = numbers[i];
+	    final String frm = formatted[i];
+	    final PhoneNumber a = PhoneNumber.assertValid(num);
 	    printFormat(a);
 	    assertThat(a, not(nullValue()));
 	    assertThat(a.getFormatted(), allOf(not(nullValue()), is(equalTo(frm))));

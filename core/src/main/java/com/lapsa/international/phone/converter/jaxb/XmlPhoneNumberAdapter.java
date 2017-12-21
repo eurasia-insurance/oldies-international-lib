@@ -10,14 +10,14 @@ import tech.lapsa.java.commons.function.MyStrings;
 public class XmlPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
 
     @Override
-    public PhoneNumber unmarshal(String v) throws Exception {
+    public PhoneNumber unmarshal(final String v) throws Exception {
 	return MyStrings.empty(v) //
 		? null //
 		: PhoneNumber.assertValid(v);
     }
 
     @Override
-    public String marshal(PhoneNumber v) throws Exception {
+    public String marshal(final PhoneNumber v) throws Exception {
 	return MyObjects.isNull(v) //
 		? null //
 		: v.toString();

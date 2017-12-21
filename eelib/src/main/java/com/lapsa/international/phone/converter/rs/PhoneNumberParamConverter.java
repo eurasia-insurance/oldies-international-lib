@@ -13,12 +13,12 @@ import tech.lapsa.javax.rs.params.MyParamConverterProvider;
 public class PhoneNumberParamConverter implements ParamConverter<PhoneNumber>, MyParamConverterProvider<PhoneNumber> {
 
     @Override
-    public PhoneNumber fromString(String v) {
+    public PhoneNumber fromString(final String v) {
 	return PhoneNumber.assertValid(v);
     }
 
     @Override
-    public String toString(PhoneNumber value) {
+    public String toString(final PhoneNumber value) {
 	return MyObjects.requireNonNull(value, "value").getFormatted();
     }
 

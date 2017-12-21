@@ -17,7 +17,7 @@ import com.lapsa.international.phone.CountryCode;
 public @interface ValidPhoneNumber {
 
     CountryCode[] countriesRequired() default {};
-    
+
     String message() default "{com.lapsa.international.phone.validators.ValidPhoneNumber.message}";
 
     Class<?>[] groups() default {};

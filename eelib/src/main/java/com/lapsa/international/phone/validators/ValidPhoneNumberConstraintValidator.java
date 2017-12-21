@@ -14,12 +14,12 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
     private CountryCode[] countriesRequired;
 
     @Override
-    public void initialize(ValidPhoneNumber a) {
+    public void initialize(final ValidPhoneNumber a) {
 	countriesRequired = a.countriesRequired();
     }
 
     @Override
-    public boolean isValid(PhoneNumber value, ConstraintValidatorContext cvc) {
+    public boolean isValid(final PhoneNumber value, final ConstraintValidatorContext cvc) {
 	if (value == null)
 	    return true;
 
@@ -34,7 +34,7 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 
 	if (countriesRequired != null && countriesRequired.length > 0) {
 	    boolean found = false;
-	    for (CountryCode cc : countriesRequired)
+	    for (final CountryCode cc : countriesRequired)
 		if (cc.equals(value.getCountryCode())) {
 		    found = true;
 		    break;
@@ -48,12 +48,12 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	if (!PATTERN_ONLY_NUMBERS.matcher(value.getPhoneNumber()).matches())
 	    return false;
 
-	CountryCode cc = value.getCountryCode();
+	final CountryCode cc = value.getCountryCode();
 
 	{
-	    String number = value.getAreaCode();
-	    int min = cc.getMinAreaCodeLength();
-	    int max = cc.getMaxAreaCodeLength();
+	    final String number = value.getAreaCode();
+	    final int min = cc.getMinAreaCodeLength();
+	    final int max = cc.getMaxAreaCodeLength();
 
 	    if (min >= 0 && number.length() < min)
 		return false;
@@ -62,9 +62,9 @@ public class ValidPhoneNumberConstraintValidator implements ConstraintValidator<
 	}
 
 	{
-	    String number = String.join("", value.getAreaCode(), value.getPhoneNumber());
-	    int min = cc.getMinNumberLength();
-	    int max = cc.getMaxNumberLength();
+	    final String number = String.join("", value.getAreaCode(), value.getPhoneNumber());
+	    final int min = cc.getMinNumberLength();
+	    final int max = cc.getMaxNumberLength();
 
 	    if (min >= 0 && number.length() < min)
 		return false;
