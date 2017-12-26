@@ -9,7 +9,7 @@
 
 	<groupId>com.lapsa.international-lib</groupId>
 	<artifactId>international-root</artifactId>
-	<version>3.3-SNAPSHOT</version>
+	<version>3.3</version>
 	<packaging>pom</packaging>
 
 	<name>Internationalization Lib</name>
@@ -92,7 +92,7 @@
 	<scm>
 		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</connection>
 		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v3.3</tag>
 	</scm>
 
 	<issueManagement>
