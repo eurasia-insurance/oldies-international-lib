@@ -76,12 +76,6 @@ public abstract class PhoneNumber implements Serializable {
 	return new PhoneNumberComplete(countryCode, areaCode, phoneNumber);
     }
 
-    @Deprecated
-    // TODO REFACT : Remove later
-    public static PhoneNumber parse(final String value) {
-	return assertValid(value);
-    }
-
     public abstract String getFormatted();
 
     public abstract String getPlain();
