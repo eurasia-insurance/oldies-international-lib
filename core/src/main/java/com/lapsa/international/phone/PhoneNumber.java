@@ -4,19 +4,14 @@ import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.lapsa.international.phone.converter.jaxb.XmlPhoneNumberAdapter;
-
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 
-@XmlJavaTypeAdapter(XmlPhoneNumberAdapter.class)
 public abstract class PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 1L;
