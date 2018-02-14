@@ -9,7 +9,7 @@
 
 	<groupId>com.lapsa.international-lib</groupId>
 	<artifactId>international-root</artifactId>
-	<version>3.3</version>
+	<version>3.3.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Internationalization Lib</name>
