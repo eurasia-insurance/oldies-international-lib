@@ -20,7 +20,6 @@ public class XmlPhoneNumberAdapter extends XmlAdapter<String, PhoneNumber> {
     public String marshal(final PhoneNumber v) throws Exception {
 	return MyObjects.isNull(v) //
 		? null //
-		: v.toString();
+		: v.getPlain();
     }
-
 }
