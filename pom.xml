@@ -90,9 +90,9 @@
 	</dependencyManagement>
 
 	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</developerConnection>
-		<tag>v3.3.1</tag>
+		<connection>scm:git:https://github.com/eurasia-insurance/oldies-international-lib.git</connection>
+		<developerConnection>scm:git:https://github.com/eurasia-insurance/oldies-international-lib.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
