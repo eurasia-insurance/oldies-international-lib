@@ -25,4 +25,9 @@ public class CountryCDIBean implements ListingBean<Country> {
     public Country[] getNonSelectable() {
 	return Country.nonSelectableValues();
     }
+
+    @Override
+    public Country byName(String name) {
+	return Country.valueOf(name);
+    }
 }

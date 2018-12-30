@@ -46,6 +46,12 @@ public class LocalizationLanguageCDIBean implements ListingBean<LocalizationLang
 		.toArray(LocalizationLanguage[]::new);
     }
 
+
+    @Override
+    public LocalizationLanguage byName(String name) {
+	return LocalizationLanguage.valueOf(name);
+    }
+
     //
 
     private static Stream<Locale> facesSupportedLocalesStream() {
