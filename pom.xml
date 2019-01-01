@@ -12,7 +12,7 @@
 	<version>CURRENT-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Internationalization Lib</name>
+	<name>Oldies Lib : Internationalization Lib</name>
 
 	<modules>
 		<module>core</module>

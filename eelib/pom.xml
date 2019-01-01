@@ -10,7 +10,7 @@
 	<artifactId>international-eelib</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Internationalization Lib : Java EE library</name>
+	<name>Oldies Lib : Internationalization Lib : Java EE</name>
 
 	<dependencies>
 		<!-- tech -->
