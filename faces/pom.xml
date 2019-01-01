@@ -10,7 +10,7 @@
 	<artifactId>international-faces</artifactId>
 	<packaging>jar</packaging>
 
-	<name>International Lib : Faces utility</name>
+	<name>Internationalization Lib : Faces utility</name>
 
 	<dependencies>
 		<!-- tech -->
