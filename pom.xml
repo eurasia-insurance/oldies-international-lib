@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>tech.lapsa.maven</groupId>
 		<artifactId>maven-general</artifactId>
-		<version>3.2</version>
+		<version>20190102</version>
 	</parent>
 
 	<groupId>com.lapsa.international-lib</groupId>
@@ -12,7 +12,7 @@
 	<version>CURRENT-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Internationalization Lib</name>
+	<name>Oldies Lib : Internationalization Lib</name>
 
 	<modules>
 		<module>core</module>
@@ -90,14 +90,9 @@
 	</dependencyManagement>
 
 	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/international-lib.git</developerConnection>
+		<connection>scm:git:https://github.com/eurasia-insurance/oldies-international-lib.git</connection>
+		<developerConnection>scm:git:https://github.com/eurasia-insurance/oldies-international-lib.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-
-	<issueManagement>
-		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/international-lib/issues</url>
-	</issueManagement>
 
 </project>

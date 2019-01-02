@@ -25,4 +25,9 @@ public class PhoneTypeCDIBean implements ListingBean<PhoneType> {
     public PhoneType[] getNonSelectable() {
 	return PhoneType.nonSelectableValues();
     }
+
+    @Override
+    public PhoneType byName(String name) {
+	return PhoneType.valueOf(name);
+    }
 }

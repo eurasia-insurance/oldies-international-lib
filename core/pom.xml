@@ -10,7 +10,7 @@
 	<artifactId>international-core</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Internationalization Lib : Core POJOs</name>
+	<name>Oldies Lib : Internationalization Lib : Core POJOs</name>
 
 	<dependencies>
 		<!-- tech -->
