@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.lapsa.international-lib</groupId>
 		<artifactId>international-root</artifactId>
-		<version>CURRENT-SNAPSHOT</version>
+		<version>20190317r6</version>
 	</parent>
 
 	<artifactId>international-faces</artifactId>
